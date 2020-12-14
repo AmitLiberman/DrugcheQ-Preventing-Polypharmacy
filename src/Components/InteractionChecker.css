@@ -1,0 +1,8 @@
+.form-control.drug-input {
+    direction: rtl;
+}
+
+.input-group.mb-4 {
+    width: 80%;
+    float: right;
+}

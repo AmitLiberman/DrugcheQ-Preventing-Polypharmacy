@@ -1,16 +1,18 @@
 import "./App.css";
 import TopNav from "./Components/TopNav";
 import ActionNav from "./Components/ActionNav";
+import Home from "./Components/Home";
+import InteractionChecker from "./Components/InteractionChecker";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = (props) => {
   return (
-    <div>
+    <div calssName="app">
       <TopNav />
       <ActionNav />
       <Router>
-        <div>
+        <main className="jumbotron">
           <Switch>
             <Route path="/about">
               <About />
@@ -18,7 +20,6 @@ const App = (props) => {
             <Route path="/topics">
               <Topics />
             </Route>
-
             <Route path="/interaction-checker">
               <InteractionChecker />
             </Route>
@@ -32,15 +33,11 @@ const App = (props) => {
               <Home />
             </Route>
           </Switch>
-        </div>
+        </main>
       </Router>
     </div>
   );
 };
-
-function Home() {
-  return <h2>Home</h2>;
-}
 
 function About() {
   return <h2>About</h2>;
@@ -48,10 +45,6 @@ function About() {
 
 function Topics() {
   return <h2>Topics</h2>;
-}
-
-function InteractionChecker() {
-  return <h2>Interaction Checker</h2>;
 }
 
 function SideEffectReport() {
