@@ -1,0 +1,34 @@
+.nav-bar {
+    direction: rtl;
+}
+
+.ml-auto.top-nav-content {
+    margin-right: 2em;
+    text-align: right;
+}
+
+.drugheq-logo {
+    font-size: 1.7rem;
+    padding-right: 2em;
+}
+
+.top-nav-link {
+    margin-right: 1em;
+    font-size: 1.2rem;
+}
+
+.link-text {
+    color: #4B4A4A;
+}
+
+.link-text:hover {
+    color: #979595;
+}
+
+.ml-auto.top-nav-content {
+    float: right;
+}
+
+.hamburger-nav {
+    margin-right: 1.5em;
+}
