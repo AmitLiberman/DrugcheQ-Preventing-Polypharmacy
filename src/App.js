@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = (props) => {
   return (
-    <div calssName="app">
+    <div className="app">
       <TopNav />
       <ActionNav />
       <Router>

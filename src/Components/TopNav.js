@@ -17,7 +17,7 @@ const TopNav = (props) => {
           aria-controls="responsive-navbar-nav"
         />
 
-        <Navbar.Brand clssName="logo-wrapper" href="/">
+        <Navbar.Brand className="logo-wrapper" href="/">
           <h2 className="drugheq-logo">DrugcheQ</h2>
         </Navbar.Brand>
         <Navbar.Collapse id="responsive-navbar-nav">

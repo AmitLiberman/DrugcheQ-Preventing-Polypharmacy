@@ -1,8 +1,8 @@
-form {
+.interaction-form {
     text-align: right;
 }
 
-.add-drug-btn {
+.btn.btn-success.add-drug-btn {
     display: inline-block;
     margin: 0.1em;
 }
