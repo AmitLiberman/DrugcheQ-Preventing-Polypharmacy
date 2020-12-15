@@ -1,3 +1,7 @@
+.interaction-container {
+    overflow: hidden
+}
+
 .interaction-form {
     text-align: right;
 }
@@ -12,4 +16,8 @@
     direction: rtl;
     border: 1px solid #ccc;
     padding: 0.4em;
+}
+
+.drug-list {
+    float: right;
 }

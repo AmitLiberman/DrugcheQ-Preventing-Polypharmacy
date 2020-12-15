@@ -10,7 +10,6 @@ class InteractionChecker extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    alert(this.state.drugName);
     this.setState({ drugList: [...this.state.drugList, this.state.drugName] });
   };
 
@@ -21,14 +20,14 @@ class InteractionChecker extends Component {
   render() {
     const drugs = (
       <div>
-        {this.state.drugList.map((drug) => {
-          return <div>{drug}</div>;
+        {this.state.drugList.map((drugItem) => {
+          return <Drug drugName={drugItem} />;
         })}
       </div>
     );
 
     return (
-      <div>
+      <div className="interaction-container">
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <button className="btn btn-success add-drug-btn" type="submit">
             הוסף
