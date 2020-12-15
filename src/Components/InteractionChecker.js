@@ -14,18 +14,14 @@ class InteractionChecker extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div class="input-group mb-4">
-          <div class="input-group-prepend">
-            <button class="btn btn-success" type="submit">
-              הוסף
-            </button>
-          </div>
-          <input
-            type="text"
-            class="form-control drug-input"
-            placeholder="הכנסת שם תרופה בעברית או באנגלית"
-          />
-        </div>
+        <button className="btn btn-success add-drug-btn" type="submit">
+          הוסף
+        </button>
+        <input
+          type="text"
+          className="input-drug-name"
+          placeholder="הכנסת שם תרופה בעברית או באנגלית"
+        />
       </form>
     );
   }

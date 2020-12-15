@@ -1,8 +1,15 @@
-.form-control.drug-input {
-    direction: rtl;
+form {
+    text-align: right;
 }
 
-.input-group.mb-4 {
-    width: 80%;
-    float: right;
+.add-drug-btn {
+    display: inline-block;
+    margin: 0.1em;
+}
+
+.input-drug-name {
+    width: 70%;
+    direction: rtl;
+    border: 1px solid #ccc;
+    padding: 0.4em;
 }
