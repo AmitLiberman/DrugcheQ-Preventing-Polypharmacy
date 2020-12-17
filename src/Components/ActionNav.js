@@ -1,25 +1,25 @@
 import React from "react";
 import "./ActionNav.css";
-import { Nav } from "react-bootstrap";
 
 const ActionNav = (props) => {
   return (
     <div className="action-nav-wrapper">
-      <div className="action-opt">
-        <Nav.Link className="nav-link" href="/drug-search">
+      <a className="action-nav-link" href="/drug-search">
+        <div className="action-opt">
           <span className="action-text"> חיפוש תרופה</span>
-        </Nav.Link>
-      </div>
-      <div className="action-opt">
-        <Nav.Link className="nav-link" href="/interaction-checker">
+        </div>
+      </a>
+      <a className="action-nav-link" href="/interaction-checker">
+        <div className="action-opt">
           <span className="action-text">בדיקת אינטראקציה</span>
-        </Nav.Link>
-      </div>
-      <div className="action-opt">
-        <Nav.Link className="nav-link" href="/side-effect-report">
+        </div>
+      </a>
+
+      <a className="action-nav-link" href="/side-effect-report">
+        <div className="action-opt">
           <span className="action-text">דיווח על תופעות לוואי</span>
-        </Nav.Link>
-      </div>
+        </div>
+      </a>
     </div>
   );
 };
