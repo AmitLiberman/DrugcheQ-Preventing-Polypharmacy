@@ -8,13 +8,16 @@
     margin-top: 1.5em;
     margin-right: 1em;
     background-color: #adc7d4;
-    /* border-style: solid; */
-    /* border-width: 1px; */
-    padding: 1em;
     width: 16em;
     box-shadow: 2px 1px #888888;
 }
 
 .action-text {
     color: #363636;
+}
+
+.nav-link {
+    position: relative;
+    width: 100%;
+    padding: 1.5em;
 }
