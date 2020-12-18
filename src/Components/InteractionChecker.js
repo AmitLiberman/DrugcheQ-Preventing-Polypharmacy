@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./InteractionChecker.css";
-import Drug from "./Drug";
+import DrugList from "./DrugList";
 
 class InteractionChecker extends Component {
   state = {
@@ -10,22 +10,26 @@ class InteractionChecker extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ drugList: [...this.state.drugList, this.state.drugName] });
+    const newDrugItem = {
+      id: this.state.drugList.length + 1,
+      name: this.state.drugName,
+    };
+    this.setState({ drugList: [...this.state.drugList, newDrugItem] });
+    this.setState({ drugName: "" });
   };
 
   handleChange = (event) => {
     this.setState({ drugName: event.target.value });
   };
 
-  render() {
-    const drugs = (
-      <div>
-        {this.state.drugList.map((drugItem) => {
-          return <Drug drugName={drugItem} />;
-        })}
-      </div>
-    );
+  //Delete Drug Item from list
+  delDrug = (id) => {
+    this.setState({
+      drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
+    });
+  };
 
+  render() {
     return (
       <div className="interaction-container">
         <form className="interaction-form" onSubmit={this.handleSubmit}>
@@ -37,10 +41,10 @@ class InteractionChecker extends Component {
             type="text"
             className="input-drug-name"
             placeholder="הכנסת שם תרופה בעברית או באנגלית"
-            value={this.drugName}
+            value={this.state.drugName}
           />
         </form>
-        {drugs}
+        <DrugList delDrug={this.delDrug} drugList={this.state.drugList} />
       </div>
     );
   }
