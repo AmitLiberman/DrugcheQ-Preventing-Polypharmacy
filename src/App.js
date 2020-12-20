@@ -3,6 +3,7 @@ import TopNav from "./Components/TopNav";
 import ActionNav from "./Components/ActionNav";
 import Home from "./Components/Home";
 import InteractionChecker from "./Components/InteractionChecker";
+import SideEffectReport from "./Components/SideEffectReport";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -17,8 +18,8 @@ const App = (props) => {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/topics">
-              <Topics />
+            <Route path="/connect">
+              <Connect />
             </Route>
             <Route path="/interaction-checker">
               <InteractionChecker />
@@ -43,12 +44,8 @@ function About() {
   return <h2>About</h2>;
 }
 
-function Topics() {
-  return <h2>Topics</h2>;
-}
-
-function SideEffectReport() {
-  return <h2>Side Effect Report</h2>;
+function Connect() {
+  return <h2>connect</h2>;
 }
 
 function DrugSearch() {

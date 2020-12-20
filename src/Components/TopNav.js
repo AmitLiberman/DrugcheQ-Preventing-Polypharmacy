@@ -28,8 +28,8 @@ const TopNav = (props) => {
             <Nav.Link className="top-nav-link" href="/about">
               <span className="link-text">אודות</span>
             </Nav.Link>
-            <Nav.Link className="top-nav-link" href="/topics">
-              <span className="link-text">נושאים</span>
+            <Nav.Link className="top-nav-link" href="/connect">
+              <span className="link-text">צור קשר</span>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

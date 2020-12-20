@@ -1,0 +1,13 @@
+.drug-list-report-container {
+    position: relative;
+    width: 49%;
+    text-align: right;
+    float: right;
+}
+
+.sid-effect-report-container {
+    position: relative;
+    width: 49%;
+    text-align: right;
+    float: left;
+}

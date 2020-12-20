@@ -1,0 +1,15 @@
+.side-effect-form {
+    text-align: right;
+}
+
+.btn.btn-success.add-side-effect-btn {
+    display: inline-block;
+    margin: 0.1em;
+}
+
+.input-side-effect-name {
+    width: 70%;
+    direction: rtl;
+    border: 1px solid #ccc;
+    padding: 0.4em;
+}
