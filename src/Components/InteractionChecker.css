@@ -17,3 +17,19 @@
     border: 1px solid #ccc;
     padding: 0.4em;
 }
+
+.drug-list-container {
+    display: block;
+    margin-top: 1.2em;
+    width: 100%;
+    position: relative;
+}
+
+.btn.btn-primary.btn-lg.check-btn {
+    font-size: 1rem;
+}
+
+.btn.btn-light.save-btn {
+    margin: 1em;
+    border: 1px solid rgb(119, 119, 119);
+}
