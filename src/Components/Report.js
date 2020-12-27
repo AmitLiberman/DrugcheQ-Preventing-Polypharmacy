@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Report.css";
 import DrugList from "./DrugList";
 
-export class Report extends Component {
+class Report extends Component {
   state = {
     conditionName: "", //condition name that submited in input
     conditionsList: [],
@@ -11,6 +11,7 @@ export class Report extends Component {
   //Submit condition Item to list
   handleSubmit = (event) => {
     event.preventDefault();
+    if (this.props.symptomInsertHandler) this.props.symptomInsertHandler(true);
     const newConditionItem = {
       id: this.state.conditionsList.length + 1,
       name: this.state.conditionName,
@@ -35,21 +36,33 @@ export class Report extends Component {
         ...this.state.conditionsList.filter((drug) => drug.id !== id),
       ],
     });
+    if (this.props.symptomInsertHandler)
+      if (this.state.conditionsList.length === 1)
+        this.props.symptomInsertHandler(false);
   };
   render() {
     return (
       <div>
         <form className="side-effect-form" onSubmit={this.handleSubmit}>
-          <button className="btn btn-primary add-side-effect-btn" type="submit">
-            הוסף
-          </button>
-          <input
-            onChange={this.handleChange}
-            type="text"
-            className="input-side-effect-name"
-            placeholder="הכנס/י את התסמין אותו את/ה חווה"
-            value={this.state.conditionName}
-          />
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <button
+                className="btn btn-primary add-side-effect-btn"
+                type="submit"
+              >
+                הוסף
+              </button>
+            </div>
+            <input
+              onChange={this.handleChange}
+              type="text"
+              className="form-control input-side-effect-name"
+              placeholder="הכנס/י שם התסמין "
+              value={this.state.conditionName}
+              aria-label=""
+              aria-describedby="basic-addon1"
+            />
+          </div>
         </form>
 
         <div className="drug-list-container">

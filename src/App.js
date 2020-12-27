@@ -4,7 +4,6 @@ import ActionNav from "./Components/ActionNav";
 import Home from "./Components/Home";
 import InteractionChecker from "./Components/InteractionChecker";
 import SideEffectReport from "./Components/SideEffectReport";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = (props) => {
@@ -13,7 +12,7 @@ const App = (props) => {
       <TopNav />
       <ActionNav />
       <Router>
-        <main className="jumbotron">
+        <main className="component-content">
           <Switch>
             <Route path="/about">
               <About />

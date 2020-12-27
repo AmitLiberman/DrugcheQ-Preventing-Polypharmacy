@@ -4,16 +4,16 @@ import DrugInsert from "./DrugInsert";
 
 class InteractionChecker extends Component {
   state = {
-    showButtons: false,
+    isDrugInsert: false,
   };
 
-  showButtonsHandler = (e) => {
-    this.setState({ showButtons: e });
+  drugInsertHandler = (e) => {
+    this.setState({ isDrugInsert: e });
   };
 
   render() {
     let checkIntreactionBtn = "";
-    if (this.state.showButtons === true) {
+    if (this.state.isDrugInsert === true) {
       checkIntreactionBtn = (
         <div className="submit-drug-list-btn-container">
           <button
@@ -28,7 +28,16 @@ class InteractionChecker extends Component {
     }
     return (
       <div className="interaction-container">
-        <DrugInsert handler={this.showButtonsHandler} />
+        <div className="interaction-describe-container">
+          <h2>בדיקת אינטראקציה בין תרופות</h2>
+          <p>
+            התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות. חזור
+            על התהליך כדי להוסיף מספר תרופות.<br></br> לאחר השלמת הרשימה שלך,
+            תוכל לבדוק אם קיימת אינטראקציה באופן מיידי או לשמור את הרשימה שלך
+            לבדיקה עתידית.
+          </p>
+        </div>
+        <DrugInsert drugInsertHandler={this.drugInsertHandler} />
         {checkIntreactionBtn}
       </div>
     );
