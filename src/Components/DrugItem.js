@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./DrugItem.css";
 
-export class DrugItem extends Component {
+class DrugItem extends Component {
   render() {
     const { id, name } = this.props.drugItem;
     return (
@@ -13,7 +13,7 @@ export class DrugItem extends Component {
           x
         </button>
 
-        <p>{this.props.drugItem.name}</p>
+        <p className="drug-item">{this.props.drugItem.name}</p>
       </div>
     );
   }

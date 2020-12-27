@@ -44,7 +44,7 @@ class DrugInsert extends Component {
   };
   render() {
     return (
-      <div>
+      <React.Fragment>
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -66,7 +66,7 @@ class DrugInsert extends Component {
         <div className="drug-list-container">
           <DrugList delDrug={this.delDrug} drugList={this.state.drugList} />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

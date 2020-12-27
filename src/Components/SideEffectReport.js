@@ -22,14 +22,14 @@ class SideEffectReport extends Component {
 
     if (this.state.isDrugInsert && this.state.isSymptomInsert) {
       sendReportBtn = (
-        <div className="submit-report-btn-container">
-          <button
-            onClick={this.handleInteractionCheck}
-            className="btn btn-outline-dark send-btn"
-          >
-            דווח
-          </button>
-        </div>
+        // <div className="submit-report-btn-container">
+        <button
+          onClick={this.handleInteractionCheck}
+          className="btn btn-outline-dark  btn-lg send-btn"
+        >
+          דווח
+        </button>
+        /* </div> */
       );
     }
 
@@ -46,27 +46,37 @@ class SideEffectReport extends Component {
           </p>
         </div>
 
-        <div className=" form-group report-details-container">
-          <input
-            type="number"
-            className="age-input"
-            id="age-input"
-            placeholder="הזן"
-          />
-          <select className="gender-input" id="inputGroupSelect01">
-            <option selected>בחר</option>
-            <option value="1">זכר</option>
-            <option value="2">נקבה</option>
-          </select>
-        </div>
+        <div className="drug-symptom-list-container">
+          <div className="report-details-container">
+            <lable className="control-label" for="age-input">
+              גיל
+            </lable>
+            <input
+              type="number"
+              className="form-control age-input"
+              id="age-input"
+              placeholder="הזן"
+            />
+            <lable className="control-label" for="gender-input">
+              מין
+            </lable>
+            <select className="form-control gender-input" id="gender-input">
+              <option selected>בחר</option>
+              <option value="1">זכר</option>
+              <option value="2">נקבה</option>
+            </select>
+          </div>
+          <div className="drug-symptom-continer">
+            <div className="drug-list-report-container">
+              <DrugInsert drugInsertHandler={this.drugInsertHandler} />
+            </div>
 
-        <div className="drug-list-report-container">
-          <DrugInsert drugInsertHandler={this.drugInsertHandler} />
+            <div className="sid-effect-report-container">
+              <Report symptomInsertHandler={this.symptomInsertHandler} />
+            </div>
+          </div>
+          {sendReportBtn}
         </div>
-        <div className="sid-effect-report-container">
-          <Report symptomInsertHandler={this.symptomInsertHandler} />
-        </div>
-        {sendReportBtn}
       </div>
     );
   }

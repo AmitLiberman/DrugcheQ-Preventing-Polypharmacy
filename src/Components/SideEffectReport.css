@@ -1,15 +1,6 @@
-.drug-list-report-container {
-    position: relative;
-    width: 49%;
-    text-align: right;
+.drug-symptom-list-container {
+    width: 70%;
     float: right;
-}
-
-.sid-effect-report-container {
-    position: relative;
-    width: 49%;
-    text-align: right;
-    float: left;
 }
 
 .side-effect-describe-container {
@@ -18,22 +9,31 @@
     padding-bottom: 1.1em;
 }
 
+.submit-report-btn-container {
+    position: relative;
+    margin-top: 10px;
+    border: solid black;
+}
+
 .btn.btn-outline-dark.send-btn {
     margin: 1em;
 }
 
 .report-details-container {
-    width: 100%;
     margin: 1em;
-    position: relative
+    float: right;
+    text-align: right;
 }
 
-.age-input {
-    direction: rtl;
-    margin: 0.5em;
+.contolr-label {
+    display: inline-block;
 }
 
-.gender-input {
+.form-control.age-input {
     direction: rtl;
-    margin: 0.5em;
+    margin-bottom: 0.2em;
+}
+
+.form-control.gender-input {
+    direction: rtl;
 }

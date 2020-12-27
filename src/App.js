@@ -1,7 +1,7 @@
 import "./App.css";
-import TopNav from "./Components/TopNav";
-import ActionNav from "./Components/ActionNav";
-import Home from "./Components/Home";
+import TopNav from "./Constants/TopNav";
+import ActionNav from "./Constants/ActionNav";
+import Home from "./Constants/Home";
 import InteractionChecker from "./Components/InteractionChecker";
 import SideEffectReport from "./Components/SideEffectReport";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

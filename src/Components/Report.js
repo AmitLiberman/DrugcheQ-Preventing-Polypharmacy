@@ -42,7 +42,7 @@ class Report extends Component {
   };
   render() {
     return (
-      <div>
+      <React.Fragment>
         <form className="side-effect-form" onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -71,7 +71,7 @@ class Report extends Component {
             drugList={this.state.conditionsList}
           />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
