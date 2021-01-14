@@ -23,6 +23,7 @@ class DrugInsert extends Component {
       this.setState({ drugList: [...this.state.drugList, newDrugItem] });
       this.setState({ drugName: "" });
     }
+    this.props.drugListUpdate(newDrugItem);
   };
   //Change State to the drug name that typed
   handleChange = (event) => {

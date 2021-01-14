@@ -5,10 +5,22 @@ import DrugInsert from "./DrugInsert";
 class InteractionChecker extends Component {
   state = {
     isDrugInsert: false,
+    drugList: [],
   };
 
   drugInsertHandler = (e) => {
     this.setState({ isDrugInsert: e });
+  };
+  drugListUpdate = (newDrugItem) => {
+    this.setState({ drugList: [...this.state.drugList, newDrugItem] });
+    console.log(this.state.drugList);
+  };
+  handleInteractionCheck = () => {
+    console.log(this.state.drugList);
+    const drugNames = this.state.drugList.map((drug) => {
+      return drug.name;
+    });
+    console.log(drugNames);
   };
 
   render() {
@@ -37,7 +49,10 @@ class InteractionChecker extends Component {
             לבדיקה עתידית.
           </p>
         </div>
-        <DrugInsert drugInsertHandler={this.drugInsertHandler} />
+        <DrugInsert
+          drugInsertHandler={this.drugInsertHandler}
+          drugListUpdate={this.drugListUpdate}
+        />
         {checkIntreactionBtn}
       </div>
     );
