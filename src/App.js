@@ -2,8 +2,8 @@ import "./App.css";
 import TopNav from "./Constants/TopNav";
 import ActionNav from "./Constants/ActionNav";
 import Home from "./Constants/Home";
-import InteractionChecker from "./Components/InteractionChecker";
-import SideEffectReport from "./Components/SideEffectReport";
+import InteractionChecker from "./Components/InteractionChecker/InteractionChecker";
+import SideEffectReport from "./Components/SideEffectReport/SideEffectReport";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = (props) => {
