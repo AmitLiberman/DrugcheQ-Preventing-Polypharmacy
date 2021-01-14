@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./InteractionChecker.css";
 import DrugInsert from "./DrugInsert";
+import axios from "axios";
 
 class InteractionChecker extends Component {
   state = {
@@ -20,7 +21,18 @@ class InteractionChecker extends Component {
     const drugNames = this.state.drugList.map((drug) => {
       return drug.name;
     });
-    console.log(drugNames);
+    const request = this.buildGetInteractionsReq(drugNames);
+    console.log(request);
+  };
+
+  //build the get request for interaction check
+  buildGetInteractionsReq = (drugNames) => {
+    let request = "https://drugcheq.herokuapp.com/check?";
+    drugNames.forEach((drugName) => {
+      request += drugName + "&";
+    });
+    request = request.slice(0, -1);
+    return request;
   };
 
   render() {
@@ -58,4 +70,5 @@ class InteractionChecker extends Component {
     );
   }
 }
+
 export default InteractionChecker;
