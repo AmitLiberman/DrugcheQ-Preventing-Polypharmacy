@@ -5,3 +5,8 @@
     margin: 2em;
     padding: 1em;
 }
+
+.highSeverity {
+    color: red;
+    font-weight: bold;
+}
