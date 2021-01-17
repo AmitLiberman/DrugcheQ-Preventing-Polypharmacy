@@ -1,0 +1,27 @@
+.interaction-container {
+    overflow: hidden;
+    width: 80%;
+    float: right;
+}
+
+.interaction-form {
+    text-align: right;
+}
+
+.btn.btn-success.add-drug-btn {
+    display: inline-block;
+}
+
+.form-control.input-drug-name {
+    width: 70%;
+    direction: rtl;
+    border: 1px solid #ccc;
+    padding: 0.4em;
+}
+
+.drug-list-container {
+    display: block;
+    margin-top: 1.2em;
+    width: 100%;
+    position: relative;
+}

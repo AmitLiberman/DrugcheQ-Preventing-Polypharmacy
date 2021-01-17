@@ -1,0 +1,14 @@
+.interaction-container {
+    overflow: hidden;
+}
+
+.interaction-describe-container {
+    direction: rtl;
+    text-align: right;
+    padding-bottom: 1.1em;
+}
+
+.btn.btn-light.save-btn {
+    margin: 1em;
+    border: 1px solid rgb(119, 119, 119);
+}

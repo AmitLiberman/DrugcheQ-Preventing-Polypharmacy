@@ -1,0 +1,15 @@
+.drug-item-container {
+    padding: 7px;
+    border-top: 1px #ccc dotted;
+    text-align: right;
+    float: right;
+    width: 100%;
+}
+
+.btn.btn-danger.delete-item-btn {
+    padding: 0px 5px 0px;
+    border-radius: 30%;
+    cursor: pointer;
+    float: left;
+    margin-left: 30px;
+}

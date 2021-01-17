@@ -1,0 +1,7 @@
+.drugInteractionElement {
+    border: solid black;
+    border-width: 0.1em;
+    text-align: left;
+    margin: 2em;
+    padding: 1em;
+}
