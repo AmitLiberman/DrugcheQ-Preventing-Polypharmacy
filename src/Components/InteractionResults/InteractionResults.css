@@ -10,3 +10,9 @@
     color: red;
     font-weight: bold;
 }
+
+.generic-drug-name {
+    font-size: 0.8rem;
+}
+
+.interaction-description {}

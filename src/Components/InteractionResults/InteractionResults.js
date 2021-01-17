@@ -12,11 +12,20 @@ class InteractionResults extends Component {
         severit = <h6 className="highSeverity">High Risk</h6>;
       }
       results.push(
-        <div className="drugInteractionElement">
-          <h3>
-            {this.props.results[index].drug1} -{this.props.results[index].drug2}
-          </h3>
-          <h6>{this.props.results[index].description}</h6>
+        <div key={index} className="drugInteractionElement">
+          <h5>
+            {this.props.results[index].drug1_name}
+            <span className="generic-drug-name">
+              ({this.props.results[index].drug1_generic_name})
+            </span>
+            -{this.props.results[index].drug2_name}
+            <span className="generic-drug-name">
+              ({this.props.results[index].drug2_generic_name})
+            </span>
+          </h5>
+          <h6 className="interaction-description">
+            {this.props.results[index].description}
+          </h6>
           {severit}
         </div>
       );
