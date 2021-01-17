@@ -7,6 +7,11 @@ class SideEffectReport extends Component {
   state = {
     isDrugInsert: false,
     isSymptomInsert: false,
+    drugList: [],
+  };
+
+  drugListUpdate = (newDrugItem) => {
+    this.setState({ drugList: [...this.state.drugList, newDrugItem] });
   };
 
   drugInsertHandler = (e) => {
@@ -68,7 +73,10 @@ class SideEffectReport extends Component {
           </div>
           <div className="drug-symptom-continer">
             <div className="drug-list-report-container">
-              <DrugInsert drugInsertHandler={this.drugInsertHandler} />
+              <DrugInsert
+                drugInsertHandler={this.drugInsertHandler}
+                drugListUpdate={this.drugListUpdate}
+              />
             </div>
 
             <div className="sid-effect-report-container">

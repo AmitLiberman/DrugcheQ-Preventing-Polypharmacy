@@ -6,6 +6,7 @@ class Report extends Component {
   state = {
     conditionName: "", //condition name that submited in input
     conditionsList: [],
+    drugList: [],
   };
 
   //Submit condition Item to list
