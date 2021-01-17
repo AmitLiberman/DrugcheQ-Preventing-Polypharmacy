@@ -4,6 +4,8 @@ import ActionNav from "./Constants/ActionNav";
 import Home from "./Constants/Home";
 import InteractionChecker from "./Components/InteractionChecker/InteractionChecker";
 import SideEffectReport from "./Components/SideEffectReport/SideEffectReport";
+import DrugSearch from "./Components/DrugSearch/DrugSearch";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = (props) => {
@@ -45,10 +47,6 @@ function About() {
 
 function Connect() {
   return <h2>connect</h2>;
-}
-
-function DrugSearch() {
-  return <h2>Drug Search</h2>;
 }
 
 export default App;

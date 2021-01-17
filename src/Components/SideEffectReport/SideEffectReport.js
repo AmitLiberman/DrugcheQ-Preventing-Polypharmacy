@@ -53,7 +53,7 @@ class SideEffectReport extends Component {
 
         <div className="drug-symptom-list-container">
           <div className="report-details-container">
-            <lable className="control-label" for="age-input">
+            <lable className="control-label" htmlFor="age-input">
               גיל
             </lable>
             <input
@@ -62,11 +62,13 @@ class SideEffectReport extends Component {
               id="age-input"
               placeholder="הזן"
             />
-            <lable className="control-label" for="gender-input">
+            <lable className="control-label" htmlFor="gender-input">
               מין
             </lable>
             <select className="form-control gender-input" id="gender-input">
-              <option selected>בחר</option>
+              <option value="1" selected>
+                בחר
+              </option>
               <option value="1">זכר</option>
               <option value="2">נקבה</option>
             </select>
