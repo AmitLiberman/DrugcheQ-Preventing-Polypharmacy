@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./InteractionChecker.css";
 import DrugInsert from "../DrugInsert/DrugInsert";
 import InteractionResults from "../InteractionResults/InteractionResults";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import axios from "axios";
 
@@ -11,6 +12,7 @@ class InteractionChecker extends Component {
     drugList: [],
     response: null,
     interacionRes: null,
+    loading: false,
   };
 
   drugInsertHandler = (e) => {
@@ -25,15 +27,18 @@ class InteractionChecker extends Component {
     });
 
     const request = this.buildGetInteractionsReq(drugNames);
-    axios
-      .get(request)
-      .then((response) => {
-        console.log(response.data);
-        this.setState({ interacionRes: response.data });
-      })
-      .catch((error) => {
-        alert("error!");
-      });
+    this.setState({ loading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ interacionRes: response.data });
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
   };
 
   //build the get request for interaction check
@@ -73,9 +78,9 @@ class InteractionChecker extends Component {
           {checkIntreactionBtn}
         </div>
       );
-    } else {
+    } else
       checkForm = <InteractionResults results={this.state.interacionRes} />;
-    }
+
     return (
       <div className="interaction-container">
         <div className="interaction-describe-container">
@@ -87,7 +92,7 @@ class InteractionChecker extends Component {
             לבדיקה עתידית.
           </p>
         </div>
-        {checkForm}
+        {this.state.loading ? <CircularProgress /> : checkForm}
       </div>
     );
   }

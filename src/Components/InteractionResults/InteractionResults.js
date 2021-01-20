@@ -10,7 +10,7 @@ class InteractionResults extends Component {
     if (resultsLength === 1 && this.props.results[0].comment === "safe") {
       safe_msg = <h3>לא נמצא אינטראקציה בין התרופות שהזנת</h3>;
       results.push(safe_msg);
-      return <div>{results}</div>;
+      return <div className="drugInteractionElement">{results}</div>;
     }
 
     for (let index = 0; index < resultsLength; index++) {
