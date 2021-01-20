@@ -25,10 +25,15 @@ class InteractionChecker extends Component {
     });
 
     const request = this.buildGetInteractionsReq(drugNames);
-    axios.get(request).then((response) => {
-      console.log(response.data);
-      this.setState({ interacionRes: response.data });
-    });
+    axios
+      .get(request)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ interacionRes: response.data });
+      })
+      .catch((error) => {
+        alert("error!");
+      });
   };
 
   //build the get request for interaction check
