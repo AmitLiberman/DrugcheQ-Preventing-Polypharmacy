@@ -67,10 +67,26 @@ class InteractionChecker extends Component {
       );
     }
 
+    let progress = (
+      <div>
+        <h1> .. בודק אינטראקציה</h1>
+        <CircularProgress />
+      </div>
+    );
+
     let checkForm = "";
     if (this.state.interacionRes == null) {
       checkForm = (
         <div>
+          <div className="interaction-describe-container">
+            <h2>בדיקת אינטראקציה בין תרופות</h2>
+            <p>
+              התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות.
+              חזור על התהליך כדי להוסיף מספר תרופות.<br></br> לאחר השלמת הרשימה
+              שלך, תוכל לבדוק אם קיימת אינטראקציה באופן מיידי או לשמור את הרשימה
+              שלך לבדיקה עתידית.
+            </p>
+          </div>
           <DrugInsert
             drugInsertHandler={this.drugInsertHandler}
             drugListUpdate={this.drugListUpdate}
@@ -79,20 +95,16 @@ class InteractionChecker extends Component {
         </div>
       );
     } else
-      checkForm = <InteractionResults results={this.state.interacionRes} />;
+      checkForm = (
+        <div>
+          <h1>אינטראקציה בין התרופות שלך</h1>
+          <InteractionResults results={this.state.interacionRes} />
+        </div>
+      );
 
     return (
       <div className="interaction-container">
-        <div className="interaction-describe-container">
-          <h2>בדיקת אינטראקציה בין תרופות</h2>
-          <p>
-            התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות. חזור
-            על התהליך כדי להוסיף מספר תרופות.<br></br> לאחר השלמת הרשימה שלך,
-            תוכל לבדוק אם קיימת אינטראקציה באופן מיידי או לשמור את הרשימה שלך
-            לבדיקה עתידית.
-          </p>
-        </div>
-        {this.state.loading ? <CircularProgress /> : checkForm}
+        {this.state.loading ? progress : checkForm}
       </div>
     );
   }
