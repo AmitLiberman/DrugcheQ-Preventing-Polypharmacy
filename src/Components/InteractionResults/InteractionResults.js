@@ -8,6 +8,10 @@ class InteractionResults extends Component {
   makeInteractionElement = (index, severity) => {
     return (
       <div key={index} className="drugInteractionElement">
+        <h5 className="hebrew-drugs-names">
+          {this.props.results[index].drug1_hebrew_name}-
+          {this.props.results[index].drug2_hebrew_name}
+        </h5>
         <h5>
           {this.props.results[index].drug1_name}
           <span className="generic-drug-name">
