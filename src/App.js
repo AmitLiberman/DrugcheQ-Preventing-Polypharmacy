@@ -3,7 +3,7 @@ import TopNav from "./Constants/TopNav";
 import ActionNav from "./Constants/ActionNav";
 import Home from "./Constants/Home";
 import InteractionChecker from "./Components/InteractionChecker/InteractionChecker";
-import SideEffectReport from "./Components/SideEffectReport/SideEffectReport";
+import MasterReport from "./Components/MasterReport/MasterReport";
 import DrugSearch from "./Components/DrugSearch/DrugSearch";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -26,7 +26,7 @@ const App = (props) => {
               <InteractionChecker />
             </Route>
             <Route path="/side-effect-report">
-              <SideEffectReport />
+              <MasterReport />
             </Route>
             <Route path="/drug-search">
               <DrugSearch />
