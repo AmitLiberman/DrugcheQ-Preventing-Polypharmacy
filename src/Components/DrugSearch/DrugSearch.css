@@ -1,0 +1,9 @@
+.drug-search-container {
+    overflow: hidden;
+}
+
+.drug-search-describe-container {
+    direction: rtl;
+    text-align: right;
+    padding-bottom: 1.1em;
+}

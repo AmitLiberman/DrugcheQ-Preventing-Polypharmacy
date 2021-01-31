@@ -69,7 +69,7 @@ class InteractionChecker extends Component {
 
     let progress = (
       <div>
-        <h1> .. בודק אינטראקציה</h1>
+        <h2> .. בודק אינטראקציה</h2>
         <CircularProgress />
       </div>
     );
@@ -97,7 +97,7 @@ class InteractionChecker extends Component {
     } else
       checkForm = (
         <div>
-          <h1>אינטראקציה בין התרופות שלך</h1>
+          <h2>אינטראקציה בין התרופות שלך</h2>
           <InteractionResults results={this.state.interacionRes} />
         </div>
       );

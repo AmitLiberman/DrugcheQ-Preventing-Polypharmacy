@@ -45,7 +45,10 @@ class InteractionResults extends Component {
       let severity = "";
       if (this.props.results[index].error != null) {
         results.push(
-          <h6>{this.props.results[index].error} לא נמצאה תרופה עם השם</h6>
+          <div>
+            <h6>לא נמצאה תרופה עם השם</h6>
+            <h6>{this.props.results[index].error} </h6>
+          </div>
         );
       } else if (this.props.results[index].severity != null) {
         severity = <h6 className="highSeverity">High Risk</h6>;
