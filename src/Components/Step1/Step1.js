@@ -12,13 +12,14 @@ class Step1 extends Component {
         <select
           id="sector"
           name="sector"
-          value={this.props.sector} // Prop: The email input data
+          //   value={this.props.sector} // Prop: The email input data
+          value={this.props.sector}
           onChange={this.props.handleChange}
           className="form-control"
         >
-          <option value="public">ציבור</option>
-          <option value="medical">צוות רפואי</option>
-          <option value="other">אחר</option>
+          <option>ציבור</option>
+          <option>צוות רפואי</option>
+          <option>אחר</option>
         </select>
         <label htmlFor="username">שם</label>
         <input

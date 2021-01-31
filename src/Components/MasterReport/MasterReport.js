@@ -93,16 +93,16 @@ class MasterReport extends Component {
           currentStep={this.state.currentStep}
           handleChange={this.handleChange}
           email={this.state.email}
+          username={this.state.username}
+          sector={this.state.sector}
         />
         <Step2
           currentStep={this.state.currentStep}
           handleChange={this.handleChange}
-          username={this.state.username}
         />
         <Step3
           currentStep={this.state.currentStep}
           handleChange={this.handleChange}
-          sector={this.state.sector}
         />
         {this.previousButton}
         {this.nextButton}
