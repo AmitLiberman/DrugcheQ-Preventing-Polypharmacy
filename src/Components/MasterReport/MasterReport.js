@@ -6,9 +6,9 @@ import Step3 from "../Step3/Step3";
 class MasterReport extends Component {
   state = {
     currentStep: 1, // Default is Step 1
+    sector: "",
     username: "",
     email: "",
-    password: "",
   };
 
   // Use the submitted data to set the state
@@ -22,11 +22,11 @@ class MasterReport extends Component {
   // Trigger an alert on form submission
   handleSubmit = (event) => {
     event.preventDefault();
-    const { email, username, password } = this.state;
+    const { email, username, sector } = this.state;
     alert(`Your registration detail: \n 
     Email: ${email} \n 
     Username: ${username} \n
-    Password: ${password}`);
+    Sector: ${sector}`);
   };
 
   _next = () => {
@@ -88,25 +88,25 @@ class MasterReport extends Component {
       <React.Fragment>
         <h1>A Wizard Form!</h1>
         Step {this.state.currentStep}
-        <form onSubmit={this.handleSubmit}>
-          <Step1
-            currentStep={this.state.currentStep}
-            handleChange={this.handleChange}
-            email={this.state.email}
-          />
-          <Step2
-            currentStep={this.state.currentStep}
-            handleChange={this.handleChange}
-            username={this.state.username}
-          />
-          <Step3
-            currentStep={this.state.currentStep}
-            handleChange={this.handleChange}
-            password={this.state.password}
-          />
-          {this.previousButton}
-          {this.nextButton}
-        </form>
+        {/* <form onSubmit={this.handleSubmit}> */}
+        <Step1
+          currentStep={this.state.currentStep}
+          handleChange={this.handleChange}
+          email={this.state.email}
+        />
+        <Step2
+          currentStep={this.state.currentStep}
+          handleChange={this.handleChange}
+          username={this.state.username}
+        />
+        <Step3
+          currentStep={this.state.currentStep}
+          handleChange={this.handleChange}
+          sector={this.state.sector}
+        />
+        {this.previousButton}
+        {this.nextButton}
+        {/* </form> */}
       </React.Fragment>
     );
   }
