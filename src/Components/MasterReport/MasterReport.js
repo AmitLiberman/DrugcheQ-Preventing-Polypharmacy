@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Step1 from "../Step1/Step1";
 import Step2 from "../Step2/Step2";
 import Step3 from "../Step3/Step3";
+import "./MasterReport.css";
 
 class MasterReport extends Component {
   state = {
@@ -53,11 +54,11 @@ class MasterReport extends Component {
     if (currentStep !== 1) {
       return (
         <button
-          className="btn btn-secondary"
+          className="btn btn-secondary float-right"
           type="button"
           onClick={this._prev}
         >
-          Previous
+          הקודם
         </button>
       );
     }
@@ -71,11 +72,11 @@ class MasterReport extends Component {
     if (currentStep < 3) {
       return (
         <button
-          className="btn btn-primary float-right"
+          className="btn btn-primary float-left"
           type="button"
           onClick={this._next}
         >
-          Next
+          הבא
         </button>
       );
     }
@@ -86,24 +87,32 @@ class MasterReport extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>A Wizard Form!</h1>
-        Step {this.state.currentStep}
-        {/* <form onSubmit={this.handleSubmit}> */}
-        <Step1
-          currentStep={this.state.currentStep}
-          handleChange={this.handleChange}
-          email={this.state.email}
-          username={this.state.username}
-          sector={this.state.sector}
-        />
-        <Step2 currentStep={this.state.currentStep} s />
-        <Step3
-          currentStep={this.state.currentStep}
-          handleChange={this.handleChange}
-        />
-        {this.previousButton}
-        {this.nextButton}
-        {/* </form> */}
+        <div className="master-describe-container">
+          <h2>דיווח על תופעות לוואי</h2>
+          <p>
+            על מנת לדווח על תופעות לוואי, יש לעבור בין שלושת השלבים של הטופס.
+            <br></br> עליכם לענות באופן מדויק,ככל האפשר,על כל שלב.
+          </p>
+        </div>
+
+        <div className="steps-container">
+          שלב
+          {this.state.currentStep}
+          <Step1
+            currentStep={this.state.currentStep}
+            handleChange={this.handleChange}
+            email={this.state.email}
+            username={this.state.username}
+            sector={this.state.sector}
+          />
+          <Step2 currentStep={this.state.currentStep} s />
+          <Step3
+            currentStep={this.state.currentStep}
+            handleChange={this.handleChange}
+          />
+          {this.nextButton}
+          {this.previousButton}
+        </div>
       </React.Fragment>
     );
   }

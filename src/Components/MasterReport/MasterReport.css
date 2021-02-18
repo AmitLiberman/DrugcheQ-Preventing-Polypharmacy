@@ -1,0 +1,15 @@
+.master-container {
+    overflow: hidden;
+}
+
+.master-describe-container {
+    direction: rtl;
+    text-align: right;
+    padding-bottom: 1.1em;
+}
+
+.steps-container {
+    overflow: hidden;
+    width: 80%;
+    float: right;
+}
