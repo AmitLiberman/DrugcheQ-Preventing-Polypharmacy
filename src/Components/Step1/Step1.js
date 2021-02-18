@@ -28,7 +28,7 @@ class Step1 extends Component {
           שם מלא
         </label>
         <input
-          className="form-control"
+          className={this.props.userInputStyle}
           id="username"
           name="username"
           type="text"
@@ -40,7 +40,7 @@ class Step1 extends Component {
           כתובת דואר אלקטרוני
         </label>
         <input
-          className="form-control"
+          className={this.props.emailInputStyle}
           id="email"
           name="email"
           type="text"

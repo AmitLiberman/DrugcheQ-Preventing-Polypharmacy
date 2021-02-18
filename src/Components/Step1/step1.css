@@ -9,3 +9,7 @@
     float: right;
     margin-top: 0.8em;
 }
+
+.form-control.invalid {
+    background-color: #ffdddd;
+}

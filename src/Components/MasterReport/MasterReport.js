@@ -11,6 +11,9 @@ class MasterReport extends Component {
     stepActive: "step active",
     step: "step",
 
+    emailInputStyle: "form-control",
+    userInputStyle: "form-control",
+
     sector: "",
     username: "",
     email: "",
@@ -35,6 +38,21 @@ class MasterReport extends Component {
   };
 
   _next = () => {
+    let notValidInput = false;
+    if (this.state.username.trim().length === 0) {
+      this.setState({
+        userInputStyle: this.state.userInputStyle + " invalid",
+      });
+      notValidInput = true;
+    }
+    if (this.state.email.trim().length === 0) {
+      this.setState({
+        emailInputStyle: this.state.emailInputStyle + " invalid",
+      });
+      notValidInput = true;
+    }
+    if (notValidInput) return;
+
     let currentStep = this.state.currentStep;
     // If the current step is 1 or 2, then add one on "next" button click
     currentStep = currentStep >= 2 ? 3 : currentStep + 1;
@@ -97,6 +115,7 @@ class MasterReport extends Component {
         steps_arr.push(<span className={this.state.stepFinish}></span>);
       else steps_arr.push(<span className={this.state.step}></span>);
     }
+    // reverse array to be from right to left
     steps_arr = steps_arr.reverse();
 
     return (
@@ -119,12 +138,11 @@ class MasterReport extends Component {
             email={this.state.email}
             username={this.state.username}
             sector={this.state.sector}
+            emailInputStyle={this.state.emailInputStyle}
+            userInputStyle={this.state.userInputStyle}
           />
-          <Step2 currentStep={this.state.currentStep} s />
-          <Step3
-            currentStep={this.state.currentStep}
-            handleChange={this.handleChange}
-          />
+          <Step2 currentStep={this.state.currentStep} />
+          <Step3 currentStep={this.state.currentStep} />
           <div className="prev-next-btns-container">
             {this.nextButton}
             {this.previousButton}
