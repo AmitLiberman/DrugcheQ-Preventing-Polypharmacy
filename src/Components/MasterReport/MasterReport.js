@@ -7,6 +7,10 @@ import "./MasterReport.css";
 class MasterReport extends Component {
   state = {
     currentStep: 1, // Default is Step 1
+    stepFinish: "step finish",
+    stepActive: "step active",
+    step: "step",
+
     sector: "",
     username: "",
     email: "",
@@ -85,6 +89,16 @@ class MasterReport extends Component {
   }
 
   render() {
+    let steps_arr = [];
+    for (let i = 1; i < 4; i++) {
+      if (i === this.state.currentStep)
+        steps_arr.push(<span className={this.state.stepActive}></span>);
+      else if (i < this.state.currentStep)
+        steps_arr.push(<span className={this.state.stepFinish}></span>);
+      else steps_arr.push(<span className={this.state.step}></span>);
+    }
+    steps_arr = steps_arr.reverse();
+
     return (
       <React.Fragment>
         <div className="master-describe-container">
@@ -96,8 +110,9 @@ class MasterReport extends Component {
         </div>
 
         <div className="steps-container">
-          שלב
-          {this.state.currentStep}
+          {/* שלב
+          {this.state.currentStep} */}
+          <div className="steps-circles">{steps_arr}</div>
           <Step1
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
@@ -110,8 +125,10 @@ class MasterReport extends Component {
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
           />
-          {this.nextButton}
-          {this.previousButton}
+          <div className="prev-next-btns-container">
+            {this.nextButton}
+            {this.previousButton}
+          </div>
         </div>
       </React.Fragment>
     );
