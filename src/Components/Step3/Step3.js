@@ -4,7 +4,14 @@ import Report from "../Report/Report";
 class Step3 extends Component {
   state = {
     isSymptomInsert: false,
+    symptomList: [],
   };
+
+  symptomListUpdate = (newSymptomItem) => {
+    this.setState({ symptomList: [...this.state.symptomList, newSymptomItem] });
+    console.log(this.state.symptomList);
+  };
+
   symptomInsertHandler = (e) => {
     this.setState({ isSymptomInsert: e });
   };
@@ -15,7 +22,11 @@ class Step3 extends Component {
     }
     return (
       <div className="sid-effect-report-container">
-        <Report symptomInsertHandler={this.symptomInsertHandler} />
+        <Report
+          symptomInsertHandler={this.symptomInsertHandler}
+          symptomListUpdate={this.symptomListUpdate}
+          conditionsList={this.state.symptomList}
+        />
       </div>
     );
   }

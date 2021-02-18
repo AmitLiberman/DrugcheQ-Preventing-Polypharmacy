@@ -24,6 +24,7 @@ class Report extends Component {
       });
       this.setState({ conditionName: "" });
     }
+    this.props.symptomListUpdate(newConditionItem);
   };
   //Change State to the condition name that typed
   handleChange = (event) => {
@@ -69,7 +70,7 @@ class Report extends Component {
         <div className="drug-list-container">
           <DrugList
             delDrug={this.delCondition}
-            drugList={this.state.conditionsList}
+            drugList={this.props.conditionsList}
           />
         </div>
       </React.Fragment>

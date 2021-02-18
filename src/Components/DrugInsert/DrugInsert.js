@@ -66,7 +66,9 @@ class DrugInsert extends Component {
           </div>
         </form>
         <div className="drug-list-container">
-          <DrugList delDrug={this.delDrug} drugList={this.state.drugList} />
+          {/* change this.state.drugList to this.props.drugList will work but change 
+          is needed in the paren component in interaction checker */}
+          <DrugList delDrug={this.delDrug} drugList={this.props.drugList} />
         </div>
       </React.Fragment>
     );

@@ -90,6 +90,7 @@ class InteractionChecker extends Component {
           <DrugInsert
             drugInsertHandler={this.drugInsertHandler}
             drugListUpdate={this.drugListUpdate}
+            drugList={this.state.drugList}
           />
           {checkIntreactionBtn}
         </div>
