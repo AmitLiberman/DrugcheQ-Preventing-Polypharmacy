@@ -3,16 +3,33 @@
 }
 
 .action-opt {
+    overflow: visible;
     display: inline-block;
     text-align: center;
+    color: black;
+    margin-right: 4em;
     margin-top: 1.5em;
-    margin-right: 1em;
-    background-color: #adc7d4;
-    width: 16em;
-    box-shadow: 2px 1px #888888;
-    padding: 1.5em;
+    width: 9em;
+    /* padding: 0.2em; */
+    border-style: solid;
+    border-color: black;
+    font-weight: bold;
+    border-radius: 25px;
 }
 
 .action-text {
-    color: #363636;
+    color: black;
+}
+
+.material-icons-outlined {
+    font-size: 3rem;
+}
+
+.material-icons-outlined.search {
+    font-size: 4.44rem;
+}
+
+.material-icons-outlined.warning {
+    font-size: 1.8rem;
+    margin-left: -0.4em;
 }
