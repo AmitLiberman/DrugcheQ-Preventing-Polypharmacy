@@ -31,7 +31,7 @@ const TopNav = (props) => {
           </Nav>
           <Nav className="ml-auto top-nav-content">
             <Nav.Link className="top-nav-link" href="/connect">
-              <span className="link-text  sign-up">הירשם</span>
+              <span className="link-text  sign-up">הרשם</span>
             </Nav.Link>
             <Nav.Link className="top-nav-link" href="/connect">
               <span className="material-icons log-in">person</span>
