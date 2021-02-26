@@ -5,13 +5,7 @@ import "./TopNav.css";
 const TopNav = (props) => {
   return (
     <div>
-      <Navbar
-        className="nav-bar"
-        collapseOnSelect
-        expand="lg"
-        bg="light"
-        variant="light"
-      >
+      <Navbar className="nav-bar" collapseOnSelect expand="lg">
         <Navbar.Toggle
           className="hamburger-nav"
           aria-controls="responsive-navbar-nav"
@@ -22,14 +16,25 @@ const TopNav = (props) => {
         </Navbar.Brand>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto top-nav-content">
-            <Nav.Link className="top-nav-link" href="/">
-              <span className="link-text">בית</span>
+            <Nav.Link className="top-nav-link" href="/drug-search">
+              <span className="link-text">חיפוש תרופה</span>
             </Nav.Link>
-            <Nav.Link className="top-nav-link" href="/about">
-              <span className="link-text">אודות</span>
+            <Nav.Link className="top-nav-link" href="/interaction-checker">
+              <span className="link-text">בדיקת אינטראקציה</span>
+            </Nav.Link>
+            <Nav.Link className="top-nav-link" href="/side-effect-report">
+              <span className="link-text">דיווח על תופעות לוואי</span>
             </Nav.Link>
             <Nav.Link className="top-nav-link" href="/connect">
               <span className="link-text">צור קשר</span>
+            </Nav.Link>
+          </Nav>
+          <Nav className="ml-auto top-nav-content">
+            <Nav.Link className="top-nav-link" href="/connect">
+              <span className="link-text  sign-up">הירשם</span>
+            </Nav.Link>
+            <Nav.Link className="top-nav-link" href="/connect">
+              <span className="material-icons log-in">person</span>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
