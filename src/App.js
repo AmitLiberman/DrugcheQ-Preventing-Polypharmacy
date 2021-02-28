@@ -1,6 +1,7 @@
 import "./App.css";
 import TopNav from "./Constants/TopNav";
 import ActionNav from "./Constants/ActionNav";
+import BottomNav from "./Constants/BottomNav";
 import Home from "./Constants/Home";
 import InteractionChecker from "./Components/InteractionChecker/InteractionChecker";
 import MasterReport from "./Components/MasterReport/MasterReport";
@@ -37,6 +38,7 @@ const App = (props) => {
           </Switch>
         </main>
       </Router>
+      <BottomNav />
     </div>
   );
 };
