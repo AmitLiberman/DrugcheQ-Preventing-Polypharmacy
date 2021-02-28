@@ -1,5 +1,6 @@
 .action-nav-wrapper {
     text-align: center;
+    margin-bottom: 3em;
 }
 
 @media only screen and (max-width: 650px) {
@@ -14,7 +15,6 @@
     text-align: center;
     color: black;
     margin-right: 4em;
-    margin-top: 1.5em;
     width: 9em;
     border-style: solid;
     border-color: black;

@@ -2,12 +2,12 @@
         text-align: right;
         direction: rtl;
         display: flex;
-        padding-right: 8em;
-        margin-top: 9em;
-        padding-top: 0.5em;
-        padding-bottom: 3.5em;
+        padding-right: 20em;
+        margin-top: 18em;
+        padding-top: 1em;
+        padding-bottom: 1em;
         background-color: lightgrey;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
     
     @media only screen and (max-width: 600px) {
@@ -21,7 +21,7 @@
         color: black;
         margin-right: 4em;
         margin-left: 4em;
-        margin-top: 1em;
+        margin-top: 0.5em;
         display: block;
     }
     

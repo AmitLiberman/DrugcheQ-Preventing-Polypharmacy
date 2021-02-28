@@ -17,6 +17,8 @@ class MasterReport extends Component {
     sector: "",
     username: "",
     email: "",
+    drugList: [],
+    symptomsList: [],
 
     isDrugInsterted: false,
   };
@@ -29,18 +31,30 @@ class MasterReport extends Component {
     });
   };
 
-  // Trigger an alert on form submission
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { email, username, sector } = this.state;
-    alert(`Your registration detail: \n 
+  sendReport = () => {
+    if (this.state.symptomsList.length >= 1) {
+      const { email, username, sector } = this.state;
+      alert(`Your registration detail: \n 
     Email: ${email} \n 
     Username: ${username} \n
     Sector: ${sector}`);
+      console.log(this.state.symptomsList);
+      console.log(this.state.drugList);
+    }
   };
 
   drugInserted = (isInsterted) => {
     this.setState({ isDrugInsterted: isInsterted });
+  };
+
+  drugListUpdate = (newDrugItem) => {
+    this.setState({ drugList: [...this.state.drugList, newDrugItem] });
+  };
+
+  symptomListUpdate = (newSymptomItem) => {
+    this.setState({
+      symptomsList: [...this.state.symptomsList, newSymptomItem],
+    });
   };
 
   _next = () => {
@@ -172,8 +186,12 @@ class MasterReport extends Component {
           <Step2
             currentStep={this.state.currentStep}
             drugInserted={this.drugInserted}
+            drugListUpdate={this.drugListUpdate}
           />
-          <Step3 currentStep={this.state.currentStep} />
+          <Step3
+            currentStep={this.state.currentStep}
+            symptomListUpdate={this.symptomListUpdate}
+          />
           <div className="prev-next-btns-container">
             {this.nextButton}
             {this.previousButton}

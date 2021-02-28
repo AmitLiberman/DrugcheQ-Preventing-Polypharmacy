@@ -7,7 +7,7 @@ class Step2 extends Component {
   };
   drugListUpdate = (newDrugItem) => {
     this.setState({ drugList: [...this.state.drugList, newDrugItem] });
-    console.log(this.state.drugList);
+    this.props.drugListUpdate(newDrugItem);
     this.props.drugInserted(true);
   };
 
