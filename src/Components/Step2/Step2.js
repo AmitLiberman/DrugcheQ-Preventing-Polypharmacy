@@ -8,14 +8,14 @@ class Step2 extends Component {
   drugListUpdate = (newDrugItem) => {
     this.setState({ drugList: [...this.state.drugList, newDrugItem] });
     console.log(this.state.drugList);
+    this.props.drugInserted(true);
   };
 
   drugListDeleteItem = (id) => {
     this.setState({
       drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
     });
-    if (this.state.drugList.length === 1)
-      this.setState({ isDrugInsert: false });
+    if (this.state.drugList.length === 1) this.props.drugInserted(false);
   };
 
   render() {

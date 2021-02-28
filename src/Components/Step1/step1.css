@@ -11,5 +11,5 @@
 }
 
 .form-control.invalid {
-    background-color: #ffdddd;
+    border-color: red;
 }

@@ -17,6 +17,8 @@ class MasterReport extends Component {
     sector: "",
     username: "",
     email: "",
+
+    isDrugInsterted: false,
   };
 
   // Use the submitted data to set the state
@@ -37,6 +39,10 @@ class MasterReport extends Component {
     Sector: ${sector}`);
   };
 
+  drugInserted = (isInsterted) => {
+    this.setState({ isDrugInsterted: isInsterted });
+  };
+
   _next = () => {
     let notValidInput = false;
     if (this.state.username.trim().length === 0) {
@@ -49,6 +55,10 @@ class MasterReport extends Component {
       this.setState({
         emailInputStyle: this.state.emailInputStyle + " invalid",
       });
+      notValidInput = true;
+    }
+
+    if (this.state.currentStep === 2 && this.state.isDrugInsterted === false) {
       notValidInput = true;
     }
     if (notValidInput) return;
@@ -141,7 +151,10 @@ class MasterReport extends Component {
             emailInputStyle={this.state.emailInputStyle}
             userInputStyle={this.state.userInputStyle}
           />
-          <Step2 currentStep={this.state.currentStep} />
+          <Step2
+            currentStep={this.state.currentStep}
+            drugInserted={this.drugInserted}
+          />
           <Step3 currentStep={this.state.currentStep} />
           <div className="prev-next-btns-container">
             {this.nextButton}
