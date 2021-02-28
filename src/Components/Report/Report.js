@@ -49,10 +49,10 @@ class Report extends Component {
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <button
-                className="btn btn-primary add-side-effect-btn"
+                className="btn btn-info add-side-effect-btn"
                 type="submit"
               >
-                הוסף
+                + הוסף
               </button>
             </div>
             <input
