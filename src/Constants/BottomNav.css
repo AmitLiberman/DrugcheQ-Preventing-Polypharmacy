@@ -8,8 +8,10 @@
         padding-bottom: 3.5em;
         background-color: lightgrey;
         font-size: 0.8rem;
-        @media only screen and (max-width: 768px) {
-            /* For mobile phones: */
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .bottom-nav-container {
             padding-right: 0em;
         }
     }
@@ -23,16 +25,27 @@
         display: block;
     }
     
+    @media only screen and (max-width: 600px) {
+        .bottom-action-nav-link {
+            margin-right: 1em;
+        }
+    }
+    
     .bottom-action-nav-link:hover {
         color: black;
     }
     
     .category-name {
+        font-size: 1rem;
         margin-right: 3em;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .category-name {
+            margin-right: 0.5em;
+        }
     }
     
     .category-wrapper {
         display: inline-block;
     }
-    
-    .category-wrapper.support {}
