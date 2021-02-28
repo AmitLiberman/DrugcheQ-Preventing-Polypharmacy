@@ -10,6 +10,14 @@ class Step2 extends Component {
     console.log(this.state.drugList);
   };
 
+  drugListDeleteItem = (id) => {
+    this.setState({
+      drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
+    });
+    if (this.state.drugList.length === 1)
+      this.setState({ isDrugInsert: false });
+  };
+
   render() {
     if (this.props.currentStep !== 2) {
       // Prop: The current step
@@ -20,6 +28,7 @@ class Step2 extends Component {
         <DrugInsert
           drugListUpdate={this.drugListUpdate}
           drugList={this.state.drugList}
+          delDrug={this.drugListDeleteItem}
         />
       </div>
     );

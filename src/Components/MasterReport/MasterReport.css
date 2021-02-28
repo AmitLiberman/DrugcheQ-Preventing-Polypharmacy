@@ -25,6 +25,12 @@
     margin-top: 40px;
 }
 
+.btn.btn-primary {
+    padding-bottom: 0.1em;
+    padding-left: 0.2em;
+    padding-right: 0.2em
+}
+
 
 /* Make circles that indicate the steps of the form: */
 
@@ -48,4 +54,8 @@
 
 .step.finish {
     background-color: #4CAF50;
+}
+
+.material-icons.arrow {
+    font-size: 2rem;
 }

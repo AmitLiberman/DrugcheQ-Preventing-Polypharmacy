@@ -76,11 +76,11 @@ class MasterReport extends Component {
     if (currentStep !== 1) {
       return (
         <button
-          className="btn btn-secondary float-right"
+          className="btn btn-primary float-right"
           type="button"
           onClick={this._prev}
         >
-          הקודם
+          <span className="material-icons arrow">arrow_forward</span>
         </button>
       );
     }
@@ -98,7 +98,7 @@ class MasterReport extends Component {
           type="button"
           onClick={this._next}
         >
-          הבא
+          <span className="material-icons arrow">arrow_back</span>
         </button>
       );
     }
