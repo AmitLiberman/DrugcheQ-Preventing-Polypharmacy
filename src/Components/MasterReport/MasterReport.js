@@ -14,7 +14,7 @@ class MasterReport extends Component {
     emailInputStyle: "form-control",
     userInputStyle: "form-control",
 
-    sector: "",
+    sector: "ציבורי",
     username: "",
     email: "",
     drugList: [],
