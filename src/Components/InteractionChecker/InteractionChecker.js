@@ -21,6 +21,15 @@ class InteractionChecker extends Component {
   drugListUpdate = (newDrugItem) => {
     this.setState({ drugList: [...this.state.drugList, newDrugItem] });
   };
+
+  drugListDeleteItem = (id) => {
+    this.setState({
+      drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
+    });
+    if (this.state.drugList.length === 1)
+      this.setState({ isDrugInsert: false });
+  };
+
   handleInteractionCheck = () => {
     const drugNames = this.state.drugList.map((drug) => {
       return drug.name;
@@ -91,6 +100,7 @@ class InteractionChecker extends Component {
             drugInsertHandler={this.drugInsertHandler}
             drugListUpdate={this.drugListUpdate}
             drugList={this.state.drugList}
+            delDrug={this.drugListDeleteItem}
           />
           {checkIntreactionBtn}
         </div>

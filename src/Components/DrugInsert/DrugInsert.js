@@ -12,32 +12,24 @@ class DrugInsert extends Component {
   //Submit Drug Item to list
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.props.drugInsertHandler) {
-      this.props.drugInsertHandler(true);
-    }
+
     const newDrugItem = {
       id: this.state.drugList.length + 1,
       name: this.state.drugName,
     };
     if (newDrugItem.name.trim().length !== 0) {
+      if (this.props.drugInsertHandler) {
+        this.props.drugInsertHandler(true);
+      }
       //if the input not contains only spaces
       this.setState({ drugList: [...this.state.drugList, newDrugItem] });
       this.setState({ drugName: "" });
+      this.props.drugListUpdate(newDrugItem);
     }
-    this.props.drugListUpdate(newDrugItem);
   };
   //Change State to the drug name that typed
   handleChange = (event) => {
     this.setState({ drugName: event.target.value });
-  };
-
-  //Delete Drug Item from list
-  delDrug = (id) => {
-    this.setState({
-      drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
-    });
-    if (this.props.drugInsertHandler)
-      if (this.state.drugList.length === 1) this.props.drugInsertHandler(false);
   };
 
   //handleInteractionCheck
@@ -51,7 +43,7 @@ class DrugInsert extends Component {
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <button className="btn btn-success add-drug-btn" type="submit">
-                הוסף
+                + הוסף
               </button>
             </div>
             <input
@@ -68,7 +60,10 @@ class DrugInsert extends Component {
         <div className="drug-list-container">
           {/* change this.state.drugList to this.props.drugList will work but change 
           is needed in the paren component in interaction checker */}
-          <DrugList delDrug={this.delDrug} drugList={this.props.drugList} />
+          <DrugList
+            delDrug={this.props.delDrug}
+            drugList={this.props.drugList}
+          />
         </div>
       </React.Fragment>
     );
