@@ -12,36 +12,27 @@ class Report extends Component {
   //Submit condition Item to list
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.props.symptomInsertHandler) this.props.symptomInsertHandler(true);
     const newConditionItem = {
       id: this.state.conditionsList.length + 1,
       name: this.state.conditionName,
     };
     if (newConditionItem.name.trim().length !== 0) {
+      if (this.props.symptomInsertHandler)
+        this.props.symptomInsertHandler(true);
+
       //if the input not contains only spaces
       this.setState({
         conditionsList: [...this.state.conditionsList, newConditionItem],
       });
       this.setState({ conditionName: "" });
+      this.props.symptomListUpdate(newConditionItem);
     }
-    this.props.symptomListUpdate(newConditionItem);
   };
   //Change State to the condition name that typed
   handleChange = (event) => {
     this.setState({ conditionName: event.target.value });
   };
 
-  //Delete condition Item from list
-  delCondition = (id) => {
-    this.setState({
-      conditionsList: [
-        ...this.state.conditionsList.filter((drug) => drug.id !== id),
-      ],
-    });
-    if (this.props.symptomInsertHandler)
-      if (this.state.conditionsList.length === 1)
-        this.props.symptomInsertHandler(false);
-  };
   render() {
     return (
       <React.Fragment>
@@ -69,7 +60,7 @@ class Report extends Component {
 
         <div className="drug-list-container">
           <DrugList
-            delDrug={this.delCondition}
+            delDrug={this.props.symptomListDeleteItem}
             drugList={this.props.conditionsList}
           />
         </div>

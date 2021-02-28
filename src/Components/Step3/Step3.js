@@ -12,6 +12,14 @@ class Step3 extends Component {
     console.log(this.state.symptomList);
   };
 
+  symptomListDeleteItem = (id) => {
+    this.setState({
+      symptomList: [...this.state.symptomList.filter((drug) => drug.id !== id)],
+    });
+    if (this.state.symptomList.length === 1)
+      this.setState({ isSymptomInsert: false });
+  };
+
   symptomInsertHandler = (e) => {
     this.setState({ isSymptomInsert: e });
   };
@@ -26,6 +34,7 @@ class Step3 extends Component {
           symptomInsertHandler={this.symptomInsertHandler}
           symptomListUpdate={this.symptomListUpdate}
           conditionsList={this.state.symptomList}
+          symptomListDeleteItem={this.symptomListDeleteItem}
         />
       </div>
     );
