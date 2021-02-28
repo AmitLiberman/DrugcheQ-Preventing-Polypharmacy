@@ -116,6 +116,24 @@ class MasterReport extends Component {
     return null;
   }
 
+  get sendButton() {
+    let currentStep = this.state.currentStep;
+    // If the current step is not 3, then render the "next" button
+    if (currentStep === 3) {
+      return (
+        <button
+          className="btn btn-info float-left send"
+          type="button"
+          onClick={this.sendReport}
+        >
+          שלח
+        </button>
+      );
+    }
+    // ...else render nothing
+    return null;
+  }
+
   render() {
     let steps_arr = [];
     for (let i = 1; i < 4; i++) {
@@ -159,6 +177,7 @@ class MasterReport extends Component {
           <div className="prev-next-btns-container">
             {this.nextButton}
             {this.previousButton}
+            {this.sendButton}
           </div>
         </div>
       </React.Fragment>

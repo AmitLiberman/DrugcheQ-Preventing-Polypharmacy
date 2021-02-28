@@ -13,7 +13,6 @@ const App = (props) => {
   return (
     <div className="app">
       <TopNav />
-      <ActionNav />
       <Router>
         <main className="component-content">
           <Switch>
@@ -33,7 +32,8 @@ const App = (props) => {
               <DrugSearch />
             </Route>
             <Route path="/">
-              <Home />
+              <ActionNav className="action-navigation-bar" />
+              <Home className="home-component" />
             </Route>
           </Switch>
         </main>
