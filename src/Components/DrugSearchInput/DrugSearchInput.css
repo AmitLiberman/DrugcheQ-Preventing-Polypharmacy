@@ -1,5 +1,7 @@
 .drug-search-container {
     overflow: hidden;
+    width: 80%;
+    float: right;
 }
 
 .drug-search-describe-container {
