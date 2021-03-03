@@ -11,6 +11,9 @@ class DrugSearch extends Component {
     this.setState({ drugName: event.target.value });
   };
 
+  handleSubmit = () => {
+    alert(this.state.drugName);
+  };
   render() {
     return (
       <div className="drug-search-container">
@@ -28,7 +31,7 @@ class DrugSearch extends Component {
             <input
               onChange={this.handleChange}
               type="text"
-              className="form-control input-drug-name"
+              className="form-control input-drug-name-search"
               placeholder="הכנס/י שם תרופה"
               value={this.state.drugName}
               aria-label=""
