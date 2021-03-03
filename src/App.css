@@ -20,5 +20,9 @@ main {
     display: block;
     margin-bottom: 2rem;
     margin-right: 15em;
-    padding: 3rem 2rem;
+    padding: 3rem;
+}
+
+.action-navigation-bar {
+    margin-right: 200px;
 }
