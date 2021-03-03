@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Accordion, Card, Button } from "react-bootstrap";
+import { Accordion, Card } from "react-bootstrap";
+import "./DrugSearchResults.css";
 
 class DrugSearchResults extends Component {
   state = {
@@ -9,24 +10,52 @@ class DrugSearchResults extends Component {
   render() {
     return (
       <Accordion>
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-              Click me!
-            </Accordion.Toggle>
-          </Card.Header>
+        <Card className="card">
+          <Accordion.Toggle
+            as={Card.Header}
+            className="accordion-name"
+            eventKey="0"
+          >
+            פרטי תכשיר
+          </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
             <Card.Body>Hello! I'm the body</Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              Click me!
-            </Accordion.Toggle>
-          </Card.Header>
+          <Accordion.Toggle
+            as={Card.Header}
+            className="accordion-name"
+            eventKey="1"
+          >
+            התוויה
+          </Accordion.Toggle>
           <Accordion.Collapse eventKey="1">
-            <Card.Body>Hello! I'm another body</Card.Body>
+            <Card.Body>Hello! I'm the body</Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card>
+          <Accordion.Toggle
+            as={Card.Header}
+            className="accordion-name"
+            eventKey="2"
+          >
+            אינטראקציות
+          </Accordion.Toggle>
+          <Accordion.Collapse eventKey="2">
+            <Card.Body>Hello! I'm the body</Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card>
+          <Accordion.Toggle
+            as={Card.Header}
+            className="accordion-name"
+            eventKey="3"
+          >
+            דיווחים
+          </Accordion.Toggle>
+          <Accordion.Collapse eventKey="3">
+            <Card.Body>Hello! I'm the body</Card.Body>
           </Accordion.Collapse>
         </Card>
       </Accordion>

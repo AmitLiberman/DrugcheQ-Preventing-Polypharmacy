@@ -1,0 +1,13 @@
+.accordion-name {
+    text-align: right;
+}
+
+.accordion-name:hover {
+    cursor: pointer;
+    background-color: rgb(219, 217, 217);
+}
+
+.card {
+    width: 80%;
+    float: right;
+}
