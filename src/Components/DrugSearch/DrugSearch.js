@@ -5,10 +5,11 @@ import DrugSearchInput from "../DrugSearchInput/DrugSearchInput";
 class DrugSearch extends Component {
   state = {
     drugData: "",
+    drugUserName: "", //The name of the drug that the user inserted
   };
 
-  getDrugData = (data) => {
-    this.setState({ drugData: data });
+  getDrugData = (data, drugName) => {
+    this.setState({ drugData: data, drugUserName: drugName });
   };
 
   render() {
@@ -17,7 +18,10 @@ class DrugSearch extends Component {
         {this.state.drugData === "" ? (
           <DrugSearchInput getDrugData={this.getDrugData} />
         ) : (
-          <DrugSearchResults drugData={this.state.drugData} />
+          <DrugSearchResults
+            drugData={this.state.drugData}
+            drugUserName={this.state.drugUserName}
+          />
         )}
       </div>
     );

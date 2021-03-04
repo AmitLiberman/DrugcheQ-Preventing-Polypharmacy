@@ -14,4 +14,15 @@
 
 .remedy-information {
     direction: rtl;
+    text-align: right;
+}
+
+.search-results-headline {
+    text-align: right;
+    direction: rtl;
+    margin-bottom: 0.8em;
+}
+
+.drug-details {
+    text-align: left;
 }

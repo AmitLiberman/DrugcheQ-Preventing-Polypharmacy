@@ -21,8 +21,7 @@ class DrugSearchInput extends Component {
       .get(request)
       .then((response) => {
         console.log(response.data);
-        this.props.getDrugData(response.data);
-        this.setState({ searchResponse: response.data });
+        this.props.getDrugData(response.data, this.state.drugName);
       })
       .catch((error) => {
         alert("error!");

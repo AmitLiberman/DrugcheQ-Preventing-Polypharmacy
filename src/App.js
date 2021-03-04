@@ -6,10 +6,13 @@ import Home from "./Constants/Home";
 import InteractionChecker from "./Components/InteractionChecker/InteractionChecker";
 import MasterReport from "./Components/MasterReport/MasterReport";
 import DrugSearch from "./Components/DrugSearch/DrugSearch";
+import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = (props) => {
+  const nodeRef = React.useRef(null);
+
   return (
     <div className="app">
       <TopNav />
@@ -28,8 +31,8 @@ const App = (props) => {
             <Route path="/side-effect-report">
               <MasterReport />
             </Route>
-            <Route path="/drug-search">
-              <DrugSearch />
+            <Route nodeRef={nodeRef} path="/drug-search">
+              <DrugSearch ref={nodeRef} />
             </Route>
             <Route path="/">
               <ActionNav className="action-navigation-bar" />
