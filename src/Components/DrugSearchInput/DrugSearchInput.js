@@ -5,6 +5,7 @@ import axios from "axios";
 class DrugSearchInput extends Component {
   state = {
     drugName: "", //drug name that submited in input
+    searchResponse: "",
   };
 
   //Change State to the drug name that typed
@@ -20,6 +21,8 @@ class DrugSearchInput extends Component {
       .get(request)
       .then((response) => {
         console.log(response.data);
+        this.props.getDrugData(response.data);
+        this.setState({ searchResponse: response.data });
       })
       .catch((error) => {
         alert("error!");
