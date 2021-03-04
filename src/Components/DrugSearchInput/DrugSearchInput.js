@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./DrugSearchInput.css";
+import axios from "axios";
 
 class DrugSearchInput extends Component {
   state = {
@@ -11,8 +12,18 @@ class DrugSearchInput extends Component {
     this.setState({ drugName: event.target.value });
   };
 
-  handleSubmit = () => {
-    alert(this.state.drugName);
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let request = "http://127.0.0.1:5000/drug-search?";
+    request += this.state.drugName;
+    axios
+      .get(request)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        alert("error!");
+      });
   };
   render() {
     return (
