@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Accordion, Card } from "react-bootstrap";
 import "./DrugSearchResults.css";
+import axios from "axios";
 
 class DrugSearchResults extends Component {
   state = {
@@ -14,6 +15,23 @@ class DrugSearchResults extends Component {
     prescription: "",
     healthBasket: "",
     details: "",
+    interacionRes: "",
+  };
+
+  interactionHandler = () => {
+    const request = "http://127.0.0.1:5000/check?" + this.state.drugEnglishName;
+    this.setState({ loading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ interacionRes: response.data });
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
   };
 
   componentDidMount = () => {
@@ -87,6 +105,7 @@ class DrugSearchResults extends Component {
               as={Card.Header}
               className="accordion-name"
               eventKey="2"
+              onClick={this.interactionHandler}
             >
               אינטראקציות
             </Accordion.Toggle>
