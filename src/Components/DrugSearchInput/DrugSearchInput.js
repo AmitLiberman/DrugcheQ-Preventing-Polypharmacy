@@ -17,11 +17,14 @@ class DrugSearchInput extends Component {
     event.preventDefault();
     let request = "http://127.0.0.1:5000/drug-search?";
     request += this.state.drugName;
+    this.props.isLoading(true);
+
     axios
       .get(request)
       .then((response) => {
         console.log(response.data);
         this.props.getDrugData(response.data, this.state.drugName);
+        this.props.isLoading(false);
       })
       .catch((error) => {
         alert("error!");

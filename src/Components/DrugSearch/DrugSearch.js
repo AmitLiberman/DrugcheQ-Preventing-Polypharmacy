@@ -1,30 +1,50 @@
 import React, { Component } from "react";
 import DrugSearchResults from "../DrugSearchResults/DrugSearchResults";
 import DrugSearchInput from "../DrugSearchInput/DrugSearchInput";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class DrugSearch extends Component {
   state = {
     drugData: "",
     drugUserName: "", //The name of the drug that the user inserted
+    loading: false,
   };
 
   getDrugData = (data, drugName) => {
     this.setState({ drugData: data, drugUserName: drugName });
   };
 
+  isLoading = (sloading) => {
+    console.log(sloading);
+    this.setState({ loading: sloading });
+  };
+
   render() {
-    return (
+    let progress = (
       <div>
-        {this.state.drugData === "" ? (
-          <DrugSearchInput getDrugData={this.getDrugData} />
-        ) : (
-          <DrugSearchResults
-            drugData={this.state.drugData}
-            drugUserName={this.state.drugUserName}
-          />
-        )}
+        <h2>.. מחפש תרופה </h2>
+        <CircularProgress />
       </div>
     );
+
+    let searchShow = "";
+    if (this.state.loading) searchShow = progress;
+    else if (this.state.drugUserName === "")
+      searchShow = (
+        <DrugSearchInput
+          getDrugData={this.getDrugData}
+          isLoading={this.isLoading}
+        />
+      );
+    else
+      searchShow = (
+        <DrugSearchResults
+          drugData={this.state.drugData}
+          drugUserName={this.state.drugUserName}
+        />
+      );
+
+    return <div>{searchShow}</div>;
   }
 }
 
