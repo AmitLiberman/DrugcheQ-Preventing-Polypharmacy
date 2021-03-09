@@ -38,7 +38,7 @@ class DrugSearchInput extends Component {
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <button className="btn btn-info add-drug-btn" type="submit">
-                הוסף
+                חיפוש
               </button>
             </div>
             <input

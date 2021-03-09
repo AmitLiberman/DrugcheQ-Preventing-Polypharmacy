@@ -26,3 +26,33 @@
 .drug-details {
     text-align: left;
 }
+
+.material-icons-outlined.description.toggle {
+    font-size: 1.4rem;
+    margin-left: 0.6em;
+}
+
+.material-icons-outlined.info.toggle {
+    font-size: 1.4rem;
+    margin-left: 0.6em;
+}
+
+.material-icons-outlined.medication.toggle {
+    font-size: 1.4rem;
+    margin-left: 0.4em;
+    margin-right: -0.1em;
+}
+
+.material-icons-outlined.warning.toggle {
+    font-size: 0.8rem;
+    margin-right: -0.1em;
+}
+
+.material-icons-outlined.campaign.toggle {
+    font-size: 1.4rem;
+    margin-left: 0.6em;
+}
+
+.text {
+    font-size: 1.3rem;
+}

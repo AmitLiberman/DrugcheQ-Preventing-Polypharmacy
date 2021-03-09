@@ -80,7 +80,8 @@ class DrugSearchResults extends Component {
               className="accordion-name"
               eventKey="0"
             >
-              פרטי תכשיר
+              <span className="text">פרטי תכשיר</span>
+              <span className="material-icons-outlined  info toggle">info</span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
               <Card.Body>{remedyInformation}</Card.Body>
@@ -92,7 +93,10 @@ class DrugSearchResults extends Component {
               className="accordion-name"
               eventKey="1"
             >
-              התוויה{" "}
+              <span className="text">התוויה</span>
+              <span class="material-icons-outlined description toggle">
+                description
+              </span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="1">
               <Card.Body>
@@ -107,7 +111,13 @@ class DrugSearchResults extends Component {
               eventKey="2"
               onClick={this.interactionHandler}
             >
-              אינטראקציות
+              <span className="text">אינטראקציות</span>
+              <span className="material-icons-outlined medication toggle">
+                medication
+              </span>
+              <span className="material-icons-outlined warning toggle">
+                warning_amber
+              </span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
               <Card.Body>Hello! I'm the body</Card.Body>
@@ -119,7 +129,10 @@ class DrugSearchResults extends Component {
               className="accordion-name"
               eventKey="3"
             >
-              דיווחים
+              <span className="text">דיווחים</span>
+              <span className="material-icons-outlined campaign toggle">
+                campaign
+              </span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="3">
               <Card.Body>Hello! I'm the body</Card.Body>
