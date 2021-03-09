@@ -15,7 +15,6 @@ class DrugSearch extends Component {
   };
 
   isLoading = (sloading) => {
-    console.log(sloading);
     this.setState({ loading: sloading });
   };
 

@@ -6,11 +6,29 @@ class DrugSearchInput extends Component {
   state = {
     drugName: "", //drug name that submited in input
     searchResponse: "",
+    interacionRes: "",
+    laoding: false,
   };
 
   //Change State to the drug name that typed
   handleChange = (event) => {
     this.setState({ drugName: event.target.value });
+  };
+
+  interactionHandler = () => {
+    const request = "http://127.0.0.1:5000/check?" + this.state.drugEnglishName;
+    this.setState({ loading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ interacionRes: response.data });
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
   };
 
   handleSubmit = (event) => {

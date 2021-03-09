@@ -19,7 +19,8 @@ class DrugSearchResults extends Component {
   };
 
   interactionHandler = () => {
-    const request = "http://127.0.0.1:5000/check?" + this.state.drugEnglishName;
+    const request =
+      "http://127.0.0.1:5000/check?" + this.props.drugData.drug_english_name;
     this.setState({ loading: true }, () => {
       axios
         .get(request)
@@ -47,6 +48,7 @@ class DrugSearchResults extends Component {
       healthBasket: drugData.health_basket,
       details: drugData.details,
     });
+    this.interactionHandler(drugData);
   };
 
   render() {
@@ -94,7 +96,7 @@ class DrugSearchResults extends Component {
               eventKey="1"
             >
               <span className="text">התוויה</span>
-              <span class="material-icons-outlined description toggle">
+              <span className="material-icons-outlined description toggle">
                 description
               </span>
             </Accordion.Toggle>
