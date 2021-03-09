@@ -70,6 +70,18 @@ class DrugSearchResults extends Component {
       </div>
     );
 
+    const resultsLength = Object.keys(this.state.interacionRes).length;
+    let results = [];
+    for (let index = 0; index < resultsLength; index++) {
+      results.push(
+        <tr>
+          <td>{this.state.interacionRes[index].drugName}</td>
+          <td>{this.state.interacionRes[index].Description}</td>
+          <td>{this.state.interacionRes[index].severity}</td>
+        </tr>
+      );
+    }
+
     return (
       <div>
         <h3 className="search-results-headline">
@@ -111,7 +123,6 @@ class DrugSearchResults extends Component {
               as={Card.Header}
               className="accordion-name"
               eventKey="2"
-              onClick={this.interactionHandler}
             >
               <span className="text">אינטראקציות</span>
               <span className="material-icons-outlined medication toggle">
@@ -122,7 +133,18 @@ class DrugSearchResults extends Component {
               </span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
-              <Card.Body>Hello! I'm the body</Card.Body>
+              <Card.Body>
+                {
+                  <table>
+                    <tr>
+                      <th>שם תרופה</th>
+                      <th>תיאור</th>
+                      <th>חומרה</th>
+                    </tr>
+                    {results}
+                  </table>
+                }
+              </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>
