@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Accordion, Card } from "react-bootstrap";
 import "./DrugSearchResults.css";
+import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
 import axios from "axios";
 
 class DrugSearchResults extends Component {
@@ -15,7 +18,7 @@ class DrugSearchResults extends Component {
     prescription: "",
     healthBasket: "",
     details: "",
-    interacionRes: "",
+    interacionRes: [],
   };
 
   interactionHandler = () => {
@@ -25,8 +28,12 @@ class DrugSearchResults extends Component {
       axios
         .get(request)
         .then((response) => {
-          console.log(response.data);
-          this.setState({ interacionRes: response.data });
+          const responseLength = Object.keys(response.data).length;
+          for (let i = 0; i < responseLength; i++) {
+            this.setState((prevState) => ({
+              interacionRes: [...prevState.interacionRes, response.data[i]],
+            }));
+          }
           this.setState({ loading: false });
         })
         .catch((error) => {
@@ -70,18 +77,41 @@ class DrugSearchResults extends Component {
       </div>
     );
 
-    const resultsLength = Object.keys(this.state.interacionRes).length;
-    let results = [];
-    for (let index = 0; index < resultsLength; index++) {
-      results.push(
-        <tr>
-          <td>{this.state.interacionRes[index].drugName}</td>
-          <td>{this.state.interacionRes[index].Description}</td>
-          <td>{this.state.interacionRes[index].severity}</td>
-        </tr>
-      );
-    }
+    // const resultsLength = Object.keys(this.state.interacionRes).length;
+    // let results = [];
+    // for (let index = 0; index < resultsLength; index++) {
+    //   results.push(
+    //     <tr>
+    //       <td>{this.state.interacionRes[index].drugName}</td>
+    //       <td>{this.state.interacionRes[index].Description}</td>
+    //       <td>{this.state.interacionRes[index].severity}</td>
+    //     </tr>
+    //   );
+    // }
+    const columns = [
+      { dataField: "drugName", text: "Drug Name", sort: true },
+      { dataField: "Description", text: "Description", sort: true },
+      { dataField: "severity", text: "severity", sort: true },
+    ];
 
+    const pagination = paginationFactory({
+      page: 2,
+      sizePerPage: 5,
+      lastPageText: ">>",
+      firstPageText: "<<",
+      nextPageText: ">",
+      prePageText: "<",
+      showTotal: true,
+      alwaysShowAllBtns: true,
+      onPageChange: function (page, sizePerPage) {
+        console.log("page", page);
+        console.log("sizePerPage", sizePerPage);
+      },
+      onSizePerPageChange: function (page, sizePerPage) {
+        console.log("page", page);
+        console.log("sizePerPage", sizePerPage);
+      },
+    });
     return (
       <div>
         <h3 className="search-results-headline">
@@ -134,8 +164,8 @@ class DrugSearchResults extends Component {
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
               <Card.Body>
-                {
-                  <table>
+                {/* {
+                  <table className="table  table-striped">
                     <tr>
                       <th>שם תרופה</th>
                       <th>תיאור</th>
@@ -143,7 +173,14 @@ class DrugSearchResults extends Component {
                     </tr>
                     {results}
                   </table>
-                }
+                } */}
+                <BootstrapTable
+                  bootstrap4
+                  keyField="drugName"
+                  data={this.state.interacionRes}
+                  columns={columns}
+                  pagination={pagination}
+                />
               </Card.Body>
             </Accordion.Collapse>
           </Card>
