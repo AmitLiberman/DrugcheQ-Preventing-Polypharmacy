@@ -5,7 +5,6 @@ import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import axios from "axios";
 
 class DrugSearchResults extends Component {
@@ -87,7 +86,7 @@ class DrugSearchResults extends Component {
     ];
 
     const pagination = paginationFactory({
-      page: 2,
+      page: 1,
       sizePerPage: 5,
       lastPageText: ">>",
       firstPageText: "<<",
@@ -185,9 +184,8 @@ class DrugSearchResults extends Component {
                     columns={columns}
                     pagination={pagination}
                     rowStyle={{
-                      textAlign: "left",
+                      textAlign: "center",
                       fontSize: "1rem",
-                      direction: "rtl",
                     }}
                   />
                 )}
