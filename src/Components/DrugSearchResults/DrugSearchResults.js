@@ -4,6 +4,7 @@ import "./DrugSearchResults.css";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
+
 import axios from "axios";
 
 class DrugSearchResults extends Component {
@@ -77,17 +78,6 @@ class DrugSearchResults extends Component {
       </div>
     );
 
-    // const resultsLength = Object.keys(this.state.interacionRes).length;
-    // let results = [];
-    // for (let index = 0; index < resultsLength; index++) {
-    //   results.push(
-    //     <tr>
-    //       <td>{this.state.interacionRes[index].drugName}</td>
-    //       <td>{this.state.interacionRes[index].Description}</td>
-    //       <td>{this.state.interacionRes[index].severity}</td>
-    //     </tr>
-    //   );
-    // }
     const columns = [
       { dataField: "drugName", text: "Drug Name", sort: true },
       { dataField: "Description", text: "Description", sort: true },
@@ -117,7 +107,7 @@ class DrugSearchResults extends Component {
         <h3 className="search-results-headline">
           תוצאות עבור תרופה: {this.props.drugUserName}
         </h3>
-        <Accordion>
+        <Accordion className="Accordion">
           <Card className="card">
             <Accordion.Toggle
               as={Card.Header}
@@ -148,6 +138,22 @@ class DrugSearchResults extends Component {
               </Card.Body>
             </Accordion.Collapse>
           </Card>
+
+          <Card>
+            <Accordion.Toggle
+              as={Card.Header}
+              className="accordion-name"
+              eventKey="3"
+            >
+              <span className="text">דיווחים</span>
+              <span className="material-icons-outlined campaign toggle">
+                campaign
+              </span>
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="3">
+              <Card.Body>Hello! I'm the body</Card.Body>
+            </Accordion.Collapse>
+          </Card>
           <Card>
             <Accordion.Toggle
               as={Card.Header}
@@ -163,40 +169,16 @@ class DrugSearchResults extends Component {
               </span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
-              <Card.Body>
-                {/* {
-                  <table className="table  table-striped">
-                    <tr>
-                      <th>שם תרופה</th>
-                      <th>תיאור</th>
-                      <th>חומרה</th>
-                    </tr>
-                    {results}
-                  </table>
-                } */}
+              <Card.Body className="body-card">
                 <BootstrapTable
                   bootstrap4
                   keyField="drugName"
                   data={this.state.interacionRes}
                   columns={columns}
                   pagination={pagination}
+                  rowStyle={{ textAlign: "left", fontSize: "1rem" }}
                 />
               </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              className="accordion-name"
-              eventKey="3"
-            >
-              <span className="text">דיווחים</span>
-              <span className="material-icons-outlined campaign toggle">
-                campaign
-              </span>
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="3">
-              <Card.Body>Hello! I'm the body</Card.Body>
             </Accordion.Collapse>
           </Card>
         </Accordion>

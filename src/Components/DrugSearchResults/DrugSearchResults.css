@@ -1,5 +1,14 @@
+.card {
+    min-width: 800px;
+}
+
 .accordion-name {
     text-align: right;
+}
+
+.body-card {
+    margin-top: 2em;
+    overflow: scroll;
 }
 
 .accordion-name:hover {
@@ -55,4 +64,9 @@
 
 .text {
     font-size: 1.3rem;
+}
+
+.react-bootstrap-table-pagination-total {
+    position: relative;
+    font-size: 1rem;
 }
