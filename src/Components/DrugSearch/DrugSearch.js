@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DrugSearchResults from "../DrugSearchResults/DrugSearchResults";
 import DrugSearchInput from "../DrugSearchInput/DrugSearchInput";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import "./DrugSearch.css";
 
 class DrugSearch extends Component {
   state = {
@@ -20,8 +21,8 @@ class DrugSearch extends Component {
 
   render() {
     let progress = (
-      <div>
-        <h2>.. מחפש תרופה </h2>
+      <div className="progress-search">
+        <h2 className="progress-search-headline">.. מחפש תרופה </h2>
         <CircularProgress />
       </div>
     );

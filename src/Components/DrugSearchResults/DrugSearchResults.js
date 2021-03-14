@@ -4,6 +4,7 @@ import "./DrugSearchResults.css";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import axios from "axios";
 
@@ -20,6 +21,7 @@ class DrugSearchResults extends Component {
     healthBasket: "",
     details: "",
     interacionRes: [],
+    loading: false,
   };
 
   interactionHandler = () => {
@@ -79,9 +81,9 @@ class DrugSearchResults extends Component {
     );
 
     const columns = [
-      { dataField: "drugName", text: "Drug Name", sort: true },
-      { dataField: "Description", text: "Description", sort: true },
-      { dataField: "severity", text: "severity", sort: true },
+      { dataField: "severity", text: "חומרה", sort: true },
+      { dataField: "Description", text: "תיאור", sort: true },
+      { dataField: "drugName", text: "שם התרופה", sort: true },
     ];
 
     const pagination = paginationFactory({
@@ -170,14 +172,25 @@ class DrugSearchResults extends Component {
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
               <Card.Body className="body-card">
-                <BootstrapTable
-                  bootstrap4
-                  keyField="drugName"
-                  data={this.state.interacionRes}
-                  columns={columns}
-                  pagination={pagination}
-                  rowStyle={{ textAlign: "left", fontSize: "1rem" }}
-                />
+                {this.state.loading ? (
+                  <div>
+                    <h6>... בודק אינטראקציות אפשריות</h6>
+                    <CircularProgress />
+                  </div>
+                ) : (
+                  <BootstrapTable
+                    bootstrap4
+                    keyField="drugName"
+                    data={this.state.interacionRes}
+                    columns={columns}
+                    pagination={pagination}
+                    rowStyle={{
+                      textAlign: "left",
+                      fontSize: "1rem",
+                      direction: "rtl",
+                    }}
+                  />
+                )}
               </Card.Body>
             </Accordion.Collapse>
           </Card>
