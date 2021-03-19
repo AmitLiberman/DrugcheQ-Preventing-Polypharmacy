@@ -1,10 +1,14 @@
 /* The Modal (background) */
 
 .modal-box-container {
+    /* display: none; */
+    /* Hidden by default */
     position: fixed;
     /* Stay in place */
     z-index: 1;
     /* Sit on top */
+    padding-top: 10em;
+    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
@@ -23,29 +27,30 @@
 /* Modal Content/Box */
 
 .modal-content-text {
-    display: inline-block;
     background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
+    margin: auto;
+    padding: 0.5em;
     border: 1px solid #888;
-    width: 60%;
-    /* Could be more or less, depending on screen size */
+    width: 70%;
 }
 
 
 /* The Close Button */
 
 .close-modal-box {
-    color: #aaa;
+    width: 100%;
+    text-align: right;
+    color: #aaaaaa;
     float: right;
-    font-size: 28px;
+    font-size: 2rem;
     font-weight: bold;
+    margin-top: -0.5em;
+    margin-right: 0.2em;
 }
 
 .close-modal-box:hover,
 .close-modal-box:focus {
-    color: black;
+    color: #000;
     text-decoration: none;
     cursor: pointer;
 }
