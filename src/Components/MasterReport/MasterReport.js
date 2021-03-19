@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Step1 from "../Step1/Step1";
 import Step2 from "../Step2/Step2";
 import Step3 from "../Step3/Step3";
+import ModalBox from "../ModalBox/ModalBox";
 import "./MasterReport.css";
 
 class MasterReport extends Component {
@@ -21,6 +22,7 @@ class MasterReport extends Component {
     symptomsList: [],
 
     isDrugInsterted: false,
+    isSendClicked: false,
   };
 
   // Use the submitted data to set the state
@@ -40,6 +42,7 @@ class MasterReport extends Component {
     Sector: ${sector}`);
       console.log(this.state.symptomsList);
       console.log(this.state.drugList);
+      this.setState({ isSendClicked: true });
     }
   };
 
@@ -162,6 +165,7 @@ class MasterReport extends Component {
 
     return (
       <React.Fragment>
+        <ModalBox />
         <div className="master-describe-container">
           <h2>דיווח על תופעות לוואי</h2>
           <p>
@@ -188,10 +192,12 @@ class MasterReport extends Component {
             drugInserted={this.drugInserted}
             drugListUpdate={this.drugListUpdate}
           />
+
           <Step3
             currentStep={this.state.currentStep}
             symptomListUpdate={this.symptomListUpdate}
           />
+
           <div className="prev-next-btns-container">
             {this.nextButton}
             {this.previousButton}
