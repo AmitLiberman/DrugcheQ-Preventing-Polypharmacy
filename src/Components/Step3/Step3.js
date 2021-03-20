@@ -21,6 +21,7 @@ class Step3 extends Component {
     this.setState({
       symptomList: [...this.state.symptomList.filter((drug) => drug.id !== id)],
     });
+    this.props.symptomListDeleteItem(id);
     if (this.state.symptomList.length === 1)
       this.setState({ isSymptomInsert: false });
   };

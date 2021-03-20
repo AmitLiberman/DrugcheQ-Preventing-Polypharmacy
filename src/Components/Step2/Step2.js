@@ -16,6 +16,7 @@ class Step2 extends Component {
     this.setState({
       drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
     });
+    this.props.drugListDeleteItem(id);
     if (this.state.drugList.length === 1) this.props.drugInserted(false);
   };
 

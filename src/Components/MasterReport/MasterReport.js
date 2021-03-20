@@ -4,6 +4,7 @@ import Step2 from "../Step2/Step2";
 import Step3 from "../Step3/Step3";
 import ModalBox from "../ModalBox/ModalBox";
 import "./MasterReport.css";
+import axios from "axios";
 
 class MasterReport extends Component {
   state = {
@@ -36,15 +37,16 @@ class MasterReport extends Component {
 
   sendReport = () => {
     if (this.state.symptomsList.length >= 1) {
-      // const { email, username, sector } = this.state;
-      // alert(`Your registration detail: \n
-      // Email: ${email} \n
-      // Username: ${username} \n
-      // Sector: ${sector}`);
-      console.log(this.state.symptomsList);
-      console.log(this.state.drugList);
       this.setState({ isSendClicked: true });
     }
+    const json = JSON.stringify({
+      username: this.state.username,
+      email: this.state.email,
+      sector: this.state.sector,
+      drugList: this.state.drugList,
+      symptomsList: this.state.symptomsList,
+    });
+    const res = axios.post("http://127.0.0.1:5000/side-effect-report", json);
   };
 
   drugInserted = (isInsterted) => {
@@ -53,6 +55,19 @@ class MasterReport extends Component {
 
   drugListUpdate = (newDrugItem) => {
     this.setState({ drugList: [...this.state.drugList, newDrugItem] });
+  };
+  drugListDeleteItem = (id) => {
+    this.setState({
+      drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
+    });
+  };
+
+  symptomListDeleteItem = (id) => {
+    this.setState({
+      symptomsList: [
+        ...this.state.symptomsList.filter((drug) => drug.id !== id),
+      ],
+    });
   };
 
   symptomListUpdate = (newSymptomItem) => {
@@ -210,6 +225,7 @@ class MasterReport extends Component {
             drugInserted={this.drugInserted}
             drugListUpdate={this.drugListUpdate}
             drugList={this.props.drugList}
+            drugListDeleteItem={this.drugListDeleteItem}
           />
 
           <Step3
@@ -217,6 +233,7 @@ class MasterReport extends Component {
             currentStep={this.state.currentStep}
             symptomListUpdate={this.symptomListUpdate}
             symptomList={this.props.symptomList}
+            symptomListDeleteItem={this.symptomListDeleteItem}
           />
 
           <div className="prev-next-btns-container">
