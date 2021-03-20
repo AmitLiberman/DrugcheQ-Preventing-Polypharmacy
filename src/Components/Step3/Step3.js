@@ -7,6 +7,10 @@ class Step3 extends Component {
     symptomList: [],
   };
 
+  componentDidMount = () => {
+    this.setState({ symptomList: [], isSymptomInsert: false });
+  };
+
   symptomListUpdate = (newSymptomItem) => {
     this.setState({ symptomList: [...this.state.symptomList, newSymptomItem] });
     this.props.symptomListUpdate(newSymptomItem);

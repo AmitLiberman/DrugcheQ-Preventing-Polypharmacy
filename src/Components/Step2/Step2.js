@@ -5,6 +5,7 @@ class Step2 extends Component {
   state = {
     drugList: [],
   };
+
   drugListUpdate = (newDrugItem) => {
     this.setState({ drugList: [...this.state.drugList, newDrugItem] });
     this.props.drugListUpdate(newDrugItem);
@@ -23,6 +24,7 @@ class Step2 extends Component {
       // Prop: The current step
       return null;
     }
+
     return (
       <div className="drug-list-report-container">
         <DrugInsert

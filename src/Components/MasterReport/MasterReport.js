@@ -23,6 +23,7 @@ class MasterReport extends Component {
 
     isDrugInsterted: false,
     isSendClicked: false,
+    key: 1,
   };
 
   // Use the submitted data to set the state
@@ -35,17 +36,15 @@ class MasterReport extends Component {
 
   sendReport = () => {
     if (this.state.symptomsList.length >= 1) {
-      const { email, username, sector } = this.state;
-      alert(`Your registration detail: \n 
-    Email: ${email} \n 
-    Username: ${username} \n
-    Sector: ${sector}`);
+      // const { email, username, sector } = this.state;
+      // alert(`Your registration detail: \n
+      // Email: ${email} \n
+      // Username: ${username} \n
+      // Sector: ${sector}`);
       console.log(this.state.symptomsList);
       console.log(this.state.drugList);
       this.setState({ isSendClicked: true });
     }
-    this.drugListUpdate();
-    this.symptomListUpdate();
   };
 
   drugInserted = (isInsterted) => {
@@ -72,7 +71,10 @@ class MasterReport extends Component {
       sector: "ציבור",
       isDrugInsterted: false,
       isSendClicked: false,
+      key: this.state.key + 1,
     });
+    console.log(this.state.drugList);
+    console.log(this.state.symptomsList);
   };
 
   _next = () => {
@@ -192,8 +194,6 @@ class MasterReport extends Component {
         </div>
 
         <div className="steps-container">
-          {/* שלב
-          {this.state.currentStep} */}
           <div className="steps-circles">{steps_arr}</div>
           <Step1
             currentStep={this.state.currentStep}
@@ -205,14 +205,18 @@ class MasterReport extends Component {
             userInputStyle={this.state.userInputStyle}
           />
           <Step2
+            key={this.state.key}
             currentStep={this.state.currentStep}
             drugInserted={this.drugInserted}
             drugListUpdate={this.drugListUpdate}
+            drugList={this.props.drugList}
           />
 
           <Step3
+            key={this.state.key}
             currentStep={this.state.currentStep}
             symptomListUpdate={this.symptomListUpdate}
+            symptomList={this.props.symptomList}
           />
 
           <div className="prev-next-btns-container">
