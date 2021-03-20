@@ -15,7 +15,7 @@ class MasterReport extends Component {
     emailInputStyle: "form-control",
     userInputStyle: "form-control",
 
-    sector: "ציבורי",
+    sector: "ציבור",
     username: "",
     email: "",
     drugList: [],
@@ -44,6 +44,8 @@ class MasterReport extends Component {
       console.log(this.state.drugList);
       this.setState({ isSendClicked: true });
     }
+    this.drugListUpdate();
+    this.symptomListUpdate();
   };
 
   drugInserted = (isInsterted) => {
@@ -57,6 +59,19 @@ class MasterReport extends Component {
   symptomListUpdate = (newSymptomItem) => {
     this.setState({
       symptomsList: [...this.state.symptomsList, newSymptomItem],
+    });
+  };
+
+  closeModalClicked = () => {
+    this.setState({
+      currentStep: 1,
+      drugList: [],
+      symptomsList: [],
+      email: "",
+      username: "",
+      sector: "ציבור",
+      isDrugInsterted: false,
+      isSendClicked: false,
     });
   };
 
@@ -165,7 +180,9 @@ class MasterReport extends Component {
 
     return (
       <React.Fragment>
-        <ModalBox />
+        {this.state.isSendClicked ? (
+          <ModalBox closeModalClicked={this.closeModalClicked} />
+        ) : null}
         <div className="master-describe-container">
           <h2>דיווח על תופעות לוואי</h2>
           <p>

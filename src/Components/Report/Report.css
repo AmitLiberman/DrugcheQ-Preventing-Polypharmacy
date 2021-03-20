@@ -2,8 +2,8 @@
     text-align: right;
 }
 
-.btn.btn-primary.add-side-effect-btn {
-    display: inline-block;
+.btn.btn-info.add-side-effect-btn {
+    z-index: 0;
 }
 
 .input-side-effect-name {
