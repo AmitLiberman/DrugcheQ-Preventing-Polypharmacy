@@ -12,3 +12,17 @@
     margin: 1em;
     border: 1px solid rgb(119, 119, 119);
 }
+
+.progress-interaction {
+    margin: 1em;
+    margin-right: -3em;
+}
+
+.progress-interaction-headline {
+    margin-bottom: 1em;
+    font-size: 2rem;
+}
+
+.interaction-between-headline {
+    font-size: 1.7rem;
+}
