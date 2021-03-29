@@ -36,7 +36,11 @@ class InteractionResults extends Component {
     let safe_msg = "";
 
     if (resultsLength === 1 && this.props.results[0].comment === "safe") {
-      safe_msg = <h3>לא נמצא אינטראקציה בין התרופות שהזנת</h3>;
+      safe_msg = (
+        <h3 className="not-found-drug-msg">
+          לא נמצא אינטראקציה בין התרופות שהזנת
+        </h3>
+      );
       results.push(safe_msg);
       return <div className="drugInteractionElement">{results}</div>;
     }
@@ -46,7 +50,7 @@ class InteractionResults extends Component {
       if (this.props.results[index].error != null) {
         results.push(
           <div>
-            <h6>לא נמצאה תרופה עם השם</h6>
+            <h6 className="not-found-drug-msg">לא נמצאה תרופה עם השם</h6>
             <h6>{this.props.results[index].error} </h6>
           </div>
         );
