@@ -7,7 +7,6 @@ class DrugSearchInput extends Component {
     drugName: "", //drug name that submited in input
     searchResponse: "",
     interacionRes: "",
-    laoding: false,
   };
 
   //Change State to the drug name that typed
@@ -55,7 +54,7 @@ class DrugSearchInput extends Component {
           <h2>חיפוש תרופה</h2>
           <p>התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות.</p>
         </div>
-        <form className="interaction-form" onSubmit={this.handleSubmit}>
+        <form className="search-form" onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <button className="btn btn-info add-drug-btn" type="submit">

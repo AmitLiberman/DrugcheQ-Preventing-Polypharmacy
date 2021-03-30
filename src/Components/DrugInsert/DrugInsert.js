@@ -153,22 +153,7 @@ class DrugInsert extends Component {
         <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div>
 
         <form className="interaction-form" onSubmit={this.handleSubmit}>
-          <div className="input-group mb-3">
-            <div>
-              <button className="btn btn-success add-drug-btn" type="submit">
-                + הוסף
-              </button>
-            </div>
-            {/* <input
-              onChange={this.handleChange}
-              type="text"
-              className="form-control input-drug-name"
-              placeholder="הכנס/י שם תרופה"
-              value={this.state.drugName}
-              aria-label=""
-              aria-describedby="basic-addon1"
-            /> */}
-
+          <div class="input-group mb-3" style={{ textAlign: "right" }}>
             <Autosuggest
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -177,6 +162,14 @@ class DrugInsert extends Component {
               renderSuggestion={this.renderSuggestion}
               inputProps={inputProps}
             />
+            <div>
+              <button
+                className="btn btn-primary add-drug-to-list"
+                type="submit"
+              >
+                הוסף +
+              </button>
+            </div>
           </div>
         </form>
 
