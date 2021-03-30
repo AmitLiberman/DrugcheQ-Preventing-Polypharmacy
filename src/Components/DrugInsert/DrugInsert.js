@@ -3,6 +3,7 @@ import DrugList from "../DrugList/DrugList";
 import "./DrugInsert.css";
 import axios from "axios";
 import Autosuggest from "react-autosuggest";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class DrugInsert extends Component {
   state = {
@@ -12,8 +13,9 @@ class DrugInsert extends Component {
     value: "",
     suggestions: [],
     drugSuggestions: [],
-    loader: false,
+    loading: false,
     chooseSuggest: false,
+    notInList: "alert-drug-list fadeOut",
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -48,18 +50,8 @@ class DrugInsert extends Component {
       axios
         .get(request)
         .then((response) => {
-          this.setState({ interacionRes: response.data });
           this.setState({ loading: false });
-
-          var reponseLength = Object.keys(response.data).length;
-          for (let index = 0; index < reponseLength; index++) {
-            this.setState({
-              drugSuggestions: [
-                ...this.state.drugSuggestions,
-                response.data[index],
-              ],
-            });
-          }
+          this.setState({ drugSuggestions: response.data });
         })
         .catch((error) => {
           alert("error!");
@@ -93,7 +85,18 @@ class DrugInsert extends Component {
   //Submit Drug Item to list
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.chooseSuggest === false) return;
+    if (this.state.chooseSuggest === false) {
+      this.setState({
+        notInList: "alert-drug-list fadeIn",
+      });
+
+      setTimeout(() => {
+        this.setState({
+          notInList: "alert-drug-list fadeOut",
+        });
+      }, 2000);
+      return;
+    }
     this.setState({ chooseSuggest: false });
 
     const newDrugItem = {
@@ -128,8 +131,27 @@ class DrugInsert extends Component {
       value,
       onChange: this.onChange,
     };
-    return (
-      <React.Fragment>
+
+    let progress = (
+      <div style={{ margin: "2em" }}>
+        <CircularProgress />
+      </div>
+    );
+    return this.state.loading ? (
+      progress
+    ) : (
+      <div>
+        <div className="interaction-describe-container">
+          <h2>בדיקת אינטראקציה בין תרופות</h2>
+          <p>
+            התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות. חזור
+            על התהליך כדי להוסיף מספר תרופות.<br></br> לאחר השלמת הרשימה שלך,
+            תוכל לבדוק אם קיימת אינטראקציה באופן מיידי או לשמור את הרשימה שלך
+            לבדיקה עתידית.
+          </p>
+        </div>
+        <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div>
+
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
             <div>
@@ -146,6 +168,7 @@ class DrugInsert extends Component {
               aria-label=""
               aria-describedby="basic-addon1"
             /> */}
+
             <Autosuggest
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -165,7 +188,7 @@ class DrugInsert extends Component {
             drugList={this.props.drugList}
           />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

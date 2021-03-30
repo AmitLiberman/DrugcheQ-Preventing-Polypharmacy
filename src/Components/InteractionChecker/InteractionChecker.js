@@ -100,20 +100,12 @@ class InteractionChecker extends Component {
     if (this.state.interacionRes == null) {
       checkForm = (
         <div>
-          <div className="interaction-describe-container">
-            <h2>בדיקת אינטראקציה בין תרופות</h2>
-            <p>
-              התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות.
-              חזור על התהליך כדי להוסיף מספר תרופות.<br></br> לאחר השלמת הרשימה
-              שלך, תוכל לבדוק אם קיימת אינטראקציה באופן מיידי או לשמור את הרשימה
-              שלך לבדיקה עתידית.
-            </p>
-          </div>
           <DrugInsert
             drugInsertHandler={this.drugInsertHandler}
             drugListUpdate={this.drugListUpdate}
             drugList={this.state.drugList}
             delDrug={this.drugListDeleteItem}
+            drugNotInList={this.drugNotInList}
           />
 
           {checkIntreactionBtn}
