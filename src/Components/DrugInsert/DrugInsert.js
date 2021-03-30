@@ -4,14 +4,6 @@ import "./DrugInsert.css";
 import axios from "axios";
 import Autosuggest from "react-autosuggest";
 
-const languages = [
-  { name: "Amit" },
-  { name: "Idan" },
-  { name: "Lilach" },
-  { name: "Adi" },
-  { name: "stav" },
-];
-
 class DrugInsert extends Component {
   state = {
     drugName: "", //drug name that submited in input
@@ -99,7 +91,7 @@ class DrugInsert extends Component {
 
     const newDrugItem = {
       id: this.state.drugList.length + 1,
-      name: this.state.drugName,
+      name: this.state.value,
     };
     if (newDrugItem.name.trim().length !== 0) {
       if (this.props.drugInsertHandler) {
@@ -107,13 +99,13 @@ class DrugInsert extends Component {
       }
       //if the input not contains only spaces
       this.setState({ drugList: [...this.state.drugList, newDrugItem] });
-      this.setState({ drugName: "" });
+      this.setState({ value: "" });
       this.props.drugListUpdate(newDrugItem);
     }
   };
   //Change State to the drug name that typed
   handleChange = (event) => {
-    this.setState({ drugName: event.target.value });
+    this.setState({ value: event.target.value });
   };
 
   //handleInteractionCheck
@@ -125,7 +117,7 @@ class DrugInsert extends Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: "Type a programming language",
+      placeholder: "הכנס שם תרופה",
       value,
       onChange: this.onChange,
     };
