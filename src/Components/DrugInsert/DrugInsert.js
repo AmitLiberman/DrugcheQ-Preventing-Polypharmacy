@@ -13,6 +13,7 @@ class DrugInsert extends Component {
     suggestions: [],
     drugSuggestions: [],
     loader: false,
+    chooseSuggest: false,
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -32,7 +33,11 @@ class DrugInsert extends Component {
   // When suggestion is clicked, Autosuggest needs to populate the input
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
-  getSuggestionValue = (suggestion) => suggestion.name;
+  getSuggestionValue = (suggestion) => {
+    console.log("getSuggestionValue");
+    this.setState({ chooseSuggest: true });
+    return suggestion.name;
+  };
 
   // Use your imagination to render suggestions.
   renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
@@ -88,6 +93,8 @@ class DrugInsert extends Component {
   //Submit Drug Item to list
   handleSubmit = (event) => {
     event.preventDefault();
+    if (this.state.chooseSuggest === false) return;
+    this.setState({ chooseSuggest: false });
 
     const newDrugItem = {
       id: this.state.drugList.length + 1,
