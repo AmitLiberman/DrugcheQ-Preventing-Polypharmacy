@@ -1,12 +1,96 @@
 import React, { Component } from "react";
 import DrugList from "../DrugList/DrugList";
 import "./DrugInsert.css";
+import axios from "axios";
+import Autosuggest from "react-autosuggest";
+
+const languages = [
+  { name: "Amit" },
+  { name: "Idan" },
+  { name: "Lilach" },
+  { name: "Adi" },
+  { name: "stav" },
+];
 
 class DrugInsert extends Component {
   state = {
     drugName: "", //drug name that submited in input
     drugList: [],
     response: null,
+    value: "",
+    suggestions: [],
+    drugSuggestions: [],
+    loader: false,
+  };
+  // Teach Autosuggest how to calculate suggestions for any given input value.
+  getSuggestions = (value) => {
+    console.log("getSuggestions");
+
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+    console.log(inputLength);
+
+    return inputLength === 0
+      ? []
+      : this.state.drugSuggestions.filter(
+          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+        );
+  };
+
+  // When suggestion is clicked, Autosuggest needs to populate the input
+  // based on the clicked suggestion. Teach Autosuggest how to calculate the
+  // input value for every given suggestion.
+  getSuggestionValue = (suggestion) => suggestion.name;
+
+  // Use your imagination to render suggestions.
+  renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
+
+  componentDidMount = () => {
+    const request = "http://127.0.0.1:5000/suggest";
+    this.setState({ loading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          this.setState({ interacionRes: response.data });
+          this.setState({ loading: false });
+
+          var reponseLength = Object.keys(response.data).length;
+          for (let index = 0; index < reponseLength; index++) {
+            this.setState({
+              drugSuggestions: [
+                ...this.state.drugSuggestions,
+                response.data[index],
+              ],
+            });
+          }
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
+  };
+
+  onChange = (event, { newValue }) => {
+    this.setState({
+      value: newValue,
+    });
+  };
+
+  // Autosuggest will call this function every time you need to update suggestions.
+  // You already implemented this logic above, so just use it.
+  onSuggestionsFetchRequested = ({ value }) => {
+    console.log("onSuggestionsFetchRequested");
+    this.setState({
+      suggestions: this.getSuggestions(value),
+    });
+  };
+
+  // Autosuggest will call this function every time you need to clear suggestions.
+  onSuggestionsClearRequested = () => {
+    console.log("onSuggestionsClearRequested");
+    this.setState({
+      suggestions: [],
+    });
   };
 
   //Submit Drug Item to list
@@ -37,16 +121,24 @@ class DrugInsert extends Component {
     alert("בודק אינטראקציה בין התרופות");
   };
   render() {
+    const { value, suggestions } = this.state;
+
+    // Autosuggest will pass through all these props to the input.
+    const inputProps = {
+      placeholder: "Type a programming language",
+      value,
+      onChange: this.onChange,
+    };
     return (
       <React.Fragment>
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
-            <div className="input-group-prepend">
+            <div>
               <button className="btn btn-success add-drug-btn" type="submit">
                 + הוסף
               </button>
             </div>
-            <input
+            {/* <input
               onChange={this.handleChange}
               type="text"
               className="form-control input-drug-name"
@@ -54,9 +146,18 @@ class DrugInsert extends Component {
               value={this.state.drugName}
               aria-label=""
               aria-describedby="basic-addon1"
+            /> */}
+            <Autosuggest
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={this.getSuggestionValue}
+              renderSuggestion={this.renderSuggestion}
+              inputProps={inputProps}
             />
           </div>
         </form>
+
         <div className="drug-list-container">
           {/* change this.state.drugList to this.props.drugList will work but change 
           is needed in the paren component in interaction checker */}
