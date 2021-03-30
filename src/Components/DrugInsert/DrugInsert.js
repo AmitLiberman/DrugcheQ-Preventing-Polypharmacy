@@ -16,7 +16,6 @@ class DrugInsert extends Component {
     loading: false,
     chooseSuggest: false,
     notInList: "alert-drug-list fadeOut",
-    // alertClass: "alert-drug-list fadeOut",
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -24,7 +23,6 @@ class DrugInsert extends Component {
 
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-    console.log(inputLength);
 
     return inputLength === 0
       ? []
@@ -61,6 +59,7 @@ class DrugInsert extends Component {
   };
 
   onChange = (event, { newValue }) => {
+    console.log("onChange");
     this.setState({
       value: newValue,
     });
@@ -72,6 +71,7 @@ class DrugInsert extends Component {
     console.log("onSuggestionsFetchRequested");
     this.setState({
       suggestions: this.getSuggestions(value),
+      chooseSuggest: false,
     });
   };
 
@@ -134,7 +134,7 @@ class DrugInsert extends Component {
     };
 
     let progress = (
-      <div style={{ margin: "2em" }}>
+      <div style={{ margin: "3em" }}>
         <CircularProgress />
       </div>
     );
@@ -152,7 +152,7 @@ class DrugInsert extends Component {
           </p>
         </div>
         <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div>
-        <div className={this.props.alertClass}>יש להזין לפחות 2 תרופות</div>
+        <div className={this.props.notInList}>יש להזין לפחות 2 תרופות</div>
 
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div class="input-group mb-3" style={{ textAlign: "right" }}>

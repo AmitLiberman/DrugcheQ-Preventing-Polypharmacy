@@ -13,7 +13,7 @@ class InteractionChecker extends Component {
     response: null,
     interacionRes: null,
     loading: false,
-    alertClass: "alert-drug-list fadeOut",
+    notInList: "alert-drug-list fadeOut",
   };
 
   drugInsertHandler = (e) => {
@@ -24,7 +24,6 @@ class InteractionChecker extends Component {
   };
 
   drugListDeleteItem = (id) => {
-    alert("delete clicked");
     this.setState({
       drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
     });
@@ -53,12 +52,12 @@ class InteractionChecker extends Component {
       });
     } else {
       this.setState({
-        alertClass: "alert-drug-list fadeIn",
+        notInList: "alert-drug-list fadeIn",
       });
 
       setTimeout(() => {
         this.setState({
-          alertClass: "alert-drug-list fadeOut",
+          notInList: "alert-drug-list fadeOut",
         });
       }, 2000);
     }
@@ -106,7 +105,7 @@ class InteractionChecker extends Component {
             drugListUpdate={this.drugListUpdate}
             drugList={this.state.drugList}
             delDrug={this.drugListDeleteItem}
-            alertClass={this.state.alertClass}
+            notInList={this.state.notInList}
           />
 
           {checkIntreactionBtn}
