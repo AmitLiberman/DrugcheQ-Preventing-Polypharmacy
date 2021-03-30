@@ -26,3 +26,18 @@
 .interaction-between-headline {
     font-size: 1.7rem;
 }
+
+.alert-drug-list {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    display: show;
+}
+
+.alert-drug-list.fadeOut {
+    opacity: 0;
+}
+
+.alert-drug-list.fadeIn {
+    opacity: 1;
+}

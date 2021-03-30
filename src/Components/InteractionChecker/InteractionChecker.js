@@ -13,6 +13,7 @@ class InteractionChecker extends Component {
     response: null,
     interacionRes: null,
     loading: false,
+    alertClass: "alert-drug-list fadeOut",
   };
 
   drugInsertHandler = (e) => {
@@ -31,23 +32,35 @@ class InteractionChecker extends Component {
   };
 
   handleInteractionCheck = () => {
-    const drugNames = this.state.drugList.map((drug) => {
-      return drug.name;
-    });
+    if (this.state.drugList.length > 1) {
+      const drugNames = this.state.drugList.map((drug) => {
+        return drug.name;
+      });
 
-    const request = this.buildGetInteractionsReq(drugNames);
-    this.setState({ loading: true }, () => {
-      axios
-        .get(request)
-        .then((response) => {
-          console.log(response.data);
-          this.setState({ interacionRes: response.data });
-          this.setState({ loading: false });
-        })
-        .catch((error) => {
-          alert("error!");
+      const request = this.buildGetInteractionsReq(drugNames);
+      this.setState({ loading: true }, () => {
+        axios
+          .get(request)
+          .then((response) => {
+            console.log(response.data);
+            this.setState({ interacionRes: response.data });
+            this.setState({ loading: false });
+          })
+          .catch((error) => {
+            alert("error!");
+          });
+      });
+    } else {
+      this.setState({
+        alertClass: "alert-drug-list fadeIn",
+      });
+
+      setTimeout(() => {
+        this.setState({
+          alertClass: "alert-drug-list fadeOut",
         });
-    });
+      }, 2000);
+    }
   };
 
   //build the get request for interaction check
@@ -102,7 +115,10 @@ class InteractionChecker extends Component {
             drugList={this.state.drugList}
             delDrug={this.drugListDeleteItem}
           />
+
           {checkIntreactionBtn}
+
+          <div className={this.state.alertClass}>יש להזין לפחות 2 תרופות</div>
         </div>
       );
     } else
