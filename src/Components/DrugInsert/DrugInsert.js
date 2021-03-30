@@ -16,6 +16,7 @@ class DrugInsert extends Component {
     loading: false,
     chooseSuggest: false,
     notInList: "alert-drug-list fadeOut",
+    // alertClass: "alert-drug-list fadeOut",
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -151,6 +152,7 @@ class DrugInsert extends Component {
           </p>
         </div>
         <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div>
+        <div className={this.props.alertClass}>יש להזין לפחות 2 תרופות</div>
 
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div class="input-group mb-3" style={{ textAlign: "right" }}>

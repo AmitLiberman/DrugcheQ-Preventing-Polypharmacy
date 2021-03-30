@@ -42,3 +42,7 @@
 .alert-drug-list.fadeIn {
     opacity: 1;
 }
+
+.submit-drug-list-btn-container {
+    float: right;
+}

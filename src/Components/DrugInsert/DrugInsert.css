@@ -24,10 +24,11 @@
 }
 
 .drug-list-container {
-    display: inline-block;
     margin-top: 1.2em;
-    width: 100%;
+    width: 75%;
     position: relative;
+    float: right;
+    margin-left: 9em;
 }
 
 

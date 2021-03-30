@@ -24,6 +24,7 @@ class InteractionChecker extends Component {
   };
 
   drugListDeleteItem = (id) => {
+    alert("delete clicked");
     this.setState({
       drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
     });
@@ -105,12 +106,10 @@ class InteractionChecker extends Component {
             drugListUpdate={this.drugListUpdate}
             drugList={this.state.drugList}
             delDrug={this.drugListDeleteItem}
-            drugNotInList={this.drugNotInList}
+            alertClass={this.state.alertClass}
           />
 
           {checkIntreactionBtn}
-
-          <div className={this.state.alertClass}>יש להזין לפחות 2 תרופות</div>
         </div>
       );
     } else
