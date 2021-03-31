@@ -62,7 +62,6 @@ class InteractionChecker extends Component {
           notInList: "alert-drug-list fadeOut",
         });
       }, 2000);
-      // this.setState({ twoDrugsMsg: "" });
     }
   };
 

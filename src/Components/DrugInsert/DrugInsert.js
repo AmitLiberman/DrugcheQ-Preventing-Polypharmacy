@@ -7,7 +7,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 class DrugInsert extends Component {
   state = {
-    drugName: "", //drug name that submited in input
     drugList: [],
     response: null,
     value: "",
@@ -20,8 +19,6 @@ class DrugInsert extends Component {
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
-    console.log("getSuggestions");
-
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 
@@ -36,7 +33,6 @@ class DrugInsert extends Component {
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
-    console.log("getSuggestionValue");
     this.setState({ chooseSuggest: true });
     return suggestion.name;
   };
@@ -60,7 +56,6 @@ class DrugInsert extends Component {
   };
 
   onChange = (event, { newValue }) => {
-    console.log("onChange");
     this.setState({
       value: newValue,
     });
@@ -69,7 +64,6 @@ class DrugInsert extends Component {
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
-    console.log("onSuggestionsFetchRequested");
     this.setState({
       suggestions: this.getSuggestions(value),
       chooseSuggest: false,
@@ -78,7 +72,6 @@ class DrugInsert extends Component {
 
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
-    console.log("onSuggestionsClearRequested");
     this.setState({
       suggestions: [],
     });
@@ -88,7 +81,6 @@ class DrugInsert extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.chooseSuggest === false) {
-      console.log("in if");
       this.setState({
         notInList: "alert-drug-list fadeIn",
         alertMsg: "יש לבחור תרופה מתוך הרשימה",
@@ -181,10 +173,9 @@ class DrugInsert extends Component {
         </form>
 
         <div className="drug-list-container">
+          <div className={this.props.notInList}>{this.props.twoDrugsMsg}</div>
           {/* change this.state.drugList to this.props.drugList will work but change 
           is needed in the paren component in interaction checker */}
-          <div className={this.props.notInList}>{this.props.twoDrugsMsg}</div>
-
           <DrugList
             delDrug={this.props.delDrug}
             drugList={this.props.drugList}
