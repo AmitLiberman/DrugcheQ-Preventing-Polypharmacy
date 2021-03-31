@@ -14,6 +14,7 @@ class InteractionChecker extends Component {
     interacionRes: null,
     loading: false,
     notInList: "alert-drug-list fadeOut",
+    twoDrugsMsg: "",
   };
 
   drugInsertHandler = (e) => {
@@ -53,6 +54,7 @@ class InteractionChecker extends Component {
     } else {
       this.setState({
         notInList: "alert-drug-list fadeIn",
+        twoDrugsMsg: "יש להזין לפחות 2 תרופות",
       });
 
       setTimeout(() => {
@@ -60,6 +62,7 @@ class InteractionChecker extends Component {
           notInList: "alert-drug-list fadeOut",
         });
       }, 2000);
+      // this.setState({ twoDrugsMsg: "" });
     }
   };
 
@@ -106,6 +109,7 @@ class InteractionChecker extends Component {
             drugList={this.state.drugList}
             delDrug={this.drugListDeleteItem}
             notInList={this.state.notInList}
+            twoDrugsMsg={this.state.twoDrugsMsg}
           />
 
           {checkIntreactionBtn}

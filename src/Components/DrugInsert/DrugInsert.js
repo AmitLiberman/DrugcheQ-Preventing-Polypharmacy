@@ -16,6 +16,7 @@ class DrugInsert extends Component {
     loading: false,
     chooseSuggest: false,
     notInList: "alert-drug-list fadeOut",
+    alertMsg: "",
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -87,8 +88,10 @@ class DrugInsert extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.chooseSuggest === false) {
+      console.log("in if");
       this.setState({
         notInList: "alert-drug-list fadeIn",
+        alertMsg: "יש לבחור תרופה מתוך הרשימה",
       });
 
       setTimeout(() => {
@@ -96,6 +99,8 @@ class DrugInsert extends Component {
           notInList: "alert-drug-list fadeOut",
         });
       }, 2000);
+      // this.setState({ alertMsg: "" });
+
       return;
     }
     this.setState({ chooseSuggest: false });
@@ -151,8 +156,8 @@ class DrugInsert extends Component {
             לבדיקה עתידית.
           </p>
         </div>
-        <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div>
-        <div className={this.props.notInList}>יש להזין לפחות 2 תרופות</div>
+        {/* <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div> ש להזין לפחות 2 תרופות */}
+        <div className={this.state.notInList}>{this.state.alertMsg}</div>
 
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div class="input-group mb-3" style={{ textAlign: "right" }}>
@@ -178,6 +183,8 @@ class DrugInsert extends Component {
         <div className="drug-list-container">
           {/* change this.state.drugList to this.props.drugList will work but change 
           is needed in the paren component in interaction checker */}
+          <div className={this.props.notInList}>{this.props.twoDrugsMsg}</div>
+
           <DrugList
             delDrug={this.props.delDrug}
             drugList={this.props.drugList}
