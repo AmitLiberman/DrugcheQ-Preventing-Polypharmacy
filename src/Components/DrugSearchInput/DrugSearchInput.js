@@ -80,7 +80,6 @@ class DrugSearchInput extends Component {
   handleChange = (event) => {
     this.setState({ value: event.target.value });
   };
-  //asfdsa
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.chooseSuggest === false) {
