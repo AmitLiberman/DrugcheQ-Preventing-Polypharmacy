@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./DrugSearchInput.css";
 import axios from "axios";
 import Autosuggest from "react-autosuggest";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class DrugSearchInput extends Component {
   state = {
@@ -14,6 +15,7 @@ class DrugSearchInput extends Component {
     chooseSuggest: false,
     notInList: "alert-drug-list fadeOut",
     alertMsg: "",
+    loading: false,
   };
 
   componentDidMount = () => {
@@ -122,32 +124,15 @@ class DrugSearchInput extends Component {
       value,
       onChange: this.onChange,
     };
-    return (
+    return this.state.loading ? (
+      <CircularProgress className="loading-drugs-search" />
+    ) : (
       <div className="drug-search-container">
         <div className="drug-search-describe-container">
           <h2>חיפוש תרופה</h2>
           <p>התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות.</p>
         </div>
-        {/* <form className="search-form" onSubmit={this.handleSubmit}>
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <button className="btn btn-info add-drug-btn" type="submit">
-                חיפוש
-              </button>
-            </div>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              className="form-control input-drug-name-search"
-              placeholder="הכנס/י שם תרופה"
-              value={this.state.drugName}
-              aria-label=""
-              aria-describedby="basic-addon1"
-            />
-          </div>
-        </form> */}
         <div className={this.state.notInList}>{this.state.alertMsg}</div>
-
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div class="input-group mb-3" style={{ textAlign: "right" }}>
             <Autosuggest

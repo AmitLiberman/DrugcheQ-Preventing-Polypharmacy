@@ -16,3 +16,15 @@
     border: 1px solid #ccc;
     padding: 0.4em;
 }
+
+.loading-drugs-search {
+    margin-bottom: 7em;
+    float: right;
+    margin-right: 18em;
+}
+
+@media screen and (max-width: 600px) {
+    .loading-drugs-search {
+        margin-right: 7em;
+    }
+}

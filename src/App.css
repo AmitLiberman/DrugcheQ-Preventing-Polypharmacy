@@ -1,7 +1,7 @@
 main {
     position: relative;
     text-align: center;
-    width: 80%;
+    width: 100%;
     margin: 1em auto;
     overflow: hidden;
 }
@@ -14,13 +14,20 @@ main {
     box-sizing: border-box;
     position: relative;
     text-align: center;
-    width: 80%;
+    width: 100%;
     margin: 0.8em auto;
     overflow: hidden;
     display: block;
     margin-bottom: 2rem;
     margin-right: 14em;
-    padding: 3rem;
+    padding: 4em;
+    padding-right: 17em;
+}
+
+@media screen and (max-width: 600px) {
+    .component-content {
+        padding: 2em;
+    }
 }
 
 .action-navigation-bar {
