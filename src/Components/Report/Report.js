@@ -9,6 +9,9 @@ class Report extends Component {
     conditionsList: [],
     drugList: [],
     suggestions: [],
+    chooseSuggest: false,
+    alertMsg: "",
+
     value: "",
     symptoms: [
       { name: "כאב ראש" },
@@ -76,6 +79,21 @@ class Report extends Component {
   //Submit condition Item to list
   handleSubmit = (event) => {
     event.preventDefault();
+    if (this.state.chooseSuggest === false) {
+      this.setState({
+        notInList: "alert-drug-list fadeIn",
+        alertMsg: "יש לבחור תרופה מתוך הרשימה",
+      });
+
+      setTimeout(() => {
+        this.setState({
+          notInList: "alert-drug-list fadeOut",
+        });
+      }, 2000);
+      // this.setState({ alertMsg: "" });
+
+      return;
+    }
     const newConditionItem = {
       id: this.state.conditionsList.length + 1,
       name: this.state.value,
@@ -108,23 +126,30 @@ class Report extends Component {
 
     return (
       <React.Fragment>
-        <form className="side-effect-form" onSubmit={this.handleSubmit}>
-          <div className="">
-            <div className="">
+        <div
+          className={this.state.notInList}
+          style={{ textAlign: "center", marginBottom: "0.8em" }}
+        >
+          {this.state.alertMsg}
+        </div>
+
+        <form className="interaction-form" onSubmit={this.handleSubmit}>
+          <div class="input-group mb-3" style={{ textAlign: "right" }}>
+            <Autosuggest
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={this.getSuggestionValue}
+              renderSuggestion={this.renderSuggestion}
+              inputProps={inputProps}
+            />
+            <div>
               <button
-                className="btn btn-info add-side-effect-btn"
+                className="btn btn-primary add-drug-to-list"
                 type="submit"
               >
-                + הוסף
+                הוסף +
               </button>
-              <Autosuggest
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={this.getSuggestionValue}
-                renderSuggestion={this.renderSuggestion}
-                inputProps={inputProps}
-              />
             </div>
           </div>
         </form>

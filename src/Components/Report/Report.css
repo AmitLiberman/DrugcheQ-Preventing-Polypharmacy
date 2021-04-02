@@ -13,3 +13,7 @@
 .input-group.form-container {
     text-align: right;
 }
+
+.auto-suggest-cont {
+    display: inline-block;
+}
