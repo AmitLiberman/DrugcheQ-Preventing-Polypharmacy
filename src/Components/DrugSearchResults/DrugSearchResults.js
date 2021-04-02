@@ -152,7 +152,7 @@ class DrugSearchResults extends Component {
               </span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="3">
-              <Card.Body>Hello! I'm the body</Card.Body>
+              <Card.Body>בקרוב</Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>

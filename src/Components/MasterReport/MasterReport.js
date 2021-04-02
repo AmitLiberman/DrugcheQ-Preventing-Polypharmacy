@@ -37,16 +37,18 @@ class MasterReport extends Component {
 
   sendReport = () => {
     if (this.state.symptomsList.length >= 1) {
+      console.log("sending report");
       this.setState({ isSendClicked: true });
+
+      const json = JSON.stringify({
+        username: this.state.username,
+        email: this.state.email,
+        sector: this.state.sector,
+        drugList: this.state.drugList,
+        symptomsList: this.state.symptomsList,
+      });
+      axios.post("http://127.0.0.1:5000/side-effect-report", json);
     }
-    const json = JSON.stringify({
-      username: this.state.username,
-      email: this.state.email,
-      sector: this.state.sector,
-      drugList: this.state.drugList,
-      symptomsList: this.state.symptomsList,
-    });
-    const res = axios.post("http://127.0.0.1:5000/side-effect-report", json);
   };
 
   drugInserted = (isInsterted) => {

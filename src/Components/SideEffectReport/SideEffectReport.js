@@ -27,14 +27,12 @@ class SideEffectReport extends Component {
 
     if (this.state.isDrugInsert && this.state.isSymptomInsert) {
       sendReportBtn = (
-        // <div className="submit-report-btn-container">
         <button
           onClick={this.handleInteractionCheck}
           className="btn btn-outline-dark  btn-lg send-btn"
         >
           דווח
         </button>
-        /* </div> */
       );
     }
 
