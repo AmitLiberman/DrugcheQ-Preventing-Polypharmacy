@@ -98,7 +98,6 @@ class Report extends Component {
   };
 
   render() {
-    console.log("report is rendering");
     const { value, suggestions } = this.state;
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
@@ -106,28 +105,27 @@ class Report extends Component {
       value,
       onChange: this.onChange,
     };
-    console.log("report is rendering2");
 
     return (
       <React.Fragment>
         <form className="side-effect-form" onSubmit={this.handleSubmit}>
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
+          <div className="">
+            <div className="">
               <button
                 className="btn btn-info add-side-effect-btn"
                 type="submit"
               >
                 + הוסף
               </button>
+              <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                getSuggestionValue={this.getSuggestionValue}
+                renderSuggestion={this.renderSuggestion}
+                inputProps={inputProps}
+              />
             </div>
-            <Autosuggest
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-              getSuggestionValue={this.getSuggestionValue}
-              renderSuggestion={this.renderSuggestion}
-              inputProps={inputProps}
-            />
           </div>
         </form>
 

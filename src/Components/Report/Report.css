@@ -1,14 +1,15 @@
 .side-effect-form {
     text-align: right;
+    /* float: right; */
+    /* width: 100%; */
 }
 
 .btn.btn-info.add-side-effect-btn {
     z-index: 0;
+    display: inline-block;
+    text-align: right;
 }
 
-.input-side-effect-name {
-    width: 70%;
-    direction: rtl;
-    border: 1px solid #ccc;
-    padding: 0.4em;
+.input-group.form-container {
+    text-align: right;
 }
