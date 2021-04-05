@@ -131,7 +131,7 @@ class DrugInsert extends Component {
     };
 
     let progress = (
-      <div style={{ margin: "3em" }}>
+      <div style={{ margin: "5em" }}>
         <CircularProgress />
       </div>
     );
@@ -139,15 +139,6 @@ class DrugInsert extends Component {
       progress
     ) : (
       <div>
-        <div className="interaction-describe-container">
-          <h2>בדיקת אינטראקציה בין תרופות</h2>
-          <p>
-            התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות. חזור
-            על התהליך כדי להוסיף מספר תרופות.<br></br> לאחר השלמת הרשימה שלך,
-            תוכל לבדוק אם קיימת אינטראקציה באופן מיידי או לשמור את הרשימה שלך
-            לבדיקה עתידית.
-          </p>
-        </div>
         {/* <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div> ש להזין לפחות 2 תרופות */}
         <div className={this.state.notInList}>{this.state.alertMsg}</div>
 

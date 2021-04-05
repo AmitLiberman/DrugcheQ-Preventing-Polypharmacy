@@ -20,7 +20,8 @@ main {
     display: block;
     margin-bottom: 2rem;
     margin-right: 14em;
-    padding: 4em;
+    padding-top: 1.8em;
+    padding-bottom: 1.8em;
     padding-right: 17em;
 }
 

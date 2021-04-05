@@ -44,7 +44,7 @@ class DrugSearch extends Component {
         />
       );
 
-    return <div>{searchShow}</div>;
+    return <div style={{ marginBottom: "11em" }}>{searchShow}</div>;
   }
 }
 
