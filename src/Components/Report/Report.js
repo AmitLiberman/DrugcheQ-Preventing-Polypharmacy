@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Report.css";
 import DrugList from "../DrugList/DrugList";
 import Autosuggest from "react-autosuggest";
+import symptomsJson from "./symptoms.json";
 
 class Report extends Component {
   state = {
@@ -13,22 +14,6 @@ class Report extends Component {
     alertMsg: "",
 
     value: "",
-    symptoms: [
-      { name: "כאב ראש" },
-      { name: "קשיי נשימה" },
-      { name: "נפיחות בפנים" },
-      { name: "נמנום" },
-      { name: "בחילה" },
-      { name: "סחרחורת" },
-      { name: "עייפות" },
-      { name: "ישנוניות" },
-      { name: "קשיי הירדמות" },
-      { name: "דפיקות לב מהירות" },
-      { name: "שלשול" },
-      { name: " פריחה בעור" },
-      { name: "גרד" },
-      { name: "לחץ בחזה" },
-    ],
   };
 
   onChange = (event, { newValue }) => {
@@ -60,7 +45,7 @@ class Report extends Component {
 
     return inputLength === 0
       ? []
-      : this.state.symptoms.filter(
+      : symptomsJson.filter(
           (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
         );
   };
