@@ -25,7 +25,8 @@ class DrugSearchResults extends Component {
 
   interactionHandler = () => {
     const request =
-      "http://127.0.0.1:5000/check?" + this.props.drugData.drug_english_name;
+      "https://drugcheq.herokuapp.com/check?" +
+      this.props.drugData.drug_english_name;
     this.setState({ loading: true }, () => {
       axios
         .get(request)

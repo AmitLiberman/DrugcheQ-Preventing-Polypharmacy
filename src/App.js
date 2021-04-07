@@ -51,7 +51,7 @@ function About() {
 }
 
 function Connect() {
-  return <h2>connect</h2>;
+  return <h1 style={{ textAlign: "right", marginBottom: "3.1em" }}>בקרוב</h1>;
 }
 
 export default App;

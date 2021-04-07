@@ -41,7 +41,7 @@ class DrugInsert extends Component {
   renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
 
   componentDidMount = () => {
-    const request = "http://127.0.0.1:5000/suggest";
+    const request = "https://drugcheq.herokuapp.com/suggest";
     this.setState({ loading: true }, () => {
       axios
         .get(request)

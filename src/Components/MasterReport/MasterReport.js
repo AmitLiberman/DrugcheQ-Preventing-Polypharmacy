@@ -47,7 +47,7 @@ class MasterReport extends Component {
         drugList: this.state.drugList,
         symptomsList: this.state.symptomsList,
       });
-      axios.post("http://127.0.0.1:5000/side-effect-report", json);
+      axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
     }
   };
 
