@@ -1,72 +1,78 @@
-.card {
-    min-width: 800px;
-}
-
-.accordion-name {
-    text-align: right;
-}
-
-.body-card {
-    margin-top: 2em;
-    overflow: scroll;
-}
-
-.accordion-name:hover {
-    cursor: pointer;
-    background-color: rgb(219, 217, 217);
-}
-
-.card {
-    width: 80%;
-    float: right;
-}
-
-.remedy-information {
-    direction: rtl;
-    text-align: right;
-}
-
-.search-results-headline {
-    text-align: right;
-    direction: rtl;
-    margin-bottom: 0.8em;
-}
-
-.drug-details {
-    text-align: left;
-}
-
-.material-icons-outlined.description.toggle {
-    font-size: 1.4rem;
-    margin-left: 0.6em;
-}
-
-.material-icons-outlined.info.toggle {
-    font-size: 1.4rem;
-    margin-left: 0.6em;
-}
-
-.material-icons-outlined.medication.toggle {
-    font-size: 1.4rem;
-    margin-left: 0.4em;
-    margin-right: -0.1em;
-}
-
-.material-icons-outlined.warning.toggle {
-    font-size: 0.8rem;
-    margin-right: -0.1em;
-}
-
-.material-icons-outlined.campaign.toggle {
-    font-size: 1.4rem;
-    margin-left: 0.6em;
-}
-
-.text {
-    font-size: 1.3rem;
-}
-
-.react-bootstrap-table-pagination-total {
-    position: relative;
-    font-size: 1rem;
-}
+    .card {
+        min-width: 800px;
+    }
+    
+    .accordion-name {
+        text-align: right;
+    }
+    
+    .body-card {
+        margin-top: 2em;
+        overflow: scroll;
+    }
+    
+    .accordion-name:hover {
+        cursor: pointer;
+        background-color: rgb(219, 217, 217);
+    }
+    
+    .card {
+        width: 60%;
+        float: right;
+    }
+    
+    @media screen and (max-width: 600px) {
+        .card {
+            width: 100%;
+        }
+    }
+    
+    .remedy-information {
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .search-results-headline {
+        text-align: right;
+        direction: rtl;
+        margin-bottom: 0.8em;
+    }
+    
+    .drug-details {
+        text-align: left;
+    }
+    
+    .material-icons-outlined.description.toggle {
+        font-size: 1.4rem;
+        margin-left: 0.6em;
+    }
+    
+    .material-icons-outlined.info.toggle {
+        font-size: 1.4rem;
+        margin-left: 0.6em;
+    }
+    
+    .material-icons-outlined.medication.toggle {
+        font-size: 1.4rem;
+        margin-left: 0.4em;
+        margin-right: -0.1em;
+    }
+    
+    .material-icons-outlined.warning.toggle {
+        font-size: 0.8rem;
+        margin-right: -0.1em;
+    }
+    
+    .material-icons-outlined.campaign.toggle {
+        font-size: 1.4rem;
+        margin-left: 0.6em;
+    }
+    
+    .text {
+        font-size: 1.3rem;
+    }
+    
+    .react-bootstrap-table-pagination-total {
+        position: relative;
+        font-size: 1rem;
+    }

@@ -139,9 +139,7 @@ class DrugInsert extends Component {
       progress
     ) : (
       <div>
-        {/* <div className={this.state.notInList}>יש לבחור תרופה מתוך הרשימה</div> ש להזין לפחות 2 תרופות */}
         <div className={this.state.notInList}>{this.state.alertMsg}</div>
-
         <form className="interaction-form" onSubmit={this.handleSubmit}>
           <div class="input-group mb-3" style={{ textAlign: "right" }}>
             <Autosuggest

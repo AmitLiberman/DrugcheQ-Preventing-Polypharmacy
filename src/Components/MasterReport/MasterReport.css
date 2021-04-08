@@ -14,6 +14,12 @@
     float: right;
 }
 
+@media only screen and (max-width: 650px) {
+    .steps-container {
+        width: 100%;
+    }
+}
+
 .prev-next-btns-container {
     margin-top: 2em;
     width: 70%;

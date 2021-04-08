@@ -4,6 +4,12 @@
     float: right;
 }
 
+@media screen and (max-width: 600px) {
+    .drug-search-container {
+        width: 100%;
+    }
+}
+
 .drug-search-describe-container {
     direction: rtl;
     text-align: right;
@@ -25,6 +31,7 @@
 
 @media screen and (max-width: 600px) {
     .loading-drugs-search {
-        margin-right: 7em;
+        margin-right: 10em;
+        margin-top: 5em;
     }
 }
