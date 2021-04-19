@@ -20,7 +20,7 @@ const TopNav = (props) => {
               <span className="link-text">חיפוש תרופה</span>
             </Nav.Link>
             <Nav.Link className="top-nav-link" href="/interaction-checker">
-              <span className="link-text">בדיקת אינטראקציה</span>
+              <span className="link-text"> אינטראקציה בין תרופות</span>
             </Nav.Link>
             <Nav.Link className="top-nav-link" href="/side-effect-report">
               <span className="link-text">דיווח על תופעות לוואי</span>

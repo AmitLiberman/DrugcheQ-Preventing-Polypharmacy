@@ -12,7 +12,6 @@ class Report extends Component {
     suggestions: [],
     chooseSuggest: false,
     alertMsg: "",
-
     value: "",
   };
 

@@ -96,18 +96,18 @@ class MasterReport extends Component {
 
   _next = () => {
     let notValidInput = false;
-    if (this.state.username.trim().length === 0) {
-      this.setState({
-        userInputStyle: this.state.userInputStyle + " invalid",
-      });
-      notValidInput = true;
-    }
-    if (this.state.email.trim().length === 0) {
-      this.setState({
-        emailInputStyle: this.state.emailInputStyle + " invalid",
-      });
-      notValidInput = true;
-    }
+    // if (this.state.username.trim().length === 0) {
+    //   this.setState({
+    //     userInputStyle: this.state.userInputStyle + " invalid",
+    //   });
+    //   notValidInput = true;
+    // }
+    // if (this.state.email.trim().length === 0) {
+    //   this.setState({
+    //     emailInputStyle: this.state.emailInputStyle + " invalid",
+    //   });
+    //   notValidInput = true;
+    // }
 
     if (this.state.currentStep === 2 && this.state.isDrugInsterted === false) {
       notValidInput = true;
