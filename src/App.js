@@ -31,8 +31,8 @@ const App = (props) => {
               <InteractionChecker />
             </Route>
             <Route path="/side-effect-report">
-              <MasterReport />
-              {/* <NewReport /> */}
+              {/* <MasterReport /> */}
+              <NewReport />
             </Route>
             <Route nodeRef={nodeRef} path="/drug-search">
               <DrugSearch ref={nodeRef} />

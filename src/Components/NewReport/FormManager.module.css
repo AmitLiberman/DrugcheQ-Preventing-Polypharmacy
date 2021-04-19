@@ -1,0 +1,18 @@
+.container {
+    text-align: right;
+}
+
+.stages {
+    display: block;
+    margin-bottom: 1em;
+}
+
+.stage {
+    display: inline-block;
+    direction: rtl;
+}
+
+.seperator {
+    margin-left: 1em;
+    margin-right: 1em;
+}
