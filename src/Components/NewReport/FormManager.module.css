@@ -32,6 +32,11 @@
     margin: 0em;
 }
 
+.mainForm {
+    display: inline-block;
+    direction: rtl;
+}
+
 .mainSector {
     display: inline-block;
 }

@@ -12,12 +12,18 @@ class FormManger extends Component {
     stageFinish: "stage finish",
     stageActive: "stage active",
     stage: "stage",
-    value: "",
+    mainSectorvalue: "",
+    specificSectorValue: "",
   };
 
-  handleChange = (event) => {
-    this.setState({ value: event.target.value });
-    console.log(this.state.value);
+  mainSectorhandleChange = (event) => {
+    this.setState({ mainSectorvalue: event.target.value });
+    console.log(this.state.mainSectorvalue);
+  };
+
+  specificSectorhandleChange = (event) => {
+    this.setState({ specificSectorValue: event.target.value });
+    console.log(this.state.specificSectorValue);
   };
 
   render() {
@@ -47,24 +53,21 @@ class FormManger extends Component {
               className={FormManagerStyles.sectorRadioContainer}
               component="fieldset"
             >
-              <FormLabel
-                className={FormManagerStyles.sectorHeader}
-                component="legend"
-                focused={false}
-              >
+              <FormLabel component="legend" style={{ color: "black" }}>
                 סקטור מדווח
               </FormLabel>
               <RadioGroup
                 aria-label="סקטור מדווח"
                 name="sector"
-                value={this.state.value}
-                onChange={this.handleChange}
+                value={this.state.mainSectorvalue}
+                onChange={this.mainSectorhandleChange}
               >
                 <FormControlLabel
                   className={FormManagerStyles.RadioOption}
                   value="public"
                   control={<Radio />}
                   label="ציבור"
+                  color="secondary"
                 />
                 <FormControlLabel
                   className={FormManagerStyles.RadioOption}
@@ -86,34 +89,30 @@ class FormManger extends Component {
               className={FormManagerStyles.sectorRadioContainer}
               component="fieldset"
             >
-              <FormLabel
-                className={FormManagerStyles.sectorHeader}
-                component="legend"
-                focused={false}
-              >
+              <FormLabel component="legend" style={{ color: "black" }}>
                 סקטור
               </FormLabel>
               <RadioGroup
                 aria-label="סקטור"
                 name="sector"
-                value={this.state.value}
-                onChange={this.handleChange}
+                value={this.state.specificSectorValue}
+                onChange={this.specificSectorhandleChange}
               >
                 <FormControlLabel
                   className={FormManagerStyles.RadioOption}
-                  value="public"
+                  value="medicine"
                   control={<Radio />}
                   label="רפואה"
                 />
                 <FormControlLabel
                   className={FormManagerStyles.RadioOption}
-                  value="medical-staff"
+                  value="pharmacy"
                   control={<Radio />}
                   label="רוקחות"
                 />
                 <FormControlLabel
                   className={FormManagerStyles.RadioOption}
-                  value="other"
+                  value="Nursing"
                   control={<Radio />}
                   label="סיעוד"
                 />
