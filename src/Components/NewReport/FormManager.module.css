@@ -16,3 +16,26 @@
     margin-left: 1em;
     margin-right: 1em;
 }
+
+.sectorRadioContainer {
+    text-align: right;
+    direction: rtl;
+}
+
+.sectorHeader {
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.RadioOption {
+    margin: 0em;
+}
+
+.mainSector {
+    display: inline-block;
+}
+
+.specificSector {
+    display: inline-block;
+}
