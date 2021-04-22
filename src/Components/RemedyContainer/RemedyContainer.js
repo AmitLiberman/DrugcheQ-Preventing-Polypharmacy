@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
 import axios from "axios";
+import "./RemedyContainer.css";
 
 class RemedyContainer extends Component {
   state = {
@@ -113,12 +114,14 @@ class RemedyContainer extends Component {
     this.setState({ value: event.target.value });
   };
 
-  //handleInteractionCheck
-  handleInteractionCheck = () => {
-    alert("בודק אינטראקציה בין התרופות");
+  removeRemedyHandler = () => {
+    console.log("Im component with key " + this.props.remedyComponentKey);
+    this.props.removeRemedyComponent(this.props.remedyComponentKey);
   };
+
   render() {
     const { value, suggestions } = this.state;
+    const { id } = this.props.remedyItem;
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
@@ -127,7 +130,15 @@ class RemedyContainer extends Component {
       onChange: this.onChange,
     };
     return (
-      <div>
+      <div className="remedy-element-container">
+        <div className="delete-remedy-btn-wrapper">
+          <button
+            className="delete-remedy-btn"
+            onClick={this.props.delRemedy.bind(this, id)}
+          >
+            X
+          </button>
+        </div>
         <label className="step2-lable" htmlFor="drug-name">
           שם התרופה
         </label>

@@ -1,0 +1,25 @@
+.remedy-element-container {
+    margin-bottom: 1em;
+    border: solid 1px rgb(185, 177, 177);
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.delete-remedy-btn {
+    float: left;
+    direction: rtl;
+    background-color: #a9d0da;
+    border: 1px solid #a9d0da;
+    border-width: 10%;
+    color: #24343f;
+    font-size: 1rem;
+    width: 5%;
+    border-radius: 10px;
+}
+
+.delete-remedy-btn:hover {
+    background-color: white;
+    color: #2b3841;
+    border: 1px solid #030303;
+    border-width: 10%;
+}
