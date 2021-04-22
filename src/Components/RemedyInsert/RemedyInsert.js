@@ -3,6 +3,7 @@ import axios from "axios";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./RemedyInsert.css";
 import RemedyList from "../RemedyList/RemedyList";
+import { compareBuild } from "semver";
 
 class RemedyInsert extends Component {
   state = {
@@ -13,6 +14,7 @@ class RemedyInsert extends Component {
     alertMsg: "",
     remedyList: [],
     remedyID: 0,
+    isChoosed: false,
   };
 
   delRemedy = (id) => {
@@ -23,6 +25,10 @@ class RemedyInsert extends Component {
         ...this.state.remedyList.filter((remedy) => remedy.id !== id),
       ],
     });
+  };
+
+  choosed = (c) => {
+    this.setState({ isChoosed: c });
   };
 
   componentDidMount = () => {
@@ -86,6 +92,7 @@ class RemedyInsert extends Component {
   };
 
   onClickAdd = () => {
+    if (this.state.isChoosed === false) return;
     if (this.state.drugList.length === 0) return;
 
     let newRemedyItem = { id: this.state.remedyID };
@@ -119,6 +126,7 @@ class RemedyInsert extends Component {
             delRemedy={this.delRemedy}
             remedies={this.state.remedyList}
             addDrug={this.addDrug}
+            choosed={this.choosed}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +

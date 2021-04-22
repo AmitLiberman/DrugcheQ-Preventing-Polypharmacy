@@ -13,6 +13,7 @@ class RemedyContainer extends Component {
     chooseSuggest: false,
     notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
+    stam: 0,
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -31,6 +32,8 @@ class RemedyContainer extends Component {
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
     this.setState({ chooseSuggest: true });
+    this.props.choosed(true);
+
     return suggestion.name;
   };
 
@@ -67,6 +70,7 @@ class RemedyContainer extends Component {
       suggestions: this.getSuggestions(value),
       chooseSuggest: false,
     });
+    this.props.choosed(false);
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
