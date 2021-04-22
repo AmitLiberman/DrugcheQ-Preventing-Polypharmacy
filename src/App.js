@@ -5,8 +5,6 @@ import BottomNav from "./Constants/BottomNav";
 import Home from "./Constants/Home";
 import InteractionChecker from "./Components/InteractionChecker/InteractionChecker";
 import MasterReport from "./Components/MasterReport/MasterReport";
-import NewReport from "./Components/NewReport/NewReport";
-
 import DrugSearch from "./Components/DrugSearch/DrugSearch";
 import React from "react";
 
@@ -31,8 +29,7 @@ const App = (props) => {
               <InteractionChecker />
             </Route>
             <Route path="/side-effect-report">
-              {/* <MasterReport /> */}
-              <NewReport />
+              <MasterReport />
             </Route>
             <Route nodeRef={nodeRef} path="/drug-search">
               <DrugSearch ref={nodeRef} />

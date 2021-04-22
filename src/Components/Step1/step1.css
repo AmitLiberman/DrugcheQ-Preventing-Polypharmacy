@@ -8,8 +8,31 @@
     direction: rtl;
     float: right;
     margin-top: 0.8em;
+    font-size: 1.2rem;
 }
 
 .form-control.invalid {
     border-color: red;
+}
+
+.main-sectors-container {
+    text-align: right;
+    display: flex;
+}
+
+.sector-container {
+    flex: 1;
+}
+
+.radio-option {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.radio-input {
+    margin-left: 0.3em;
+}
+
+.personal-detail-container {
+    margin-top: 1em;
 }
