@@ -5,7 +5,6 @@ import "./RemedyContainer.css";
 
 class RemedyContainer extends Component {
   state = {
-    drugList: [],
     response: null,
     value: "",
     suggestions: [],
@@ -57,6 +56,8 @@ class RemedyContainer extends Component {
     this.setState({
       value: newValue,
     });
+    const { id } = this.props.remedyItem;
+    this.props.addDrug(this.state.value, id);
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -75,48 +76,9 @@ class RemedyContainer extends Component {
     });
   };
 
-  //Submit Drug Item to list
-  handleSubmit = (event) => {
-    event.preventDefault();
-    if (this.state.chooseSuggest === false) {
-      this.setState({
-        notInList: "alert-remedy-list fadeIn",
-        alertMsg: "יש לבחור תרופה מתוך הרשימה",
-      });
-
-      setTimeout(() => {
-        this.setState({
-          notInList: "alert-remedy-list fadeOut",
-        });
-      }, 2000);
-      // this.setState({ alertMsg: "" });
-
-      return;
-    }
-    this.setState({ chooseSuggest: false });
-
-    const newDrugItem = {
-      id: this.state.drugList.length + 1,
-      name: this.state.value,
-    };
-    if (newDrugItem.name.trim().length !== 0) {
-      if (this.props.drugInsertHandler) {
-        this.props.drugInsertHandler(true);
-      }
-      //if the input not contains only spaces
-      this.setState({ drugList: [...this.state.drugList, newDrugItem] });
-      this.setState({ value: "" });
-      this.props.drugListUpdate(newDrugItem);
-    }
-  };
   //Change State to the drug name that typed
   handleChange = (event) => {
     this.setState({ value: event.target.value });
-  };
-
-  removeRemedyHandler = () => {
-    console.log("Im component with key " + this.props.remedyComponentKey);
-    this.props.removeRemedyComponent(this.props.remedyComponentKey);
   };
 
   render() {

@@ -8,6 +8,7 @@ class RemedyList extends Component {
         key={remedy.id}
         remedyItem={remedy}
         delRemedy={this.props.delRemedy}
+        addDrug={this.props.addDrug}
       />
     ));
   }

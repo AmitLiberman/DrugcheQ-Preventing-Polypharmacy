@@ -95,11 +95,11 @@ class MasterReport extends Component {
   };
 
   _next = () => {
-    let notValidInput = false;
-    if (this.state.currentStep === 2 && this.state.isDrugInsterted === false) {
-      notValidInput = true;
-    }
-    if (notValidInput) return;
+    // let notValidInput = false;
+    // if (this.state.currentStep === 2 && this.state.isDrugInsterted === false) {
+    //   notValidInput = true;
+    // }
+    // if (notValidInput) return;
 
     let currentStep = this.state.currentStep;
     // If the current step is 1 or 2, then add one on "next" button click
@@ -212,6 +212,7 @@ class MasterReport extends Component {
             drugListUpdate={this.drugListUpdate}
             drugList={this.props.drugList}
             drugListDeleteItem={this.drugListDeleteItem}
+            onNext={this._next}
           />
 
           <Step3

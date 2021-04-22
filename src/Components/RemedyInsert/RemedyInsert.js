@@ -16,6 +16,7 @@ class RemedyInsert extends Component {
   };
 
   delRemedy = (id) => {
+    if (this.state.remedyList.length === 1) return;
     console.log("delete remedy id " + id);
     this.setState({
       remedyList: [
@@ -85,11 +86,20 @@ class RemedyInsert extends Component {
   };
 
   onClickAdd = () => {
+    if (this.state.drugList.length === 0) return;
+
     let newRemedyItem = { id: this.state.remedyID };
     this.setState({
       remedyList: [...this.state.remedyList, newRemedyItem],
       remedyID: this.state.remedyID + 1,
     });
+  };
+
+  addDrug = (value, id) => {
+    if (value.trim().length !== 0) {
+      let newDrugItem = { name: value, id: id };
+      this.setState({ drugList: [...this.state.drugList, newDrugItem] });
+    }
   };
 
   render() {
@@ -108,6 +118,7 @@ class RemedyInsert extends Component {
           <RemedyList
             delRemedy={this.delRemedy}
             remedies={this.state.remedyList}
+            addDrug={this.addDrug}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +
