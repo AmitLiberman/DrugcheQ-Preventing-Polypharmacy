@@ -46,15 +46,15 @@ class Step1 extends Component {
           </div>
         </div>
         <div className="personal-detail-container">
-          <label className="step1-lable" htmlFor="username">
-            שם מלא
+          <label className="step1-lable" htmlFor="factor-name">
+            שם גורם
           </label>
           <input
             className={this.props.userInputStyle}
-            id="username"
-            name="username"
+            id="factor-name"
+            name="factor-name"
             type="text"
-            placeholder="הכנס שם מלא"
+            placeholder="הכנס שם גורם"
             value={this.props.username} // Prop: The email input data
             onChange={this.props.handleChange} // Prop: Puts data into state
           />
@@ -67,6 +67,18 @@ class Step1 extends Component {
             name="email"
             type="text"
             placeholder="example@mail.com"
+            value={this.props.email} // Prop: The email input data
+            onChange={this.props.handleChange} // Prop: Puts data into state
+          />
+          <label className="step1-lable" htmlFor="phone-num">
+            מספר טלפון{" "}
+          </label>
+          <input
+            className={this.props.emailInputStyle}
+            id="phone-num"
+            name="phone-num"
+            type="number"
+            placeholder="01-2345678"
             value={this.props.email} // Prop: The email input data
             onChange={this.props.handleChange} // Prop: Puts data into state
           />

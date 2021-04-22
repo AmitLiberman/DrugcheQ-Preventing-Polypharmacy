@@ -18,15 +18,18 @@
 .main-sectors-container {
     text-align: right;
     display: flex;
+    direction: rtl;
 }
 
 .sector-container {
     flex: 1;
+    direction: ltr;
 }
 
 .radio-option {
     display: block;
     font-size: 1.2rem;
+    margin-top: -0.2em;
 }
 
 .radio-input {

@@ -25,18 +25,18 @@ const TopNav = (props) => {
             <Nav.Link className="top-nav-link" href="/side-effect-report">
               <span className="link-text">דיווח על תופעות לוואי</span>
             </Nav.Link>
-            <Nav.Link className="top-nav-link" href="/connect">
+            {/* <Nav.Link className="top-nav-link" href="/connect">
               <span className="link-text">צור קשר</span>
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
-          <Nav className="ml-auto top-nav-content">
+          {/* <Nav className="ml-auto top-nav-content">
             <Nav.Link className="top-nav-link" href="/connect">
               <span className="link-text  sign-up">הרשם</span>
             </Nav.Link>
             <Nav.Link className="top-nav-link" href="/connect">
               <span className="material-icons log-in">person</span>
             </Nav.Link>
-          </Nav>
+          </Nav> */}
         </Navbar.Collapse>
       </Navbar>
     </div>

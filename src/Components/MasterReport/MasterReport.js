@@ -96,19 +96,6 @@ class MasterReport extends Component {
 
   _next = () => {
     let notValidInput = false;
-    // if (this.state.username.trim().length === 0) {
-    //   this.setState({
-    //     userInputStyle: this.state.userInputStyle + " invalid",
-    //   });
-    //   notValidInput = true;
-    // }
-    // if (this.state.email.trim().length === 0) {
-    //   this.setState({
-    //     emailInputStyle: this.state.emailInputStyle + " invalid",
-    //   });
-    //   notValidInput = true;
-    // }
-
     if (this.state.currentStep === 2 && this.state.isDrugInsterted === false) {
       notValidInput = true;
     }
@@ -137,11 +124,11 @@ class MasterReport extends Component {
     if (currentStep !== 1) {
       return (
         <button
-          className="btn btn-primary float-right"
+          className="next-prev-btn prev"
           type="button"
           onClick={this._prev}
         >
-          <span className="material-icons arrow">arrow_forward</span>
+          הקודם
         </button>
       );
     }
@@ -155,11 +142,12 @@ class MasterReport extends Component {
     if (currentStep < 3) {
       return (
         <button
-          className="btn btn-primary float-left"
+          // className="btn btn-primary float-left"
+          className="next-prev-btn next"
           type="button"
           onClick={this._next}
         >
-          <span className="material-icons arrow">arrow_back</span>
+          הבא
         </button>
       );
     }
@@ -204,10 +192,6 @@ class MasterReport extends Component {
         ) : null}
         <div className="master-describe-container">
           <h2>דיווח על תופעות לוואי</h2>
-          <p>
-            על מנת לדווח על תופעות לוואי, יש לעבור בין שלושת השלבים של הטופס.
-            <br></br> עליכם לענות באופן מדויק,ככל האפשר,על כל שלב.
-          </p>
         </div>
 
         <div className="steps-container">

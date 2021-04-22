@@ -1,0 +1,25 @@
+.step2-lable {
+    direction: rtl;
+    margin-top: 0.8em;
+    font-size: 1.2rem;
+    display: block;
+}
+
+.remedy-insert-form {
+    text-align: right;
+}
+
+.from-until-dates-container {
+    direction: rtl;
+}
+
+.date-lable {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.date-wrapper {
+    display: inline-block;
+    margin-left: 3em;
+    margin-top: 1em;
+}

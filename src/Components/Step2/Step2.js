@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DrugInsert from "../DrugInsert/DrugInsert";
+import RemedyInsert from "../RemedyInsert/RemedyInsert";
 
 class Step2 extends Component {
   state = {
@@ -28,11 +29,12 @@ class Step2 extends Component {
 
     return (
       <div className="drug-list-report-container">
-        <DrugInsert
+        {/* <DrugInsert
           drugListUpdate={this.drugListUpdate}
           drugList={this.state.drugList}
           delDrug={this.drugListDeleteItem}
-        />
+        /> */}
+        <RemedyInsert />
       </div>
     );
   }
