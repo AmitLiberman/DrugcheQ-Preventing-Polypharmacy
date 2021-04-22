@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Autosuggest from "react-autosuggest";
 import axios from "axios";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./RemedyInsert.css";
+import RemedyContainer from "../RemedyContainer/RemedyContainer";
 
 class RemedyInsert extends Component {
   state = {
@@ -13,8 +13,9 @@ class RemedyInsert extends Component {
     drugSuggestions: [],
     loading: false,
     chooseSuggest: false,
-    notInList: "alert-drug-list fadeOut",
+    notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
+    remedyComponent: [],
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -81,13 +82,13 @@ class RemedyInsert extends Component {
     event.preventDefault();
     if (this.state.chooseSuggest === false) {
       this.setState({
-        notInList: "alert-drug-list fadeIn",
+        notInList: "alert-remedy-list fadeIn",
         alertMsg: "יש לבחור תרופה מתוך הרשימה",
       });
 
       setTimeout(() => {
         this.setState({
-          notInList: "alert-drug-list fadeOut",
+          notInList: "alert-remedy-list fadeOut",
         });
       }, 2000);
       // this.setState({ alertMsg: "" });
@@ -119,6 +120,13 @@ class RemedyInsert extends Component {
   handleInteractionCheck = () => {
     alert("בודק אינטראקציה בין התרופות");
   };
+
+  onClickAdd = () => {
+    this.setState({
+      remedyComponent: [...this.state.remedyComponent, <RemedyContainer />],
+    });
+  };
+
   render() {
     const { value, suggestions } = this.state;
 
@@ -138,37 +146,14 @@ class RemedyInsert extends Component {
       progress
     ) : (
       <div>
-        <form className="remedy-insert-form">
+        <form className="remedy-insert-form" onSubmit={this.handleSubmit}>
           <div className={this.state.notInList}>{this.state.alertMsg}</div>
-          <label className="step2-lable" htmlFor="drug-name">
-            שם התרופה
-          </label>
-          <Autosuggest
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={this.getSuggestionValue}
-            renderSuggestion={this.renderSuggestion}
-            inputProps={inputProps}
-          />
-          <div className="from-until-dates-container">
-            <div className="date-wrapper">
-              <label className="date-lable" for="from-date">
-                תאריך תחילת שימוש
-              </label>
-              <input type="date" id="from-date" name="from-date" />
-            </div>
-            <div className="date-wrapper">
-              <label className="date-lable" for="until-date">
-                תאריך סיום שימוש
-              </label>
-              <input type="date" id="until-date" name="until-date" />
-            </div>
-          </div>
+          {/* <RemedyContainer /> */}
+          {this.state.remedyComponent}
+          <button className="add-btn" onClick={this.onClickAdd}>
+            הוסף +
+          </button>
         </form>
-        <button className="btn btn-primary add-drug-to-list" type="submit">
-          הוסף +
-        </button>
       </div>
     );
   }
