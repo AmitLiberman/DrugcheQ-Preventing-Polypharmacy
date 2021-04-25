@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
-import axios from "axios";
-import "./RemedyContainer.css";
 
-class RemedyContainer extends Component {
+class SymptomContainer extends Component {
   state = {
     response: null,
     value: "",
@@ -30,29 +28,14 @@ class RemedyContainer extends Component {
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
     this.setState({ chooseSuggest: true });
-    this.props.getDrugValue(suggestion.name);
-    this.props.chooseSuggestChange(true);
+    // this.props.getDrugValue(suggestion.name);
+    // this.props.chooseSuggestChange(true);
 
     return suggestion.name;
   };
 
   // Use your imagination to render suggestions.
   renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
-
-  componentDidMount = () => {
-    const request = "https://drugcheq.herokuapp.com/suggest";
-    this.setState({ loading: true }, () => {
-      axios
-        .get(request)
-        .then((response) => {
-          this.setState({ loading: false });
-          this.setState({ drugSuggestions: response.data });
-        })
-        .catch((error) => {
-          alert("error!");
-        });
-    });
-  };
 
   onChange = (event, { newValue }) => {
     this.setState({
@@ -67,7 +50,7 @@ class RemedyContainer extends Component {
       suggestions: this.getSuggestions(value),
       chooseSuggest: false,
     });
-    this.props.chooseSuggestChange(false);
+    // this.props.chooseSuggestChange(false);
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
@@ -83,11 +66,10 @@ class RemedyContainer extends Component {
   };
 
   onClickX = () => {
-    const { id } = this.props.remedyItem;
-    this.props.onClickDelete(id, this.state.value);
-    this.props.chooseSuggestChange(true);
+    // const { id } = this.props.remedyItem;
+    // this.props.onClickDelete(id, this.state.value);
+    // this.props.chooseSuggestChange(true);
   };
-
   render() {
     const { value, suggestions } = this.state;
     // Autosuggest will pass through all these props to the input.
@@ -108,7 +90,7 @@ class RemedyContainer extends Component {
           </button>
         </div>
         <label className="step2-lable" htmlFor="drug-name">
-          שם התרופה
+          שם תסמין
         </label>
         <Autosuggest
           suggestions={suggestions}
@@ -119,10 +101,21 @@ class RemedyContainer extends Component {
           inputProps={inputProps}
         />
         {this.state.chooseSuggest ? null : notValidDrugMsg}
+        <div className="sector-container">
+          <h5>חומרתה של תופעת הלוואי</h5>
+          <label className="radio-option">
+            חמורה
+            <input className="radio-input" type="radio" name="radio" />
+          </label>
+          <label className="radio-option">
+            לא חמורה
+            <input className="radio-input" type="radio" name="radio" />
+          </label>
+        </div>
         <div className="from-until-dates-container">
           <div className="date-wrapper">
             <label className="date-lable" for="from-date">
-              תאריך תחילת שימוש
+              תאריך הופעת תסמין
             </label>
             <input
               className="date-input"
@@ -131,21 +124,10 @@ class RemedyContainer extends Component {
               name="from-date"
             />
           </div>
-          <div className="date-wrapper">
-            <label className="date-lable" for="until-date">
-              תאריך סיום שימוש
-            </label>
-            <input
-              className="date-input"
-              type="date"
-              id="until-date"
-              name="until-date"
-            />
-          </div>
         </div>
       </div>
     );
   }
 }
 
-export default RemedyContainer;
+export default SymptomContainer;

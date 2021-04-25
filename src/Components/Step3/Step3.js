@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Report from "../Report/Report";
+import SymptomInsert from "../SymptomInsert/SymptomInsert";
 
 class Step3 extends Component {
   state = {
@@ -36,12 +37,13 @@ class Step3 extends Component {
     }
     return (
       <div className="sid-effect-report-container">
-        <Report
+        {/* <Report
           symptomInsertHandler={this.symptomInsertHandler}
           symptomListUpdate={this.symptomListUpdate}
           conditionsList={this.state.symptomList}
           symptomListDeleteItem={this.symptomListDeleteItem}
-        />
+        /> */}
+        <SymptomInsert />
       </div>
     );
   }
