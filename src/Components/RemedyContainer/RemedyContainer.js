@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
 import axios from "axios";
 import "./RemedyContainer.css";
+import { alignPropType } from "react-bootstrap/esm/DropdownMenu";
 
 class RemedyContainer extends Component {
   state = {
@@ -31,9 +32,10 @@ class RemedyContainer extends Component {
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
     this.setState({ chooseSuggest: true });
+    this.props.chooseSuggestChange(true);
     const { id } = this.props.remedyItem;
-
     this.props.addDrug(this.state.value, id);
+    this.props.isValidDrug(true);
 
     return suggestion.name;
   };
@@ -57,8 +59,6 @@ class RemedyContainer extends Component {
   };
 
   onChange = (event, { newValue }) => {
-    console.log("onChange");
-
     this.setState({
       value: newValue,
     });
@@ -71,6 +71,7 @@ class RemedyContainer extends Component {
       suggestions: this.getSuggestions(value),
       chooseSuggest: false,
     });
+    this.props.chooseSuggestChange(false);
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
@@ -120,7 +121,7 @@ class RemedyContainer extends Component {
           renderSuggestion={this.renderSuggestion}
           inputProps={inputProps}
         />
-        {this.props.validDrug ? null : notValidDrugMsg}
+        {this.state.chooseSuggest ? null : notValidDrugMsg}
         <div className="from-until-dates-container">
           <div className="date-wrapper">
             <label className="date-lable" for="from-date">

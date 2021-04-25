@@ -14,6 +14,8 @@ class RemedyInsert extends Component {
     remedyList: [],
     remedyID: 0,
     validDrug: true,
+    drugAdded: false,
+    chooseSuggest: false,
   };
 
   delRemedy = (id) => {
@@ -24,6 +26,10 @@ class RemedyInsert extends Component {
         ...this.state.remedyList.filter((remedy) => remedy.id !== id),
       ],
     });
+  };
+
+  chooseSuggestChange = (s) => {
+    this.setState({ chooseSuggest: s });
   };
 
   isValidDrug = (valid) => {
@@ -91,18 +97,25 @@ class RemedyInsert extends Component {
   };
 
   onClickAdd = () => {
+    console.log(this.state.validDrug);
+    if (this.state.validDrug === false) return;
+    if (this.state.drugAdded === false) return;
+    if (this.state.chooseSuggest === false) return;
     let newRemedyItem = { id: this.state.remedyID };
     this.setState({
       remedyList: [...this.state.remedyList, newRemedyItem],
       remedyID: this.state.remedyID + 1,
-      validDrug: true,
+      drugAdded: false,
     });
   };
 
   addDrug = (value, id) => {
     if (value.trim().length !== 0) {
       let newDrugItem = { name: value, id: id };
-      this.setState({ drugList: [...this.state.drugList, newDrugItem] });
+      this.setState({
+        drugList: [...this.state.drugList, newDrugItem],
+        drugAdded: true,
+      });
     }
   };
 
@@ -123,6 +136,8 @@ class RemedyInsert extends Component {
             remedies={this.state.remedyList}
             addDrug={this.addDrug}
             isValidDrug={this.isValidDrug}
+            validDrug={this.state.validDrug}
+            chooseSuggestChange={this.chooseSuggestChange}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +
