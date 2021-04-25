@@ -10,6 +10,7 @@ class RemedyList extends Component {
         delRemedy={this.props.delRemedy}
         addDrug={this.props.addDrug}
         choosed={this.props.choosed}
+        validDrug={this.props.validDrug}
       />
     ));
   }

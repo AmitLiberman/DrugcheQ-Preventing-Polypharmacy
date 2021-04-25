@@ -95,6 +95,10 @@ class RemedyContainer extends Component {
       value,
       onChange: this.onChange,
     };
+
+    const notValidDrugMsg = (
+      <h6 style={{ color: "red" }}>אנא בחר תרופה המרשימה * </h6>
+    );
     return (
       <div className="remedy-element-container">
         <div className="delete-remedy-btn-wrapper">
@@ -116,6 +120,7 @@ class RemedyContainer extends Component {
           renderSuggestion={this.renderSuggestion}
           inputProps={inputProps}
         />
+        {this.props.validDrug ? null : notValidDrugMsg}
         <div className="from-until-dates-container">
           <div className="date-wrapper">
             <label className="date-lable" for="from-date">

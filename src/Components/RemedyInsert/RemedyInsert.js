@@ -3,7 +3,6 @@ import axios from "axios";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./RemedyInsert.css";
 import RemedyList from "../RemedyList/RemedyList";
-import { compareBuild } from "semver";
 
 class RemedyInsert extends Component {
   state = {
@@ -15,6 +14,7 @@ class RemedyInsert extends Component {
     remedyList: [],
     remedyID: 0,
     isChoosed: false,
+    validDrug: true,
   };
 
   delRemedy = (id) => {
@@ -29,6 +29,7 @@ class RemedyInsert extends Component {
 
   choosed = (c) => {
     this.setState({ isChoosed: c });
+    // this.setState({ validDrug: c });
   };
 
   componentDidMount = () => {
@@ -92,13 +93,28 @@ class RemedyInsert extends Component {
   };
 
   onClickAdd = () => {
-    if (this.state.isChoosed === false) return;
-    if (this.state.drugList.length === 0) return;
-
+    if (this.state.isChoosed === false) {
+      this.setState({ validDrug: false });
+      return;
+    }
+    if (
+      this.state.drugList.length === 0 ||
+      this.state.remedyList.length !== this.state.drugList.length
+    ) {
+      console.log("po");
+      this.setState({
+        validDrug: false,
+        choosed: false,
+      });
+      return;
+    }
     let newRemedyItem = { id: this.state.remedyID };
     this.setState({
       remedyList: [...this.state.remedyList, newRemedyItem],
+
       remedyID: this.state.remedyID + 1,
+      validDrug: true,
+      choosed: false,
     });
   };
 
@@ -121,12 +137,12 @@ class RemedyInsert extends Component {
       <div>
         <form className="remedy-insert-form" onSubmit={this.handleSubmit}>
           <div className={this.state.notInList}>{this.state.alertMsg}</div>
-          {/* {this.state.remedyComponent} */}
           <RemedyList
             delRemedy={this.delRemedy}
             remedies={this.state.remedyList}
             addDrug={this.addDrug}
             choosed={this.choosed}
+            validDrug={this.state.validDrug}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +
