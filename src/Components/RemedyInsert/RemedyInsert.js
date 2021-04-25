@@ -151,7 +151,14 @@ class RemedyInsert extends Component {
       drugList: [...this.state.drugList, this.state.drugValue],
       drugValue: "",
     });
-
+    console.log(this.state.drugList);
+  };
+  onClickDelete = (id, drugName) => {
+    if (this.state.drugItems.length === 1) return;
+    this.setState({
+      drugItems: [...this.state.drugItems.filter((item) => item.id !== id)],
+      drugList: [...this.state.drugList.filter((name) => name !== drugName)],
+    });
     console.log(this.state.drugList);
   };
 
@@ -180,6 +187,7 @@ class RemedyInsert extends Component {
             // validDrug={this.state.validDrug}
             chooseSuggestChange={this.chooseSuggestChange}
             // onDrugAdded={this.onDrugAdded}
+            onClickDelete={this.onClickDelete}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +

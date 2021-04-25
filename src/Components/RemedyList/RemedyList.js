@@ -14,6 +14,7 @@ class RemedyList extends Component {
         chooseSuggestChange={this.props.chooseSuggestChange}
         // onDrugAdded={this.props.onDrugAdded}
         getDrugValue={this.props.getDrugValue}
+        onClickDelete={this.props.onClickDelete}
       />
     ));
   }
