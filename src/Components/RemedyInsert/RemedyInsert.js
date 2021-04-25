@@ -32,6 +32,10 @@ class RemedyInsert extends Component {
     this.setState({ chooseSuggest: s });
   };
 
+  onDrugAdded = (s) => {
+    this.setState({ drugAdded: s });
+  };
+
   isValidDrug = (valid) => {
     this.setState({ validDrug: valid });
   };
@@ -98,6 +102,9 @@ class RemedyInsert extends Component {
 
   onClickAdd = () => {
     console.log(this.state.validDrug);
+    console.log(this.state.drugAdded);
+    console.log(this.state.chooseSuggest);
+
     if (this.state.validDrug === false) return;
     if (this.state.drugAdded === false) return;
     if (this.state.chooseSuggest === false) return;
@@ -138,6 +145,7 @@ class RemedyInsert extends Component {
             isValidDrug={this.isValidDrug}
             validDrug={this.state.validDrug}
             chooseSuggestChange={this.chooseSuggestChange}
+            onDrugAdded={this.onDrugAdded}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +

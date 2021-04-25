@@ -12,6 +12,7 @@ class RemedyList extends Component {
         isValidDrug={this.props.isValidDrug}
         validDrug={this.props.validDrug}
         chooseSuggestChange={this.props.chooseSuggestChange}
+        onDrugAdded={this.props.onDrugAdded}
       />
     ));
   }

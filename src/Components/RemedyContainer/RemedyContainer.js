@@ -86,6 +86,14 @@ class RemedyContainer extends Component {
     this.setState({ value: event.target.value });
   };
 
+  onClickX = () => {
+    const { id } = this.props.remedyItem;
+    this.props.delRemedy(id);
+    this.props.isValidDrug(true);
+    this.props.chooseSuggestChange(true);
+    this.props.onDrugAdded(true);
+  };
+
   render() {
     const { value, suggestions } = this.state;
     const { id } = this.props.remedyItem;
@@ -103,10 +111,7 @@ class RemedyContainer extends Component {
     return (
       <div className="remedy-element-container">
         <div className="delete-remedy-btn-wrapper">
-          <button
-            className="delete-remedy-btn"
-            onClick={this.props.delRemedy.bind(this, id)}
-          >
+          <button className="delete-remedy-btn" onClick={this.onClickX}>
             X
           </button>
         </div>
