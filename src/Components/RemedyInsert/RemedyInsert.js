@@ -97,11 +97,14 @@ class RemedyInsert extends Component {
       this.setState({ validDrug: false });
       return;
     }
+
+    console.log(this.state.remedyList.length);
+    console.log(this.state.drugList.length);
+
     if (
       this.state.drugList.length === 0 ||
       this.state.remedyList.length !== this.state.drugList.length
     ) {
-      console.log("po");
       this.setState({
         validDrug: false,
         choosed: false,
