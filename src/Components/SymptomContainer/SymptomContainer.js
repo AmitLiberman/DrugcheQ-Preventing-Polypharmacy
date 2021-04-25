@@ -101,28 +101,34 @@ class SymptomContainer extends Component {
           inputProps={inputProps}
         />
         {this.state.chooseSuggest ? null : notValidDrugMsg}
-        <div className="sector-container">
-          <h5>חומרתה של תופעת הלוואי</h5>
-          <label className="radio-option">
-            חמורה
-            <input className="radio-input" type="radio" name="radio" />
-          </label>
-          <label className="radio-option">
-            לא חמורה
-            <input className="radio-input" type="radio" name="radio" />
-          </label>
-        </div>
+
         <div className="from-until-dates-container">
           <div className="date-wrapper">
-            <label className="date-lable" for="from-date">
-              תאריך הופעת תסמין
-            </label>
-            <input
-              className="date-input"
-              type="date"
-              id="from-date"
-              name="from-date"
-            />
+            <div
+              className="sector-container"
+              style={{ display: "inline-block" }}
+            >
+              <h5>חומרתה של תופעת הלוואי</h5>
+              <label className="radio-option">
+                חמורה
+                <input className="radio-input" type="radio" name="radio" />
+              </label>
+              <label className="radio-option">
+                לא חמורה
+                <input className="radio-input" type="radio" name="radio" />
+              </label>
+            </div>
+            <div style={{ display: "inline-block" }}>
+              <label className="date-lable" for="from-date">
+                תאריך הופעת תסמין
+              </label>
+              <input
+                className="date-input"
+                type="date"
+                id="from-date"
+                name="from-date"
+              />
+            </div>
           </div>
         </div>
       </div>
