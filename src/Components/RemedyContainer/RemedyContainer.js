@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
 import axios from "axios";
 import "./RemedyContainer.css";
-import { alignPropType } from "react-bootstrap/esm/DropdownMenu";
 
 class RemedyContainer extends Component {
   state = {
@@ -32,10 +31,11 @@ class RemedyContainer extends Component {
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
     this.setState({ chooseSuggest: true });
+    this.props.getDrugValue(suggestion.name);
     this.props.chooseSuggestChange(true);
-    const { id } = this.props.remedyItem;
-    this.props.addDrug(this.state.value, id);
-    this.props.isValidDrug(true);
+    // const { id } = this.props.remedyItem;
+    // this.props.addDrug(this.state.value, id);
+    // this.props.isValidDrug(true);
 
     return suggestion.name;
   };
@@ -87,16 +87,16 @@ class RemedyContainer extends Component {
   };
 
   onClickX = () => {
-    const { id } = this.props.remedyItem;
-    this.props.delRemedy(id);
-    this.props.isValidDrug(true);
-    this.props.chooseSuggestChange(true);
-    this.props.onDrugAdded(true);
+    // const { id } = this.props.remedyItem;
+    // this.props.delRemedy(id);
+    // this.props.isValidDrug(true);
+    // this.props.chooseSuggestChange(true);
+    // this.props.chooseSuggestChange(true);
   };
 
   render() {
     const { value, suggestions } = this.state;
-    const { id } = this.props.remedyItem;
+    // const { id } = this.props.remedyItem;
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
