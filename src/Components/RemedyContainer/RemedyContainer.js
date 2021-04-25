@@ -89,9 +89,10 @@ class RemedyContainer extends Component {
   onClickX = () => {
     const { id } = this.props.remedyItem;
     this.props.onClickDelete(id, this.state.value);
+    this.props.chooseSuggestChange(true);
+
     // this.props.delRemedy(id);
     // this.props.isValidDrug(true);
-    // this.props.chooseSuggestChange(true);
     // this.props.chooseSuggestChange(true);
   };
 

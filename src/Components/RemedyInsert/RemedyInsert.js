@@ -142,7 +142,6 @@ class RemedyInsert extends Component {
   };
 
   onClickAdd = () => {
-    if (this.state.drugValue.trim().length === 0) return;
     if (this.state.chooseSuggest === false) return;
     let newRemedyItem = { id: this.state.drugItemsID };
     this.setState({
