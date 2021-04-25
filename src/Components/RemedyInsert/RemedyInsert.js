@@ -13,7 +13,6 @@ class RemedyInsert extends Component {
     alertMsg: "",
     remedyList: [],
     remedyID: 0,
-    isChoosed: false,
     validDrug: true,
   };
 
@@ -27,9 +26,8 @@ class RemedyInsert extends Component {
     });
   };
 
-  choosed = (c) => {
-    this.setState({ isChoosed: c });
-    // this.setState({ validDrug: c });
+  isValidDrug = (valid) => {
+    this.setState({ validDrug: valid });
   };
 
   componentDidMount = () => {
@@ -93,31 +91,11 @@ class RemedyInsert extends Component {
   };
 
   onClickAdd = () => {
-    if (this.state.isChoosed === false) {
-      this.setState({ validDrug: false });
-      return;
-    }
-
-    console.log(this.state.remedyList.length);
-    console.log(this.state.drugList.length);
-
-    if (
-      this.state.drugList.length === 0 ||
-      this.state.remedyList.length !== this.state.drugList.length
-    ) {
-      this.setState({
-        validDrug: false,
-        choosed: false,
-      });
-      return;
-    }
     let newRemedyItem = { id: this.state.remedyID };
     this.setState({
       remedyList: [...this.state.remedyList, newRemedyItem],
-
       remedyID: this.state.remedyID + 1,
       validDrug: true,
-      choosed: false,
     });
   };
 
@@ -144,8 +122,7 @@ class RemedyInsert extends Component {
             delRemedy={this.delRemedy}
             remedies={this.state.remedyList}
             addDrug={this.addDrug}
-            choosed={this.choosed}
-            validDrug={this.state.validDrug}
+            isValidDrug={this.isValidDrug}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +

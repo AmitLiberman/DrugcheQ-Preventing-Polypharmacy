@@ -9,8 +9,7 @@ class RemedyList extends Component {
         remedyItem={remedy}
         delRemedy={this.props.delRemedy}
         addDrug={this.props.addDrug}
-        choosed={this.props.choosed}
-        validDrug={this.props.validDrug}
+        isValidDrug={this.props.isValidDrug}
       />
     ));
   }

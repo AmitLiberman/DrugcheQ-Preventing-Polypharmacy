@@ -17,7 +17,6 @@ class RemedyContainer extends Component {
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
-    console.log("getSuggestions");
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
     return inputLength === 0
@@ -31,10 +30,7 @@ class RemedyContainer extends Component {
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
-    console.log("getSuggestionValue");
-
     this.setState({ chooseSuggest: true });
-    this.props.choosed(true);
     const { id } = this.props.remedyItem;
 
     this.props.addDrug(this.state.value, id);
@@ -71,19 +67,14 @@ class RemedyContainer extends Component {
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
-    console.log("onSuggestionsFetchRequested");
-
     this.setState({
       suggestions: this.getSuggestions(value),
       chooseSuggest: false,
     });
-    this.props.choosed(false);
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
-    console.log("onSuggestionsClearRequested");
-
     this.setState({
       suggestions: [],
     });

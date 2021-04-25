@@ -101,6 +101,8 @@ class MasterReport extends Component {
     // }
     // if (notValidInput) return;
 
+    console.log(this.state.drugList);
+
     let currentStep = this.state.currentStep;
     // If the current step is 1 or 2, then add one on "next" button click
     currentStep = currentStep >= 2 ? 3 : currentStep + 1;
