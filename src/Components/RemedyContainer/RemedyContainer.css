@@ -23,3 +23,13 @@
     border: 1px solid #030303;
     border-width: 10%;
 }
+
+.date-lable {
+    display: block;
+}
+
+.date-wrapper1 {
+    display: inline-block;
+    margin-left: 2.5em;
+    margin-top: 1em;
+}

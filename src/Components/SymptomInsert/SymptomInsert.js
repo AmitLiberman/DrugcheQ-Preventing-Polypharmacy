@@ -64,7 +64,11 @@ class SymptomInsert extends Component {
       <div>
         <form className="remedy-insert-form" onSubmit={this.handleSubmit}>
           <div className={this.state.notInList}>{this.state.alertMsg}</div>
-          <SymptomList symptomItems={this.state.symptomItems} />
+          <SymptomList
+            symptomItems={this.state.symptomItems}
+            chooseSuggestChange={this.chooseSuggestChange}
+            onClickDelete={this.onClickDelete}
+          />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +
           </button>

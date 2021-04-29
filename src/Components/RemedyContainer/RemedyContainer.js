@@ -120,8 +120,8 @@ class RemedyContainer extends Component {
         />
         {this.state.chooseSuggest ? null : notValidDrugMsg}
         <div className="from-until-dates-container">
-          <div className="date-wrapper">
-            <label className="date-lable" for="from-date">
+          <div className="date-wrapper1">
+            <label className="date-lable" htmlfor="from-date">
               תאריך תחילת שימוש
             </label>
             <input
@@ -131,8 +131,8 @@ class RemedyContainer extends Component {
               name="from-date"
             />
           </div>
-          <div className="date-wrapper">
-            <label className="date-lable" for="until-date">
+          <div className="date-wrapper1">
+            <label className="date-lable" htmlfor="until-date">
               תאריך סיום שימוש
             </label>
             <input

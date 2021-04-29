@@ -17,8 +17,9 @@ class MasterReport extends Component {
     userInputStyle: "form-control",
 
     sector: "ציבור",
-    username: "",
+    factorName: "",
     email: "",
+    phoneNumber: "",
     drugList: [],
     symptomsList: [],
 
@@ -36,19 +37,22 @@ class MasterReport extends Component {
   };
 
   sendReport = () => {
-    if (this.state.symptomsList.length >= 1) {
-      console.log("sending report");
-      this.setState({ isSendClicked: true });
+    console.log(this.state.factorName);
+    console.log(this.state.email);
+    console.log(this.state.phoneNumber);
 
-      const json = JSON.stringify({
-        username: this.state.username,
-        email: this.state.email,
-        sector: this.state.sector,
-        drugList: this.state.drugList,
-        symptomsList: this.state.symptomsList,
-      });
-      axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
-    }
+    // if (this.state.symptomsList.length >= 1) {
+    //   console.log("sending report");
+    //   this.setState({ isSendClicked: true });
+    //   const json = JSON.stringify({
+    //     username: this.state.username,
+    //     email: this.state.email,
+    //     sector: this.state.sector,
+    //     drugList: this.state.drugList,
+    //     symptomsList: this.state.symptomsList,
+    //   });
+    //   axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
+    // }
   };
 
   drugInserted = (isInsterted) => {
@@ -88,7 +92,7 @@ class MasterReport extends Component {
       sector: "ציבור",
       isDrugInsterted: false,
       isSendClicked: false,
-      key: this.state.key + 1,
+      // key: this.state.key + 1,
     });
     console.log(this.state.drugList);
     console.log(this.state.symptomsList);
@@ -163,7 +167,7 @@ class MasterReport extends Component {
     if (currentStep === 3) {
       return (
         <button
-          className="btn btn-info float-left send"
+          className="next-prev-btn send"
           type="button"
           onClick={this.sendReport}
         >
@@ -202,13 +206,13 @@ class MasterReport extends Component {
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
             email={this.state.email}
-            username={this.state.username}
-            sector={this.state.sector}
+            factorName={this.state.factorName}
+            phoneNumber={this.state.phoneNumber}
             emailInputStyle={this.state.emailInputStyle}
             userInputStyle={this.state.userInputStyle}
           />
           <Step2
-            key={this.state.key}
+            // key={this.state.key}
             currentStep={this.state.currentStep}
             drugInserted={this.drugInserted}
             drugListUpdate={this.drugListUpdate}
@@ -218,7 +222,7 @@ class MasterReport extends Component {
           />
 
           <Step3
-            key={this.state.key}
+            // key={this.state.key}
             currentStep={this.state.currentStep}
             symptomListUpdate={this.symptomListUpdate}
             symptomList={this.props.symptomList}

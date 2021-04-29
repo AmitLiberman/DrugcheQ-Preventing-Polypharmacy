@@ -12,3 +12,7 @@
     display: flex;
     margin-top: 2em;
 }
+
+.severity-container {
+    margin-left: 2em;
+}

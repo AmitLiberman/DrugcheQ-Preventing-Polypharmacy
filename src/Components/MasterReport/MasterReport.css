@@ -60,6 +60,11 @@
     float: left
 }
 
+.next-prev-btn.send {
+    float: left;
+    font-weight: bold;
+}
+
 
 /* Make circles that indicate the steps of the form: */
 

@@ -8,7 +8,6 @@ class SymptomContainer extends Component {
     response: null,
     value: "",
     suggestions: [],
-    drugSuggestions: [],
     loading: false,
     chooseSuggest: false,
     notInList: "alert-remedy-list fadeOut",
@@ -31,7 +30,7 @@ class SymptomContainer extends Component {
   getSuggestionValue = (suggestion) => {
     this.setState({ chooseSuggest: true });
     // this.props.getDrugValue(suggestion.name);
-    // this.props.chooseSuggestChange(true);
+    this.props.chooseSuggestChange(true);
 
     return suggestion.name;
   };
@@ -52,7 +51,7 @@ class SymptomContainer extends Component {
       suggestions: this.getSuggestions(value),
       chooseSuggest: false,
     });
-    // this.props.chooseSuggestChange(false);
+    this.props.chooseSuggestChange(false);
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
@@ -68,9 +67,9 @@ class SymptomContainer extends Component {
   };
 
   onClickX = () => {
-    // const { id } = this.props.remedyItem;
-    // this.props.onClickDelete(id, this.state.value);
-    // this.props.chooseSuggestChange(true);
+    const { id } = this.props.symptomItem;
+    this.props.onClickDelete(id, this.state.value);
+    this.props.chooseSuggestChange(true);
   };
   render() {
     const { value, suggestions } = this.state;
