@@ -24,7 +24,7 @@ class RemedyInsert extends Component {
   };
 
   componentDidMount = () => {
-    let newRemedyItem = { id: this.state.drugItems.length + 1 };
+    let newRemedyItem = { id: 0 };
     this.setState({
       drugItems: [...this.state.drugItems, newRemedyItem],
     });
@@ -38,7 +38,7 @@ class RemedyInsert extends Component {
       drugItems: [...this.state.drugItems, newRemedyItem],
     });
   };
-  onClickDelete = (id, drugName) => {
+  onClickDelete = (id) => {
     if (this.state.drugItems.length === 1) return;
     this.setState(
       {
