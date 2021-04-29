@@ -99,7 +99,9 @@ class RemedyContainer extends Component {
     let found = false;
     let value = "";
 
-    console.log(this.props.drugList);
+    console.log("drug items", this.props.drugitems.length);
+    console.log("drug List", this.props.drugList.length);
+
     for (let index = 0; index < this.props.drugList.length; index++) {
       const drugId = this.props.drugList[index].id;
       if (this.props.remedyItem.id === drugId) {
