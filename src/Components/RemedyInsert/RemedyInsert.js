@@ -57,8 +57,6 @@ class RemedyInsert extends Component {
       if (id === drugId) {
         const newIds = this.state.drugList.slice();
         newIds[index].name = drugValue;
-        console.log(newIds);
-
         this.setState({ drugList: newIds });
         found = true;
         break;

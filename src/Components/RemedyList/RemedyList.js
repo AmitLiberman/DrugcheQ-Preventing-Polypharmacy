@@ -5,7 +5,6 @@ class RemedyList extends Component {
   render() {
     return this.props.drugitems.map((item) => (
       <RemedyContainer
-        key={item.id}
         remedyItem={item}
         chooseSuggestChange={this.props.chooseSuggestChange}
         getDrugValue={this.props.getDrugValue}
