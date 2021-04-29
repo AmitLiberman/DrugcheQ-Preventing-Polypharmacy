@@ -1,0 +1,14 @@
+.severity-container {
+    display: inline-block;
+    direction: ltr;
+    margin-left: 3em;
+}
+
+.date-of-appear-container {
+    display: inline-block;
+}
+
+.date-wrapper {
+    display: flex;
+    margin-top: 2em;
+}

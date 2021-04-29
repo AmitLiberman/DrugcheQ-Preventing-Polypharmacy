@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
+import "./SymptomContainer.css";
 
 class SymptomContainer extends Component {
   state = {
@@ -74,13 +75,13 @@ class SymptomContainer extends Component {
     const { value, suggestions } = this.state;
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: "בחר תרופה",
+      placeholder: "בחר תסמין",
       value,
       onChange: this.onChange,
     };
 
     const notValidDrugMsg = (
-      <h6 style={{ color: "red" }}>אנא בחר תרופה המרשימה * </h6>
+      <h6 style={{ color: "red" }}>אנא בחר תסמין המרשימה * </h6>
     );
     return (
       <div className="remedy-element-container">
@@ -104,10 +105,7 @@ class SymptomContainer extends Component {
 
         <div className="from-until-dates-container">
           <div className="date-wrapper">
-            <div
-              className="sector-container"
-              style={{ display: "inline-block" }}
-            >
+            <div className="severity-container">
               <h5>חומרתה של תופעת הלוואי</h5>
               <label className="radio-option">
                 חמורה
@@ -118,7 +116,7 @@ class SymptomContainer extends Component {
                 <input className="radio-input" type="radio" name="radio" />
               </label>
             </div>
-            <div style={{ display: "inline-block" }}>
+            <div className="date-of-appear-container">
               <label className="date-lable" for="from-date">
                 תאריך הופעת תסמין
               </label>
