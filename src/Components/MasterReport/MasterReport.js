@@ -17,7 +17,6 @@ class MasterReport extends Component {
     userInputStyle: "form-control",
 
     sector: "",
-
     medicalSector: "",
     factorName: "",
     email: "",
@@ -57,8 +56,8 @@ class MasterReport extends Component {
     console.log(this.state.symptomsList);
 
     // if (this.state.symptomsList.length >= 1) {
-    //   console.log("sending report");
-    //   this.setState({ isSendClicked: true });
+    console.log("sending report");
+    this.setState({ isSendClicked: true });
     //   const json = JSON.stringify({
     //     username: this.state.username,
     //     email: this.state.email,
@@ -219,11 +218,13 @@ class MasterReport extends Component {
           <Step1
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
-            // email={this.state.email}
-            // factorName={this.state.factorName}
-            // phoneNumber={this.state.phoneNumber}
             emailInputStyle={this.state.emailInputStyle}
             userInputStyle={this.state.userInputStyle}
+            sector={this.state.sector}
+            medicalSector={this.state.medicalSector}
+            factorName={this.state.factorName}
+            email={this.state.email}
+            phoneNumber={this.state.phoneNumber}
           />
           <Step2
             // key={this.state.key}
@@ -232,7 +233,6 @@ class MasterReport extends Component {
             drugListUpdate={this.drugListUpdate}
             drugListDeleteItem={this.drugListDeleteItem}
             drugList={this.props.drugList}
-            onNext={this.state.onNext}
             handleChange={this.handleChange}
           />
 

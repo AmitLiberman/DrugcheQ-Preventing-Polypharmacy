@@ -20,7 +20,6 @@ class Step2 extends Component {
           drugInserted={this.props.drugInserted}
           drugListUpdate={this.props.drugListUpdate}
           drugListDeleteItem={this.props.drugListDeleteItem}
-          onNext={this.props.onNext}
         />
       </div>
     );
