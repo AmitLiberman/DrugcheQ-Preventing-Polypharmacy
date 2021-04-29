@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DrugInsert from "../DrugInsert/DrugInsert";
 import RemedyInsert from "../RemedyInsert/RemedyInsert";
 
 class Step2 extends Component {
@@ -20,6 +19,7 @@ class Step2 extends Component {
           drugInserted={this.props.drugInserted}
           drugListUpdate={this.props.drugListUpdate}
           drugListDeleteItem={this.props.drugListDeleteItem}
+          drugList={this.props.drugList}
         />
       </div>
     );

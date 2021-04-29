@@ -7,6 +7,7 @@ class RemedyList extends Component {
       <RemedyContainer
         key={i}
         remedyItem={item}
+        drugList={this.props.drugList}
         chooseSuggestChange={this.props.chooseSuggestChange}
         getDrugValue={this.props.getDrugValue}
         onClickDelete={this.props.onClickDelete}

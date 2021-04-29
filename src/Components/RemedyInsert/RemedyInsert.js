@@ -24,46 +24,62 @@ class RemedyInsert extends Component {
   };
 
   componentDidMount = () => {
-    let newRemedyItem = { id: this.state.drugItems.length + 1 };
-    this.setState({
-      drugItems: [...this.state.drugItems, newRemedyItem],
-    });
+    console.log(this.props.drugList);
+    if (this.props.drugList.length > 0) {
+      let arrDrugItems = [];
+      for (let index = 0; index < this.props.drugList.length; index++) {
+        let newRemedyItem = { id: index + 1 };
+        console.log(newRemedyItem);
+        arrDrugItems.push(newRemedyItem);
+      }
+      this.setState({
+        drugItems: arrDrugItems,
+      });
+    } else {
+      console.log("else");
+
+      let newRemedyItem = { id: this.state.drugItems.length + 1 };
+      this.setState({
+        drugItems: [...this.state.drugItems, newRemedyItem],
+      });
+    }
   };
 
   onClickAdd = () => {
-    if (this.state.chooseSuggest === false) return;
+    // if (this.state.chooseSuggest === false) return;
     let newRemedyItem = { id: this.state.drugItems.length + 1 };
 
     this.setState({
       drugItems: [...this.state.drugItems, newRemedyItem],
     });
   };
+
   onClickDelete = (id) => {
     if (this.state.drugItems.length === 1) return;
     this.setState(
       {
         drugItems: [...this.state.drugItems.filter((item) => item.id !== id)],
-        drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
+        drugList: [...this.props.drugList.filter((drug) => drug.id !== id)],
       },
       this.props.drugListDeleteItem(id)
     );
   };
 
   getDrugFromDates = (id, value) => {
-    for (let index = 0; index < this.state.drugList.length; index++) {
-      const drugId = this.state.drugList[index].id;
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      const drugId = this.props.drugList[index].id;
       if (id === drugId) {
-        const newIds = this.state.drugList.slice();
+        const newIds = this.props.drugList.slice();
         newIds[index].fromDate = value;
         this.setState({ drugList: newIds });
       }
     }
   };
   getDrugUntilDates = (id, value) => {
-    for (let index = 0; index < this.state.drugList.length; index++) {
-      const drugId = this.state.drugList[index].id;
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      const drugId = this.props.drugList[index].id;
       if (id === drugId) {
-        const newIds = this.state.drugList.slice();
+        const newIds = this.props.drugList.slice();
         newIds[index].untilDate = value;
         this.setState({ drugList: newIds });
       }
@@ -72,27 +88,31 @@ class RemedyInsert extends Component {
 
   getDrugValue = (drugValue, id) => {
     let found = false;
-    for (let index = 0; index < this.state.drugList.length; index++) {
-      const drugId = this.state.drugList[index].id;
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      const drugId = this.props.drugList[index].id;
       if (id === drugId) {
-        const newIds = this.state.drugList.slice();
+        const newIds = this.props.drugList.slice();
         newIds[index].name = drugValue;
         this.setState({ drugList: newIds });
         found = true;
+        console.log("found!");
         break;
       }
     }
+
     if (found === false) {
+      console.log("Not found!");
+      console.log(this.props.drugList);
       this.setState({ drugValue: drugValue });
       const newDrugItem = {
-        id: this.state.drugList.length + 1,
+        id: this.props.drugList.length + 1,
         name: drugValue,
         fromDate: "",
         untilDate: "",
       };
       this.setState(
         {
-          drugList: [...this.state.drugList, newDrugItem],
+          drugList: [...this.props.drugList, newDrugItem],
           drugValue: "",
           chooseSuggest: false,
         },
@@ -115,6 +135,7 @@ class RemedyInsert extends Component {
           <div className={this.state.notInList}>{this.state.alertMsg}</div>
           <RemedyList
             drugitems={this.state.drugItems}
+            drugList={this.props.drugList}
             getDrugValue={this.getDrugValue}
             chooseSuggestChange={this.chooseSuggestChange}
             onClickDelete={this.onClickDelete}

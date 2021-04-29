@@ -227,17 +227,15 @@ class MasterReport extends Component {
             phoneNumber={this.state.phoneNumber}
           />
           <Step2
-            // key={this.state.key}
             currentStep={this.state.currentStep}
             drugInserted={this.drugInserted}
             drugListUpdate={this.drugListUpdate}
             drugListDeleteItem={this.drugListDeleteItem}
-            drugList={this.props.drugList}
+            drugList={this.state.drugList}
             handleChange={this.handleChange}
           />
 
           <Step3
-            // key={this.state.key}
             currentStep={this.state.currentStep}
             symptomListUpdate={this.symptomListUpdate}
             symptomList={this.props.symptomList}
