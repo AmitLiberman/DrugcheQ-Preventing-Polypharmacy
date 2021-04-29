@@ -22,6 +22,8 @@ class MasterReport extends Component {
     factorName: "",
     email: "",
     phoneNumber: "",
+    untilDrugName: "",
+    fromDrugName: "",
     drugList: [],
     symptomsList: [],
 
@@ -29,6 +31,7 @@ class MasterReport extends Component {
     isSendClicked: false,
     key: 1,
     stam: false,
+    onNext: false,
   };
 
   // Use the submitted data to set the state
@@ -48,6 +51,8 @@ class MasterReport extends Component {
     console.log(this.state.medicalSector);
     console.log(this.state.drugList);
     console.log(this.state.symptomsList);
+    console.log(this.state.fromDrugName);
+    console.log(this.state.untilDrugName);
 
     // if (this.state.symptomsList.length >= 1) {
     //   console.log("sending report");
@@ -107,12 +112,6 @@ class MasterReport extends Component {
   };
 
   _next = () => {
-    // let notValidInput = false;
-    // if (this.state.currentStep === 2 && this.state.isDrugInsterted === false) {
-    //   notValidInput = true;
-    // }
-    // if (notValidInput) return;
-
     if (
       this.state.sector === "" ||
       (this.state.sector === "medical" && this.state.medicalSector === "")
@@ -126,6 +125,7 @@ class MasterReport extends Component {
     currentStep = currentStep >= 2 ? 3 : currentStep + 1;
     this.setState({
       currentStep: currentStep,
+      onNext: true,
     });
   };
 
@@ -232,7 +232,8 @@ class MasterReport extends Component {
             drugListUpdate={this.drugListUpdate}
             drugListDeleteItem={this.drugListDeleteItem}
             drugList={this.props.drugList}
-            onNext={this._next}
+            onNext={this.state.onNext}
+            handleChange={this.handleChange}
           />
 
           <Step3

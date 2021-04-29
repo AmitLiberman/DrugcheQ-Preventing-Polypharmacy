@@ -24,7 +24,7 @@ class RemedyInsert extends Component {
   };
 
   componentDidMount = () => {
-    let newRemedyItem = { id: 0 };
+    let newRemedyItem = { id: this.state.drugItems.length + 1 };
     this.setState({
       drugItems: [...this.state.drugItems, newRemedyItem],
     });
@@ -49,11 +49,31 @@ class RemedyInsert extends Component {
     );
   };
 
+  getDrugFromDates = (id, value) => {
+    for (let index = 0; index < this.state.drugList.length; index++) {
+      const drugId = this.state.drugList[index].id;
+      if (id === drugId) {
+        const newIds = this.state.drugList.slice();
+        newIds[index].fromDate = value;
+        this.setState({ drugList: newIds });
+      }
+    }
+  };
+  getDrugUntilDates = (id, value) => {
+    for (let index = 0; index < this.state.drugList.length; index++) {
+      const drugId = this.state.drugList[index].id;
+      if (id === drugId) {
+        const newIds = this.state.drugList.slice();
+        newIds[index].untilDate = value;
+        this.setState({ drugList: newIds });
+      }
+    }
+  };
+
   getDrugValue = (drugValue, id) => {
     let found = false;
     for (let index = 0; index < this.state.drugList.length; index++) {
       const drugId = this.state.drugList[index].id;
-      console.log(drugId, id);
       if (id === drugId) {
         const newIds = this.state.drugList.slice();
         newIds[index].name = drugValue;
@@ -67,6 +87,8 @@ class RemedyInsert extends Component {
       const newDrugItem = {
         id: this.state.drugList.length + 1,
         name: drugValue,
+        fromDate: "",
+        untilDate: "",
       };
       this.setState(
         {
@@ -96,6 +118,8 @@ class RemedyInsert extends Component {
             getDrugValue={this.getDrugValue}
             chooseSuggestChange={this.chooseSuggestChange}
             onClickDelete={this.onClickDelete}
+            getDrugFromDates={this.getDrugFromDates}
+            getDrugUntilDates={this.getDrugUntilDates}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +

@@ -82,6 +82,14 @@ class RemedyContainer extends Component {
     this.setState({ value: event.target.value });
   };
 
+  fromChangeHandler = (event) => {
+    this.props.getDrugFromDates(this.props.remedyItem.id, event.target.value);
+  };
+
+  untilChangeHandler = (event) => {
+    this.props.getDrugUntilDates(this.props.remedyItem.id, event.target.value);
+  };
+
   onClickX = () => {
     this.props.onClickDelete(this.props.remedyItem.id);
     this.props.chooseSuggestChange(true);
@@ -120,25 +128,27 @@ class RemedyContainer extends Component {
         {this.state.chooseSuggest ? null : notValidDrugMsg}
         <div className="from-until-dates-container">
           <div className="date-wrapper1">
-            <label className="date-lable" htmlfor="from-date">
+            <label className="date-lable" htmlfor="fromDrugName">
               תאריך תחילת שימוש
             </label>
             <input
               className="date-input"
               type="date"
-              id="from-date"
-              name="from-date"
+              id="fromDrugName"
+              name="fromDrugName"
+              onChange={(e) => this.fromChangeHandler(e)}
             />
           </div>
           <div className="date-wrapper1">
-            <label className="date-lable" htmlfor="until-date">
+            <label className="date-lable" htmlfor="untilDrugName">
               תאריך סיום שימוש
             </label>
             <input
               className="date-input"
               type="date"
-              id="until-date"
-              name="until-date"
+              id="untilDrugName"
+              name="untilDrugName"
+              onChange={(e) => this.untilChangeHandler(e)}
             />
           </div>
         </div>
