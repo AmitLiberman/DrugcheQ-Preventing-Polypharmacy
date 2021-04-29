@@ -74,7 +74,10 @@ class Step1 extends Component {
               className="sector-container specific"
               onChange={(event) => this.onMedicalSectorChange(event)}
             >
-              <h5>בחר סקטור</h5>
+              <h5>
+                בחר סקטור
+                <span style={{ color: "red", fontWeight: "bold" }}>*</span>
+              </h5>
               <label className="radio-option">
                 רפואה
                 <input

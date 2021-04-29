@@ -12,48 +12,8 @@ class RemedyInsert extends Component {
     notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
     drugItems: [],
-    drugItemsID: 0,
     chooseSuggest: false,
   };
-
-  // //Submit Drug Item to list
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   //   if (this.state.chooseSuggest === false) {
-  //   //     this.setState({
-  //   //       notInList: "alert-remedy-list fadeIn",
-  //   //       alertMsg: "יש לבחור תרופה מתוך הרשימה",
-  //   //     });
-
-  //   //     setTimeout(() => {
-  //   //       this.setState({
-  //   //         notInList: "alert-remedy-list fadeOut",
-  //   //       });
-  //   //     }, 2000);
-  //   //     // this.setState({ alertMsg: "" });
-
-  //   //     return;
-  //   //   }
-  //   //   this.setState({ chooseSuggest: false });
-
-  //   //   const newDrugItem = {
-  //   //     id: this.state.drugList.length + 1,
-  //   //     name: this.state.value,
-  //   //   };
-  //   //   if (newDrugItem.name.trim().length !== 0) {
-  //   //     if (this.props.drugInsertHandler) {
-  //   //       this.props.drugInsertHandler(true);
-  //   //     }
-  //   //     //if the input not contains only spaces
-  //   //     this.setState({ drugList: [...this.state.drugList, newDrugItem] });
-  //   //     this.setState({ value: "" });
-  //   //     this.props.drugListUpdate(newDrugItem);
-  //   //   }
-  // };
-  // //Change State to the drug name that typed
-  // handleChange = (event) => {
-  //   this.setState({ value: event.target.value });
-  // };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -64,37 +24,61 @@ class RemedyInsert extends Component {
   };
 
   componentDidMount = () => {
-    let newRemedyItem = { id: this.state.drugItemsID };
+    let newRemedyItem = { id: this.state.drugItems.length + 1 };
     this.setState({
       drugItems: [...this.state.drugItems, newRemedyItem],
-      drugItemsID: this.state.drugItemsID + 1,
     });
   };
 
   onClickAdd = () => {
     if (this.state.chooseSuggest === false) return;
+    let newRemedyItem = { id: this.state.drugItems.length + 1 };
 
-    let newRemedyItem = { id: this.state.drugItemsID };
     this.setState({
       drugItems: [...this.state.drugItems, newRemedyItem],
-      drugItemsID: this.state.drugItemsID + 1,
-      drugList: [...this.state.drugList, this.state.drugValue],
-      drugValue: "",
-      chooseSuggest: false,
     });
-    console.log(this.state.drugList);
   };
   onClickDelete = (id, drugName) => {
     if (this.state.drugItems.length === 1) return;
-    this.setState({
-      drugItems: [...this.state.drugItems.filter((item) => item.id !== id)],
-      drugList: [...this.state.drugList.filter((name) => name !== drugName)],
-    });
-    console.log(this.state.drugList);
+    this.setState(
+      {
+        drugItems: [...this.state.drugItems.filter((item) => item.id !== id)],
+        drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
+      },
+      this.props.drugListDeleteItem(id)
+    );
   };
 
-  getDrugValue = (drugValue) => {
-    this.setState({ drugValue: drugValue });
+  getDrugValue = (drugValue, id) => {
+    let found = false;
+    for (let index = 0; index < this.state.drugList.length; index++) {
+      const drugId = this.state.drugList[index].id;
+      console.log(drugId, id);
+      if (id === drugId) {
+        const newIds = this.state.drugList.slice();
+        newIds[index].name = drugValue;
+        console.log(newIds);
+
+        this.setState({ drugList: newIds });
+        found = true;
+        break;
+      }
+    }
+    if (found === false) {
+      this.setState({ drugValue: drugValue });
+      const newDrugItem = {
+        id: this.state.drugList.length + 1,
+        name: drugValue,
+      };
+      this.setState(
+        {
+          drugList: [...this.state.drugList, newDrugItem],
+          drugValue: "",
+          chooseSuggest: false,
+        },
+        this.props.drugListUpdate(newDrugItem)
+      );
+    }
   };
 
   render() {

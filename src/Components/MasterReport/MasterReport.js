@@ -17,6 +17,7 @@ class MasterReport extends Component {
     userInputStyle: "form-control",
 
     sector: "",
+
     medicalSector: "",
     factorName: "",
     email: "",
@@ -27,6 +28,7 @@ class MasterReport extends Component {
     isDrugInsterted: false,
     isSendClicked: false,
     key: 1,
+    stam: false,
   };
 
   // Use the submitted data to set the state
@@ -38,11 +40,14 @@ class MasterReport extends Component {
   };
 
   sendReport = () => {
+    this.setState({ stam: !this.setState.stam });
     console.log(this.state.factorName);
     console.log(this.state.email);
     console.log(this.state.phoneNumber);
     console.log(this.state.sector);
     console.log(this.state.medicalSector);
+    console.log(this.state.drugList);
+    console.log(this.state.symptomsList);
 
     // if (this.state.symptomsList.length >= 1) {
     //   console.log("sending report");
@@ -62,13 +67,15 @@ class MasterReport extends Component {
     this.setState({ isDrugInsterted: isInsterted });
   };
 
-  drugListUpdate = (newDrugItem) => {
-    this.setState({ drugList: [...this.state.drugList, newDrugItem] });
+  drugListUpdate = (newDrugName) => {
+    this.setState({ drugList: [...this.state.drugList, newDrugName] });
+    // console.log(this.state.drugList);
   };
   drugListDeleteItem = (id) => {
     this.setState({
       drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
     });
+    console.log(this.state.drugList);
   };
 
   symptomListDeleteItem = (id) => {
@@ -97,8 +104,6 @@ class MasterReport extends Component {
       isSendClicked: false,
       // key: this.state.key + 1,
     });
-    console.log(this.state.drugList);
-    console.log(this.state.symptomsList);
   };
 
   _next = () => {
@@ -108,7 +113,13 @@ class MasterReport extends Component {
     // }
     // if (notValidInput) return;
 
-    console.log(this.state.drugList);
+    if (
+      this.state.sector === "" ||
+      (this.state.sector === "medical" && this.state.medicalSector === "")
+    ) {
+      alert("יש למלא את כל שדות החובה המסומנים ב *");
+      return;
+    }
 
     let currentStep = this.state.currentStep;
     // If the current step is 1 or 2, then add one on "next" button click
@@ -208,9 +219,9 @@ class MasterReport extends Component {
           <Step1
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
-            email={this.state.email}
-            factorName={this.state.factorName}
-            phoneNumber={this.state.phoneNumber}
+            // email={this.state.email}
+            // factorName={this.state.factorName}
+            // phoneNumber={this.state.phoneNumber}
             emailInputStyle={this.state.emailInputStyle}
             userInputStyle={this.state.userInputStyle}
           />
@@ -219,8 +230,8 @@ class MasterReport extends Component {
             currentStep={this.state.currentStep}
             drugInserted={this.drugInserted}
             drugListUpdate={this.drugListUpdate}
-            drugList={this.props.drugList}
             drugListDeleteItem={this.drugListDeleteItem}
+            drugList={this.props.drugList}
             onNext={this._next}
           />
 

@@ -3,24 +3,6 @@ import DrugInsert from "../DrugInsert/DrugInsert";
 import RemedyInsert from "../RemedyInsert/RemedyInsert";
 
 class Step2 extends Component {
-  state = {
-    drugList: [],
-  };
-
-  drugListUpdate = (newDrugItem) => {
-    this.setState({ drugList: [...this.state.drugList, newDrugItem] });
-    this.props.drugListUpdate(newDrugItem);
-    this.props.drugInserted(true);
-  };
-
-  drugListDeleteItem = (id) => {
-    this.setState({
-      drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
-    });
-    this.props.drugListDeleteItem(id);
-    if (this.state.drugList.length === 1) this.props.drugInserted(false);
-  };
-
   render() {
     if (this.props.currentStep !== 2) {
       // Prop: The current step
@@ -35,8 +17,9 @@ class Step2 extends Component {
           delDrug={this.drugListDeleteItem}
         /> */}
         <RemedyInsert
-          drugListUpdate={this.drugListUpdate}
-          delDrug={this.drugListDeleteItem}
+          drugInserted={this.props.drugInserted}
+          drugListUpdate={this.props.drugListUpdate}
+          drugListDeleteItem={this.props.drugListDeleteItem}
           onNext={this.props.onNext}
         />
       </div>

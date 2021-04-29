@@ -30,7 +30,8 @@ class RemedyContainer extends Component {
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
     this.setState({ chooseSuggest: true });
-    this.props.getDrugValue(suggestion.name);
+    console.log(this.props.key);
+    this.props.getDrugValue(suggestion.name, this.props.key);
     this.props.chooseSuggestChange(true);
 
     return suggestion.name;
@@ -84,7 +85,7 @@ class RemedyContainer extends Component {
 
   onClickX = () => {
     const { id } = this.props.remedyItem;
-    this.props.onClickDelete(id, this.state.value);
+    this.props.onClickDelete(id);
     this.props.chooseSuggestChange(true);
   };
 
