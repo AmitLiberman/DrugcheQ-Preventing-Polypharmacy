@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
 import "./SymptomContainer.css";
+import symptomsJson from "./symptoms.json";
 
 class SymptomContainer extends Component {
   state = {
@@ -19,7 +20,7 @@ class SymptomContainer extends Component {
     const inputLength = inputValue.length;
     return inputLength === 0
       ? []
-      : this.state.drugSuggestions.filter(
+      : symptomsJson.filter(
           (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
         );
   };
