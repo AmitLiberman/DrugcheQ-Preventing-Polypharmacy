@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import "./step1.css";
 
 class Step1 extends Component {
+  state = {
+    isMedicalSector: false,
+  };
+
+  onSectorChange = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === "medical") this.setState({ isMedicalSector: true });
+    else this.setState({ isMedicalSector: false });
+  };
+
   render() {
     if (this.props.currentStep !== 1) {
       // Prop: The current step
@@ -10,40 +20,60 @@ class Step1 extends Component {
     return (
       <div className="form-group1">
         <div className="main-sectors-container">
-          <div className="sector-container">
+          <div
+            className="sector-container"
+            onChange={(event) => this.onSectorChange(event)}
+          >
             <h5>סקטור מדווח</h5>
             <label className="radio-option">
               ציבור
-              <input className="radio-input" type="radio" name="radio" />
+              <input
+                className="radio-input"
+                type="radio"
+                name="radio"
+                value="public"
+              />
             </label>
             <label className="radio-option">
               צוות רפואי
-              <input className="radio-input" type="radio" name="radio" />
+              <input
+                className="radio-input"
+                type="radio"
+                name="radio"
+                value="medical"
+              />
             </label>
             <label className="radio-option">
               אחר
-              <input className="radio-input" type="radio" name="radio" />
+              <input
+                className="radio-input"
+                type="radio"
+                name="radio"
+                value="other"
+              />
             </label>
           </div>
-          <div className="sector-container specific">
-            <h5>בחר סקטור</h5>
-            <label className="radio-option">
-              רפואה
-              <input className="radio-input" type="radio" name="radio" />
-            </label>
-            <label className="radio-option">
-              רוקחות
-              <input className="radio-input" type="radio" name="radio" />
-            </label>
-            <label className="radio-option">
-              סיעוד
-              <input className="radio-input" type="radio" name="radio" />
-            </label>
-            <label className="radio-option">
-              אחר
-              <input className="radio-input" type="radio" name="radio" />
-            </label>
-          </div>
+          {this.state.isMedicalSector ? (
+            <div className="sector-container specific">
+              <h5>בחר סקטור</h5>
+              <label className="radio-option">
+                רפואה
+                <input className="radio-input" type="radio" name="radio" />
+              </label>
+              <label className="radio-option">
+                רוקחות
+                <input className="radio-input" type="radio" name="radio" />
+              </label>
+              <label className="radio-option">
+                סיעוד
+                <input className="radio-input" type="radio" name="radio" />
+              </label>
+              <label className="radio-option">
+                אחר
+                <input className="radio-input" type="radio" name="radio" />
+              </label>
+            </div>
+          ) : null}
         </div>
         <div className="personal-detail-container">
           <label className="step1-lable" htmlFor="factorName">
