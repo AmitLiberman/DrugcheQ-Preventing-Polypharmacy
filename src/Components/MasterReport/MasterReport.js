@@ -16,7 +16,8 @@ class MasterReport extends Component {
     emailInputStyle: "form-control",
     userInputStyle: "form-control",
 
-    sector: "ציבור",
+    sector: "",
+    medicalSector: "",
     factorName: "",
     email: "",
     phoneNumber: "",
@@ -40,6 +41,8 @@ class MasterReport extends Component {
     console.log(this.state.factorName);
     console.log(this.state.email);
     console.log(this.state.phoneNumber);
+    console.log(this.state.sector);
+    console.log(this.state.medicalSector);
 
     // if (this.state.symptomsList.length >= 1) {
     //   console.log("sending report");

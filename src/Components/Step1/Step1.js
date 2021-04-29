@@ -1,4 +1,3 @@
-import { blue, red } from "@material-ui/core/colors";
 import React, { Component } from "react";
 import "./step1.css";
 
@@ -14,12 +13,13 @@ class Step1 extends Component {
     this.setState({ sector: e.target.value });
     if (e.target.value === "medical") this.setState({ isMedicalSector: true });
     else this.setState({ isMedicalSector: false });
+    this.props.handleChange(e);
   };
 
   onMedicalSectorChange = (e) => {
     console.log("medicalsector change");
-
     this.setState({ medicalSector: e.target.value });
+    this.props.handleChange(e);
   };
 
   render() {
@@ -43,7 +43,7 @@ class Step1 extends Component {
               <input
                 className="radio-input"
                 type="radio"
-                name="radio"
+                name="sector"
                 value="public"
                 checked={this.state.sector === "public"}
               />
@@ -53,7 +53,7 @@ class Step1 extends Component {
               <input
                 className="radio-input"
                 type="radio"
-                name="radio"
+                name="sector"
                 value="medical"
                 checked={this.state.sector === "medical"}
               />
@@ -63,7 +63,7 @@ class Step1 extends Component {
               <input
                 className="radio-input"
                 type="radio"
-                name="radio"
+                name="sector"
                 value="other"
                 checked={this.state.sector === "other"}
               />
@@ -80,7 +80,7 @@ class Step1 extends Component {
                 <input
                   className="radio-input"
                   type="radio"
-                  name="radio2"
+                  name="medicalSector"
                   value="medicine"
                   checked={this.state.medicalSector === "medicine"}
                 />
@@ -90,7 +90,7 @@ class Step1 extends Component {
                 <input
                   className="radio-input"
                   type="radio"
-                  name="radio2"
+                  name="medicalSector"
                   value="pharmacy"
                   checked={this.state.medicalSector === "pharmacy"}
                 />
@@ -100,7 +100,7 @@ class Step1 extends Component {
                 <input
                   className="radio-input"
                   type="radio"
-                  name="radio2"
+                  name="medicalSector"
                   value="nursing"
                   checked={this.state.medicalSector === "nursing"}
                 />
@@ -110,7 +110,7 @@ class Step1 extends Component {
                 <input
                   className="radio-input"
                   type="radio"
-                  name="radio2"
+                  name="medicalSector"
                   value="other"
                   checked={this.state.medicalSector === "other"}
                 />
