@@ -1,15 +1,25 @@
+import { blue, red } from "@material-ui/core/colors";
 import React, { Component } from "react";
 import "./step1.css";
 
 class Step1 extends Component {
   state = {
     isMedicalSector: false,
+    sector: "",
+    medicalSector: "",
   };
 
   onSectorChange = (e) => {
-    console.log(e.target.value);
+    console.log("sector change");
+    this.setState({ sector: e.target.value });
     if (e.target.value === "medical") this.setState({ isMedicalSector: true });
     else this.setState({ isMedicalSector: false });
+  };
+
+  onMedicalSectorChange = (e) => {
+    console.log("medicalsector change");
+
+    this.setState({ medicalSector: e.target.value });
   };
 
   render() {
@@ -24,7 +34,10 @@ class Step1 extends Component {
             className="sector-container"
             onChange={(event) => this.onSectorChange(event)}
           >
-            <h5>סקטור מדווח</h5>
+            <h5>
+              סקטור מדווח
+              <span style={{ color: "red", fontWeight: "bold" }}>*</span>
+            </h5>
             <label className="radio-option">
               ציבור
               <input
@@ -32,6 +45,7 @@ class Step1 extends Component {
                 type="radio"
                 name="radio"
                 value="public"
+                checked={this.state.sector === "public"}
               />
             </label>
             <label className="radio-option">
@@ -41,6 +55,7 @@ class Step1 extends Component {
                 type="radio"
                 name="radio"
                 value="medical"
+                checked={this.state.sector === "medical"}
               />
             </label>
             <label className="radio-option">
@@ -50,27 +65,55 @@ class Step1 extends Component {
                 type="radio"
                 name="radio"
                 value="other"
+                checked={this.state.sector === "other"}
               />
             </label>
           </div>
           {this.state.isMedicalSector ? (
-            <div className="sector-container specific">
+            <div
+              className="sector-container specific"
+              onChange={(event) => this.onMedicalSectorChange(event)}
+            >
               <h5>בחר סקטור</h5>
               <label className="radio-option">
                 רפואה
-                <input className="radio-input" type="radio" name="radio" />
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="radio2"
+                  value="medicine"
+                  checked={this.state.medicalSector === "medicine"}
+                />
               </label>
               <label className="radio-option">
                 רוקחות
-                <input className="radio-input" type="radio" name="radio" />
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="radio2"
+                  value="pharmacy"
+                  checked={this.state.medicalSector === "pharmacy"}
+                />
               </label>
               <label className="radio-option">
                 סיעוד
-                <input className="radio-input" type="radio" name="radio" />
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="radio2"
+                  value="nursing"
+                  checked={this.state.medicalSector === "nursing"}
+                />
               </label>
               <label className="radio-option">
                 אחר
-                <input className="radio-input" type="radio" name="radio" />
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="radio2"
+                  value="other"
+                  checked={this.state.medicalSector === "other"}
+                />
               </label>
             </div>
           ) : null}
