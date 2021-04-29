@@ -43,7 +43,10 @@ class Step3 extends Component {
           conditionsList={this.state.symptomList}
           symptomListDeleteItem={this.symptomListDeleteItem}
         /> */}
-        <SymptomInsert />
+        <SymptomInsert
+          symptomListDeleteItem={this.props.symptomListDeleteItem}
+          symptomListUpdate={this.props.symptomListUpdate}
+        />
       </div>
     );
   }

@@ -22,9 +22,11 @@ class MasterReport extends Component {
     factorName: "",
     email: "",
     phoneNumber: "",
+
+    drugList: [],
     untilDrugName: "",
     fromDrugName: "",
-    drugList: [],
+
     symptomsList: [],
 
     isDrugInsterted: false,
@@ -50,9 +52,9 @@ class MasterReport extends Component {
     console.log(this.state.sector);
     console.log(this.state.medicalSector);
     console.log(this.state.drugList);
-    console.log(this.state.symptomsList);
     console.log(this.state.fromDrugName);
     console.log(this.state.untilDrugName);
+    console.log(this.state.symptomsList);
 
     // if (this.state.symptomsList.length >= 1) {
     //   console.log("sending report");
@@ -74,19 +76,17 @@ class MasterReport extends Component {
 
   drugListUpdate = (newDrugName) => {
     this.setState({ drugList: [...this.state.drugList, newDrugName] });
-    // console.log(this.state.drugList);
   };
   drugListDeleteItem = (id) => {
     this.setState({
       drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
     });
-    console.log(this.state.drugList);
   };
 
   symptomListDeleteItem = (id) => {
     this.setState({
       symptomsList: [
-        ...this.state.symptomsList.filter((drug) => drug.id !== id),
+        ...this.state.symptomsList.filter((symptom) => symptom.id !== id),
       ],
     });
   };

@@ -29,7 +29,7 @@ class SymptomContainer extends Component {
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
     this.setState({ chooseSuggest: true });
-    // this.props.getDrugValue(suggestion.name);
+    this.props.getSymptomValue(suggestion.name, this.props.symptomItem.id);
     this.props.chooseSuggestChange(true);
 
     return suggestion.name;
@@ -59,6 +59,20 @@ class SymptomContainer extends Component {
     this.setState({
       suggestions: [],
     });
+  };
+
+  onAppearDateChange = (event) => {
+    this.props.getSymptomAppearDate(
+      this.props.symptomItem.id,
+      event.target.value
+    );
+  };
+
+  onSeverityChange = (event) => {
+    this.props.getSymptomSeverity(
+      this.props.symptomItem.id,
+      event.target.value
+    );
   };
 
   //Change State to the drug name that typed
@@ -105,26 +119,40 @@ class SymptomContainer extends Component {
 
         <div className="from-until-dates-container">
           <div className="date-wrapper">
-            <div className="severity-container">
+            <div
+              className="severity-container"
+              onChange={(e) => this.onSeverityChange(e)}
+            >
               <h5>חומרתה של תופעת הלוואי</h5>
               <label className="radio-option">
                 חמורה
-                <input className="radio-input" type="radio" name="radio" />
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="sever"
+                  value="sever"
+                />
               </label>
               <label className="radio-option">
                 לא חמורה
-                <input className="radio-input" type="radio" name="radio" />
+                <input
+                  className="radio-input"
+                  type="radio"
+                  name="notSever"
+                  value="notSever"
+                />
               </label>
             </div>
             <div className="date-of-appear-container">
-              <label className="date-lable" for="from-date">
+              <label className="date-lable" forhtml="appearDate">
                 תאריך הופעת תסמין
               </label>
               <input
                 className="date-input"
                 type="date"
-                id="from-date"
-                name="from-date"
+                id="appearDate"
+                name="appearDate"
+                onChange={(e) => this.onAppearDateChange(e)}
               />
             </div>
           </div>

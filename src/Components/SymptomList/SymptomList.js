@@ -3,12 +3,14 @@ import SymptomContainer from "../SymptomContainer/SymptomContainer";
 
 class SymptomList extends Component {
   render() {
-    return this.props.symptomItems.map((item) => (
+    return this.props.symptomItems.map((item, i) => (
       <SymptomContainer
-        key={item.id}
         symptomItem={item}
         chooseSuggestChange={this.props.chooseSuggestChange}
         onClickDelete={this.props.onClickDelete}
+        getSymptomValue={this.props.getSymptomValue}
+        getSymptomSeverity={this.props.getSymptomSeverity}
+        getSymptomAppearDate={this.props.getSymptomAppearDate}
       />
     ));
   }
