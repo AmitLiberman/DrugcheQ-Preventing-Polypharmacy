@@ -70,7 +70,7 @@ class MasterReport extends Component {
     });
     // axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
 
-    axios.post("http://127.0.0.1:5000/side-effect-report", json);
+    axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
   };
 
   updateDrugListIds = (newDrugList) => {
