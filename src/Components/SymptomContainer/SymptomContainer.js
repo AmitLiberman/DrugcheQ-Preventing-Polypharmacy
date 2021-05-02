@@ -86,7 +86,28 @@ class SymptomContainer extends Component {
     this.props.chooseSuggestChange(true);
   };
   render() {
-    const { value, suggestions } = this.state;
+    // const { value, suggestions } = this.state;
+    let found = false;
+    let value = "";
+    let severityValue = "";
+    let appearDateValue = "";
+
+    for (let index = 0; index < this.props.symptomList.length; index++) {
+      const drugId = this.props.symptomList[index].id;
+      if (this.props.symptomItem.id === drugId) {
+        value = this.props.symptomList[index].name;
+        severityValue = this.props.symptomList[index].fromDate;
+        appearDateValue = this.props.symptomList[index].untilDate;
+        found = true;
+        break;
+      }
+    }
+    if (found === false) {
+      value = this.state.value;
+      console.log(value);
+    }
+    const suggestions = this.state.suggestions;
+
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: "בחר תסמין",
@@ -131,6 +152,7 @@ class SymptomContainer extends Component {
                   type="radio"
                   name="sever"
                   value="sever"
+                  checked={severityValue === "sever"}
                 />
               </label>
               <label className="radio-option">
@@ -140,6 +162,7 @@ class SymptomContainer extends Component {
                   type="radio"
                   name="notSever"
                   value="notSever"
+                  checked={severityValue === "notSever"}
                 />
               </label>
             </div>
@@ -152,6 +175,7 @@ class SymptomContainer extends Component {
                 type="date"
                 id="appearDate"
                 name="appearDate"
+                value={appearDateValue}
                 onChange={(e) => this.onAppearDateChange(e)}
               />
             </div>

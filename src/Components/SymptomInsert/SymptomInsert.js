@@ -21,18 +21,40 @@ class SymptomInsert extends Component {
   };
 
   componentDidMount = () => {
-    let newRemedyItem = { id: this.state.symptomItems.length + 1 };
-    this.setState({
-      symptomItems: [...this.state.symptomItems, newRemedyItem],
-    });
+    if (this.props.symptomList.length > 0) {
+      let arrSymptomItems = [];
+      let arrSymptomList = [];
+
+      for (let index = 0; index < this.props.symptomList.length; index++) {
+        let newSymptomItem = { id: index + 1 };
+        let newSymptom = {
+          id: index + 1,
+          name: this.props.symptomList[index].name,
+          severity: this.props.symptomList[index].severity,
+          appearDate: this.props.symptomList[index].appearDate,
+        };
+        arrSymptomItems.push(newSymptomItem);
+        arrSymptomList.push(newSymptom);
+      }
+      this.setState({
+        symptomItems: arrSymptomItems,
+        symptomList: arrSymptomList,
+      });
+      this.props.updateSymptomListIds(arrSymptomList);
+    } else {
+      let newSymptomItem = { id: this.state.symptomItems.length + 1 };
+      this.setState({
+        symptomItems: [...this.state.symptomItems, newSymptomItem],
+      });
+    }
   };
 
   onClickAdd = () => {
-    if (this.state.chooseSuggest === false) return;
-    let newRemedyItem = { id: this.state.symptomItems.length + 1 };
+    // if (this.state.chooseSuggest === false) return;
+    let newSymptomItem = { id: this.state.symptomItems.length + 1 };
 
     this.setState({
-      symptomItems: [...this.state.symptomItems, newRemedyItem],
+      symptomItems: [...this.state.symptomItems, newSymptomItem],
     });
   };
   onClickDelete = (id) => {
@@ -43,7 +65,7 @@ class SymptomInsert extends Component {
           ...this.state.symptomItems.filter((item) => item.id !== id),
         ],
         symptomList: [
-          ...this.state.symptomList.filter((symptom) => symptom.id !== id),
+          ...this.props.symptomList.filter((symptom) => symptom.id !== id),
         ],
       },
       this.props.symptomListDeleteItem(id)
@@ -51,20 +73,20 @@ class SymptomInsert extends Component {
   };
 
   getSymptomAppearDate = (id, value) => {
-    for (let index = 0; index < this.state.symptomList.length; index++) {
-      const symptomId = this.state.symptomList[index].id;
+    for (let index = 0; index < this.props.symptomList.length; index++) {
+      const symptomId = this.props.symptomList[index].id;
       if (id === symptomId) {
-        const newIds = this.state.symptomList.slice();
+        const newIds = this.props.symptomList.slice();
         newIds[index].appearDate = value;
         this.setState({ symptomList: newIds });
       }
     }
   };
   getSymptomSeverity = (id, value) => {
-    for (let index = 0; index < this.state.symptomList.length; index++) {
-      const symptomId = this.state.symptomList[index].id;
+    for (let index = 0; index < this.props.symptomList.length; index++) {
+      const symptomId = this.props.symptomList[index].id;
       if (id === symptomId) {
-        const newIds = this.state.symptomList.slice();
+        const newIds = this.props.symptomList.slice();
         newIds[index].severity = value;
         this.setState({ symptomList: newIds });
       }
@@ -73,10 +95,10 @@ class SymptomInsert extends Component {
 
   getSymptomValue = (symptomValue, id) => {
     let found = false;
-    for (let index = 0; index < this.state.symptomList.length; index++) {
-      const symptomId = this.state.symptomList[index].id;
+    for (let index = 0; index < this.props.symptomList.length; index++) {
+      const symptomId = this.props.symptomList[index].id;
       if (id === symptomId) {
-        const newIds = this.state.symptomList.slice();
+        const newIds = this.props.symptomList.slice();
         newIds[index].name = symptomValue;
         this.setState({ symptomList: newIds });
         found = true;
@@ -86,14 +108,14 @@ class SymptomInsert extends Component {
     if (found === false) {
       this.setState({ symptomValue: symptomValue });
       const newSymptomIdItem = {
-        id: this.state.symptomList.length + 1,
+        id: this.props.symptomList.length + 1,
         name: symptomValue,
         severity: "",
         appearDate: "",
       };
       this.setState(
         {
-          symptomList: [...this.state.symptomList, newSymptomIdItem],
+          symptomList: [...this.props.symptomList, newSymptomIdItem],
           symptomValue: "",
           chooseSuggest: false,
         },
@@ -109,6 +131,7 @@ class SymptomInsert extends Component {
           <div className={this.state.notInList}>{this.state.alertMsg}</div>
           <SymptomList
             symptomItems={this.state.symptomItems}
+            symptomList={this.props.symptomList}
             chooseSuggestChange={this.chooseSuggestChange}
             onClickDelete={this.onClickDelete}
             getSymptomValue={this.getSymptomValue}

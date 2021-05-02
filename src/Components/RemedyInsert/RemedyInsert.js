@@ -24,7 +24,6 @@ class RemedyInsert extends Component {
   };
 
   componentDidMount = () => {
-    console.log(this.props.drugList);
     if (this.props.drugList.length > 0) {
       let arrDrugItems = [];
       let arrDrugList = [];
@@ -47,8 +46,6 @@ class RemedyInsert extends Component {
       });
       this.props.updateDrugListIds(arrDrugList);
     } else {
-      console.log("else");
-
       let newRemedyItem = { id: this.state.drugItems.length + 1 };
       this.setState({
         drugItems: [...this.state.drugItems, newRemedyItem],

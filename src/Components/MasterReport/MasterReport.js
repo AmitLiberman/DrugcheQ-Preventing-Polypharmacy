@@ -26,7 +26,7 @@ class MasterReport extends Component {
     untilDrugName: "",
     fromDrugName: "",
 
-    symptomsList: [],
+    symptomList: [],
 
     isDrugInsterted: false,
     isSendClicked: false,
@@ -53,7 +53,7 @@ class MasterReport extends Component {
     console.log(this.state.drugList);
     console.log(this.state.fromDrugName);
     console.log(this.state.untilDrugName);
-    console.log(this.state.symptomsList);
+    console.log(this.state.symptomList);
 
     // if (this.state.symptomsList.length >= 1) {
     console.log("sending report");
@@ -73,6 +73,10 @@ class MasterReport extends Component {
     this.setState({ drugList: newDrugList });
   };
 
+  updateSymptomListIds = (newSymptomList) => {
+    this.setState({ symptomList: newSymptomList });
+  };
+
   drugInserted = (isInsterted) => {
     this.setState({ isDrugInsterted: isInsterted });
   };
@@ -88,15 +92,15 @@ class MasterReport extends Component {
 
   symptomListDeleteItem = (id) => {
     this.setState({
-      symptomsList: [
-        ...this.state.symptomsList.filter((symptom) => symptom.id !== id),
+      symptomList: [
+        ...this.state.symptomList.filter((symptom) => symptom.id !== id),
       ],
     });
   };
 
   symptomListUpdate = (newSymptomItem) => {
     this.setState({
-      symptomsList: [...this.state.symptomsList, newSymptomItem],
+      symptomList: [...this.state.symptomList, newSymptomItem],
     });
   };
 
@@ -104,7 +108,7 @@ class MasterReport extends Component {
     this.setState({
       currentStep: 1,
       drugList: [],
-      symptomsList: [],
+      symptomList: [],
       email: "",
       username: "",
       sector: "ציבור",
@@ -243,8 +247,9 @@ class MasterReport extends Component {
           <Step3
             currentStep={this.state.currentStep}
             symptomListUpdate={this.symptomListUpdate}
-            symptomList={this.props.symptomList}
+            symptomList={this.state.symptomList}
             symptomListDeleteItem={this.symptomListDeleteItem}
+            updateSymptomListIds={this.updateSymptomListIds}
           />
 
           <div className="prev-next-btns-container">

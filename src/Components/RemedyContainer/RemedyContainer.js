@@ -103,23 +103,12 @@ class RemedyContainer extends Component {
     let fromDateValue = "";
     let untilDateValue = "";
 
-    console.log(
-      "drug items",
-      this.props.drugitems.length,
-      this.props.drugitems
-    );
-    console.log("drug List", this.props.drugList.length, this.props.drugList);
-
     for (let index = 0; index < this.props.drugList.length; index++) {
       const drugId = this.props.drugList[index].id;
       if (this.props.remedyItem.id === drugId) {
         value = this.props.drugList[index].name;
         fromDateValue = this.props.drugList[index].fromDate;
         untilDateValue = this.props.drugList[index].untilDate;
-
-        console.log(value);
-        console.log(fromDateValue);
-
         found = true;
         break;
       }

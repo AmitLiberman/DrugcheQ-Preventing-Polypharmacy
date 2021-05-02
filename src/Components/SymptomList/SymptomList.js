@@ -11,6 +11,8 @@ class SymptomList extends Component {
         getSymptomValue={this.props.getSymptomValue}
         getSymptomSeverity={this.props.getSymptomSeverity}
         getSymptomAppearDate={this.props.getSymptomAppearDate}
+        updateSymptomListIds={this.props.updateSymptomListIds}
+        symptomList={this.props.symptomList}
       />
     ));
   }

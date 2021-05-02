@@ -46,6 +46,8 @@ class Step3 extends Component {
         <SymptomInsert
           symptomListDeleteItem={this.props.symptomListDeleteItem}
           symptomListUpdate={this.props.symptomListUpdate}
+          updateSymptomListIds={this.props.updateSymptomListIds}
+          symptomList={this.props.symptomList}
         />
       </div>
     );
