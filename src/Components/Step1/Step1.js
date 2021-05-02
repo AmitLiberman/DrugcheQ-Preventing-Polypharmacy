@@ -8,11 +8,21 @@ class Step1 extends Component {
     medicalSector: "",
   };
 
+  componentDidMount = () => {
+    this.setState({ isMedicalSector: false });
+  };
+
   onSectorChange = (e) => {
     console.log("sector change");
     this.setState({ sector: e.target.value });
-    if (e.target.value === "medical") this.setState({ isMedicalSector: true });
-    else this.setState({ isMedicalSector: false });
+    if (e.target.value === "medical") {
+      this.setState({ isMedicalSector: true });
+      this.props.medicalSectorHander(true);
+    } else {
+      this.setState({ isMedicalSector: false });
+      this.props.medicalSectorHander(true);
+    }
+
     this.props.handleChange(e);
   };
 
@@ -45,7 +55,7 @@ class Step1 extends Component {
                 type="radio"
                 name="sector"
                 value="public"
-                checked={this.state.sector === "public"}
+                checked={this.props.sector === "public"}
               />
             </label>
             <label className="radio-option">
@@ -55,7 +65,7 @@ class Step1 extends Component {
                 type="radio"
                 name="sector"
                 value="medical"
-                checked={this.state.sector === "medical"}
+                checked={this.props.sector === "medical"}
               />
             </label>
             <label className="radio-option">
@@ -65,11 +75,11 @@ class Step1 extends Component {
                 type="radio"
                 name="sector"
                 value="other"
-                checked={this.state.sector === "other"}
+                checked={this.props.sector === "other"}
               />
             </label>
           </div>
-          {this.state.isMedicalSector ? (
+          {this.props.isMedicalSector ? (
             <div
               className="sector-container specific"
               onChange={(event) => this.onMedicalSectorChange(event)}
@@ -85,7 +95,7 @@ class Step1 extends Component {
                   type="radio"
                   name="medicalSector"
                   value="medicine"
-                  checked={this.state.medicalSector === "medicine"}
+                  checked={this.props.medicalSector === "medicine"}
                 />
               </label>
               <label className="radio-option">
@@ -95,7 +105,7 @@ class Step1 extends Component {
                   type="radio"
                   name="medicalSector"
                   value="pharmacy"
-                  checked={this.state.medicalSector === "pharmacy"}
+                  checked={this.props.medicalSector === "pharmacy"}
                 />
               </label>
               <label className="radio-option">
@@ -105,7 +115,7 @@ class Step1 extends Component {
                   type="radio"
                   name="medicalSector"
                   value="nursing"
-                  checked={this.state.medicalSector === "nursing"}
+                  checked={this.props.medicalSector === "nursing"}
                 />
               </label>
               <label className="radio-option">
@@ -115,7 +125,7 @@ class Step1 extends Component {
                   type="radio"
                   name="medicalSector"
                   value="other"
-                  checked={this.state.medicalSector === "other"}
+                  checked={this.props.medicalSector === "other"}
                 />
               </label>
             </div>

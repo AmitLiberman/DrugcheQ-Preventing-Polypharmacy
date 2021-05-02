@@ -26,6 +26,8 @@ class MasterReport extends Component {
 
     symptomList: [],
 
+    isMedicalSector: false,
+
     isDrugInsterted: false,
     isSendClicked: false,
     key: 1,
@@ -106,16 +108,23 @@ class MasterReport extends Component {
     });
   };
 
+  medicalSectorHander = (flag) => {
+    this.setState({ isMedicalSector: flag });
+  };
+
   closeModalClicked = () => {
     this.setState({
       currentStep: 1,
       drugList: [],
       symptomList: [],
+      sector: "",
+      medicalSector: "",
+      factorName: "",
       email: "",
-      username: "",
-      sector: "ציבור",
+      phoneNumber: "",
       isDrugInsterted: false,
       isSendClicked: false,
+      isMedicalSector: false,
       // key: this.state.key + 1,
     });
   };
@@ -233,6 +242,8 @@ class MasterReport extends Component {
         <div className="steps-container">
           <div className="steps-circles">{steps_arr}</div>
           <Step1
+            isMedicalSector={this.state.isMedicalSector}
+            medicalSectorHander={this.medicalSectorHander}
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
             emailInputStyle={this.state.emailInputStyle}
