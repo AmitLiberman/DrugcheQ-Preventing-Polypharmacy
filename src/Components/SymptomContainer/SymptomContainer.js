@@ -84,6 +84,7 @@ class SymptomContainer extends Component {
       this.props.symptomItem.id,
       event.target.value
     );
+    this.setState({ appearDateValue: event.target.value });
   };
 
   onSeverityChange = (event) => {
@@ -91,6 +92,7 @@ class SymptomContainer extends Component {
       this.props.symptomItem.id,
       event.target.value
     );
+    this.setState({ severityValue: event.target.value });
   };
 
   //Change State to the drug name that typed
@@ -126,6 +128,8 @@ class SymptomContainer extends Component {
     // }
     value = this.state.value;
     const suggestions = this.state.suggestions;
+    let appearDateValue = this.state.appearDateValue;
+    let severityValue = this.state.severityValue;
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
@@ -181,7 +185,7 @@ class SymptomContainer extends Component {
                   type="radio"
                   name={"notSever" + this.props.symptomItem.id}
                   value="notSever"
-                  checked={this.state.severityValue === "notSever"}
+                  checked={severityValue === "notSever"}
                 />
               </label>
             </div>
@@ -194,7 +198,7 @@ class SymptomContainer extends Component {
                 type="date"
                 id="appearDate"
                 name={"appearDate" + this.props.symptomItem.id}
-                value={this.state.appearDateValue}
+                value={appearDateValue}
                 onChange={(e) => this.onAppearDateChange(e)}
               />
             </div>

@@ -100,10 +100,12 @@ class RemedyContainer extends Component {
 
   fromChangeHandler = (event) => {
     this.props.getDrugFromDates(this.props.remedyItem.id, event.target.value);
+    this.setState({ fromDateValue: event.target.value });
   };
 
   untilChangeHandler = (event) => {
     this.props.getDrugUntilDates(this.props.remedyItem.id, event.target.value);
+    this.setState({ untilDateValue: event.target.value });
   };
 
   onClickX = () => {
