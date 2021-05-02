@@ -23,8 +23,6 @@ class MasterReport extends Component {
     phoneNumber: "",
 
     drugList: [],
-    untilDrugName: "",
-    fromDrugName: "",
 
     symptomList: [],
 
@@ -55,23 +53,22 @@ class MasterReport extends Component {
     console.log(this.state.sector);
     console.log(this.state.medicalSector);
     console.log(this.state.drugList);
-    console.log(this.state.fromDrugName);
-    console.log(this.state.untilDrugName);
     console.log(this.state.symptomList);
-
-    // if (this.state.symptomsList.length >= 1) {
     console.log("sending report");
     this.setState({ isSendClicked: true });
 
-    //   const json = JSON.stringify({
-    //     username: this.state.username,
-    //     email: this.state.email,
-    //     sector: this.state.sector,
-    //     drugList: this.state.drugList,
-    //     symptomsList: this.state.symptomsList,
-    //   });
-    //   axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
-    // }
+    const json = JSON.stringify({
+      factorName: this.state.factorName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      sector: this.state.sector,
+      medicalSector: this.state.medicalSector,
+      drugList: this.state.drugList,
+      symptomList: this.state.symptomList,
+    });
+    // axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
+
+    axios.post("http://127.0.0.1:5000/side-effect-report", json);
   };
 
   updateDrugListIds = (newDrugList) => {
@@ -262,6 +259,7 @@ class MasterReport extends Component {
             symptomList={this.state.symptomList}
             symptomListDeleteItem={this.symptomListDeleteItem}
             updateSymptomListIds={this.updateSymptomListIds}
+            handleChange={this.handleChange}
           />
 
           <div className="prev-next-btns-container">

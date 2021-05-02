@@ -21,6 +21,7 @@ class Step2 extends Component {
           drugListDeleteItem={this.props.drugListDeleteItem}
           drugList={this.props.drugList}
           updateDrugListIds={this.props.updateDrugListIds}
+          handleChange={this.props.handleChange}
         />
       </div>
     );
