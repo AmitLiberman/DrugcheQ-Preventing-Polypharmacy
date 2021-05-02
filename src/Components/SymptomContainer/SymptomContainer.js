@@ -47,6 +47,7 @@ class SymptomContainer extends Component {
           severityValue: this.props.symptomList[index].severity,
           appearDateValue: this.props.symptomList[index].appearDate,
           found: true,
+          chooseSuggest: true,
         });
         break;
       }

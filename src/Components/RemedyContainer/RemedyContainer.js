@@ -51,6 +51,7 @@ class RemedyContainer extends Component {
           fromDateValue: this.props.drugList[index].fromDate,
           untilDateValue: this.props.drugList[index].untilDate,
           found: true,
+          chooseSuggest: true,
         });
         break;
       }
