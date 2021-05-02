@@ -36,7 +36,6 @@ class RemedyInsert extends Component {
           fromDate: this.props.drugList[index].fromDate,
           untilDate: this.props.drugList[index].untilDate,
         };
-        console.log(newRemedyItem);
         arrDrugItems.push(newRemedyItem);
         arrDrugList.push(newDrug);
       }
@@ -103,14 +102,11 @@ class RemedyInsert extends Component {
         newIds[index].name = drugValue;
         this.setState({ drugList: newIds });
         found = true;
-        console.log("found!");
         break;
       }
     }
 
     if (found === false) {
-      console.log("Not found!");
-      console.log(this.props.drugList);
       this.setState({ drugValue: drugValue });
       const newDrugItem = {
         id: this.props.drugList.length + 1,

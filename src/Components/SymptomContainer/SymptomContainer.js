@@ -12,6 +12,9 @@ class SymptomContainer extends Component {
     chooseSuggest: false,
     notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
+    severityValue: "",
+    appearDateValue: "",
+    found: false,
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -33,6 +36,21 @@ class SymptomContainer extends Component {
     this.props.chooseSuggestChange(true);
 
     return suggestion.name;
+  };
+
+  componentDidMount = () => {
+    for (let index = 0; index < this.props.symptomList.length; index++) {
+      const drugId = this.props.symptomList[index].id;
+      if (this.props.symptomItem.id === drugId) {
+        this.setState({
+          value: this.props.symptomList[index].name,
+          severityValue: this.props.symptomList[index].severity,
+          appearDateValue: this.props.symptomList[index].appearDate,
+          found: true,
+        });
+        break;
+      }
+    }
   };
 
   // Use your imagination to render suggestions.
@@ -87,25 +105,26 @@ class SymptomContainer extends Component {
   };
   render() {
     // const { value, suggestions } = this.state;
-    let found = false;
+    // let found = false;
     let value = "";
-    let severityValue = "";
-    let appearDateValue = "";
+    // let severityValue = "";
+    // let appearDateValue = "";
 
-    for (let index = 0; index < this.props.symptomList.length; index++) {
-      const drugId = this.props.symptomList[index].id;
-      if (this.props.symptomItem.id === drugId) {
-        value = this.props.symptomList[index].name;
-        severityValue = this.props.symptomList[index].severity;
-        appearDateValue = this.props.symptomList[index].appearDate;
-        found = true;
-        break;
-      }
-    }
-    if (found === false) {
-      value = this.state.value;
-      console.log(value);
-    }
+    // for (let index = 0; index < this.props.symptomList.length; index++) {
+    //   const drugId = this.props.symptomList[index].id;
+    //   if (this.props.symptomItem.id === drugId) {
+    //     value = this.props.symptomList[index].name;
+    //     severityValue = this.props.symptomList[index].severity;
+    //     appearDateValue = this.props.symptomList[index].appearDate;
+    //     found = true;
+    //     break;
+    //   }
+    // }
+    // if (found === false) {
+    //   value = this.state.value;
+    //   console.log(value);
+    // }
+    value = this.state.value;
     const suggestions = this.state.suggestions;
 
     // Autosuggest will pass through all these props to the input.
@@ -152,7 +171,7 @@ class SymptomContainer extends Component {
                   type="radio"
                   name="sever"
                   value="sever"
-                  checked={severityValue === "sever"}
+                  checked={this.state.severityValue === "sever"}
                 />
               </label>
               <label className="radio-option">
@@ -162,7 +181,7 @@ class SymptomContainer extends Component {
                   type="radio"
                   name={"notSever" + this.props.symptomItem.id}
                   value="notSever"
-                  checked={severityValue === "notSever"}
+                  checked={this.state.severityValue === "notSever"}
                 />
               </label>
             </div>
@@ -175,7 +194,7 @@ class SymptomContainer extends Component {
                 type="date"
                 id="appearDate"
                 name={"appearDate" + this.props.symptomItem.id}
-                value={appearDateValue}
+                value={this.state.appearDateValue}
                 onChange={(e) => this.onAppearDateChange(e)}
               />
             </div>
