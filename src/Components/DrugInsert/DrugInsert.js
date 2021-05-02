@@ -131,7 +131,7 @@ class DrugInsert extends Component {
     };
 
     let progress = (
-      <div style={{ margin: "5em" }}>
+      <div style={{ marginRight: "10em", textAlign: "right" }}>
         <CircularProgress />
       </div>
     );

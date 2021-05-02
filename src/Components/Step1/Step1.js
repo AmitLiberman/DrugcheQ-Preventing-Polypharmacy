@@ -20,7 +20,7 @@ class Step1 extends Component {
       this.props.medicalSectorHander(true);
     } else {
       this.setState({ isMedicalSector: false });
-      this.props.medicalSectorHander(true);
+      this.props.medicalSectorHander(false);
     }
 
     this.props.handleChange(e);
