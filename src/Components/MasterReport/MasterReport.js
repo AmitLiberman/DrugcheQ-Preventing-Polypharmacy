@@ -44,6 +44,10 @@ class MasterReport extends Component {
   };
 
   sendReport = () => {
+    if (this.state.symptomList.length === 0) {
+      alert("יש למלא את כל שדות החובה המסומנים ב *");
+      return;
+    }
     this.setState({ stam: !this.setState.stam });
     console.log(this.state.factorName);
     console.log(this.state.email);
@@ -58,6 +62,7 @@ class MasterReport extends Component {
     // if (this.state.symptomsList.length >= 1) {
     console.log("sending report");
     this.setState({ isSendClicked: true });
+
     //   const json = JSON.stringify({
     //     username: this.state.username,
     //     email: this.state.email,
@@ -120,8 +125,15 @@ class MasterReport extends Component {
 
   _next = () => {
     if (
-      this.state.sector === "" ||
-      (this.state.sector === "medical" && this.state.medicalSector === "")
+      this.state.currentStep === 1 &&
+      (this.state.sector === "" ||
+        (this.state.sector === "medical" && this.state.medicalSector === ""))
+    ) {
+      alert("יש למלא את כל שדות החובה המסומנים ב *");
+      return;
+    } else if (
+      this.state.currentStep === 2 &&
+      this.state.drugList.length === 0
     ) {
       alert("יש למלא את כל שדות החובה המסומנים ב *");
       return;
