@@ -69,6 +69,10 @@ class MasterReport extends Component {
     // }
   };
 
+  updateDrugListIds = (newDrugList) => {
+    this.setState({ drugList: newDrugList });
+  };
+
   drugInserted = (isInsterted) => {
     this.setState({ isDrugInsterted: isInsterted });
   };
@@ -233,6 +237,7 @@ class MasterReport extends Component {
             drugListDeleteItem={this.drugListDeleteItem}
             drugList={this.state.drugList}
             handleChange={this.handleChange}
+            updateDrugListIds={this.updateDrugListIds}
           />
 
           <Step3

@@ -27,14 +27,25 @@ class RemedyInsert extends Component {
     console.log(this.props.drugList);
     if (this.props.drugList.length > 0) {
       let arrDrugItems = [];
+      let arrDrugList = [];
+
       for (let index = 0; index < this.props.drugList.length; index++) {
         let newRemedyItem = { id: index + 1 };
+        let newDrug = {
+          id: index + 1,
+          name: this.props.drugList[index].name,
+          fromDate: this.props.drugList[index].fromDate,
+          untilDate: this.props.drugList[index].untilDate,
+        };
         console.log(newRemedyItem);
         arrDrugItems.push(newRemedyItem);
+        arrDrugList.push(newDrug);
       }
       this.setState({
         drugItems: arrDrugItems,
+        drugList: arrDrugList,
       });
+      this.props.updateDrugListIds(arrDrugList);
     } else {
       console.log("else");
 

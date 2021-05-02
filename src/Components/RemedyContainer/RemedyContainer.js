@@ -99,19 +99,25 @@ class RemedyContainer extends Component {
     let found = false;
     let value = "";
 
-    console.log("drug items", this.props.drugitems.length);
-    console.log("drug List", this.props.drugList.length);
+    console.log(
+      "drug items",
+      this.props.drugitems.length,
+      this.props.drugitems
+    );
+    console.log("drug List", this.props.drugList.length, this.props.drugList);
 
     for (let index = 0; index < this.props.drugList.length; index++) {
       const drugId = this.props.drugList[index].id;
       if (this.props.remedyItem.id === drugId) {
         value = this.props.drugList[index].name;
+        console.log(value);
         found = true;
         break;
       }
     }
     if (found === false) {
       value = this.state.value;
+      console.log(value);
     }
     const suggestions = this.state.suggestions;
     // Autosuggest will pass through all these props to the input.
