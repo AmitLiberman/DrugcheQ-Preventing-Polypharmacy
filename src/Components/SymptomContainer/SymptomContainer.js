@@ -96,8 +96,8 @@ class SymptomContainer extends Component {
       const drugId = this.props.symptomList[index].id;
       if (this.props.symptomItem.id === drugId) {
         value = this.props.symptomList[index].name;
-        severityValue = this.props.symptomList[index].fromDate;
-        appearDateValue = this.props.symptomList[index].untilDate;
+        severityValue = this.props.symptomList[index].severity;
+        appearDateValue = this.props.symptomList[index].appearDate;
         found = true;
         break;
       }
@@ -160,7 +160,7 @@ class SymptomContainer extends Component {
                 <input
                   className="radio-input"
                   type="radio"
-                  name="notSever"
+                  name={"notSever" + this.props.symptomItem.id}
                   value="notSever"
                   checked={severityValue === "notSever"}
                 />
@@ -174,7 +174,7 @@ class SymptomContainer extends Component {
                 className="date-input"
                 type="date"
                 id="appearDate"
-                name="appearDate"
+                name={"appearDate" + this.props.symptomItem.id}
                 value={appearDateValue}
                 onChange={(e) => this.onAppearDateChange(e)}
               />
