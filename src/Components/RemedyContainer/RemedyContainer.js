@@ -7,6 +7,8 @@ class RemedyContainer extends Component {
   state = {
     response: null,
     value: "",
+    fromDateValue: "",
+    untilDateValue: "",
     suggestions: [],
     drugSuggestions: [],
     loading: false,
@@ -98,6 +100,8 @@ class RemedyContainer extends Component {
   render() {
     let found = false;
     let value = "";
+    let fromDateValue = "";
+    let untilDateValue = "";
 
     console.log(
       "drug items",
@@ -110,7 +114,12 @@ class RemedyContainer extends Component {
       const drugId = this.props.drugList[index].id;
       if (this.props.remedyItem.id === drugId) {
         value = this.props.drugList[index].name;
+        fromDateValue = this.props.drugList[index].fromDate;
+        untilDateValue = this.props.drugList[index].untilDate;
+
         console.log(value);
+        console.log(fromDateValue);
+
         found = true;
         break;
       }
@@ -159,6 +168,7 @@ class RemedyContainer extends Component {
               type="date"
               id="fromDrugName"
               name="fromDrugName"
+              value={fromDateValue}
               onChange={(e) => this.fromChangeHandler(e)}
             />
           </div>
@@ -171,6 +181,7 @@ class RemedyContainer extends Component {
               type="date"
               id="untilDrugName"
               name="untilDrugName"
+              value={untilDateValue}
               onChange={(e) => this.untilChangeHandler(e)}
             />
           </div>
