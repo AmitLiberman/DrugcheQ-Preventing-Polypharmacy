@@ -162,7 +162,7 @@ class SymptomContainer extends Component {
         />
         {this.state.chooseSuggest ? null : notValidDrugMsg}
 
-        <div className="from-until-dates-container">
+        <div className="severity-appeardate-container">
           <div className="date-wrapper">
             <div
               className="severity-container"

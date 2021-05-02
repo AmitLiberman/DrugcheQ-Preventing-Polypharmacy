@@ -9,10 +9,25 @@
 }
 
 .date-wrapper {
-    display: flex;
-    margin-top: 2em;
+    /* display: flex; */
 }
 
 .severity-container {
     margin-left: 2em;
+}
+
+.severity-appeardate-container {
+    /* display: inline-block; */
+    text-align: right;
+    direction: rtl;
+}
+
+.severity-container {
+    /* display: inline-block; */
+    margin: 1em
+}
+
+.date-of-appear-container {
+    /* display: inline-block; */
+    margin: 1em
 }
