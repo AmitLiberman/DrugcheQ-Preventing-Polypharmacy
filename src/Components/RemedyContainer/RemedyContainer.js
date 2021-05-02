@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Autosuggest from "react-autosuggest";
 import axios from "axios";
 import "./RemedyContainer.css";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class RemedyContainer extends Component {
   state = {
@@ -143,11 +144,18 @@ class RemedyContainer extends Component {
       value,
       onChange: this.onChange,
     };
-
+    let progress = (
+      <div style={{ margin: "5em" }}>
+        <CircularProgress />
+      </div>
+    );
     const notValidDrugMsg = (
       <h6 style={{ color: "red" }}>אנא בחר תרופה המרשימה * </h6>
     );
-    return (
+
+    return this.state.loading ? (
+      progress
+    ) : (
       <div className="remedy-element-container">
         <div className="delete-remedy-btn-wrapper">
           <button className="delete-remedy-btn" onClick={this.onClickX}>
