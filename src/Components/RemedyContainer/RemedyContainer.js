@@ -15,6 +15,7 @@ class RemedyContainer extends Component {
     chooseSuggest: false,
     notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
+    found: false,
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -42,6 +43,20 @@ class RemedyContainer extends Component {
   renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
 
   componentDidMount = () => {
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      const drugId = this.props.drugList[index].id;
+      if (this.props.remedyItem.id === drugId) {
+        this.setState({
+          value: this.props.drugList[index].name,
+          fromDateValue: this.props.drugList[index].fromDate,
+          untilDateValue: this.props.drugList[index].untilDate,
+          found: true,
+        });
+
+        break;
+      }
+    }
+
     const request = "https://drugcheq.herokuapp.com/suggest";
     this.setState({ loading: true }, () => {
       axios
@@ -98,25 +113,27 @@ class RemedyContainer extends Component {
   };
 
   render() {
-    let found = false;
+    // let found = false;
     let value = "";
-    let fromDateValue = "";
-    let untilDateValue = "";
+    // let fromDateValue = "";
+    // let untilDateValue = "";
+    // let chooseSuggest = false;
 
-    for (let index = 0; index < this.props.drugList.length; index++) {
-      const drugId = this.props.drugList[index].id;
-      if (this.props.remedyItem.id === drugId) {
-        value = this.props.drugList[index].name;
-        fromDateValue = this.props.drugList[index].fromDate;
-        untilDateValue = this.props.drugList[index].untilDate;
-        found = true;
-        break;
-      }
-    }
-    if (found === false) {
-      value = this.state.value;
-      console.log(value);
-    }
+    // for (let index = 0; index < this.props.drugList.length; index++) {
+    //   const drugId = this.props.drugList[index].id;
+    //   if (this.props.remedyItem.id === drugId) {
+    //     value = this.props.drugList[index].name;
+    //     fromDateValue = this.props.drugList[index].fromDate;
+    //     untilDateValue = this.props.drugList[index].untilDate;
+    //     found = true;
+    //     break;
+    //   }
+    // }
+    // if (found === false) {
+    //   value = this.state.value;
+    //   console.log(value);
+    // }
+    value = this.state.value;
     const suggestions = this.state.suggestions;
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
@@ -157,7 +174,7 @@ class RemedyContainer extends Component {
               type="date"
               id="fromDrugName"
               name="fromDrugName"
-              value={fromDateValue}
+              value={this.state.fromDateValue}
               onChange={(e) => this.fromChangeHandler(e)}
             />
           </div>
@@ -170,7 +187,7 @@ class RemedyContainer extends Component {
               type="date"
               id="untilDrugName"
               name="untilDrugName"
-              value={untilDateValue}
+              value={this.state.untilDateValue}
               onChange={(e) => this.untilChangeHandler(e)}
             />
           </div>
