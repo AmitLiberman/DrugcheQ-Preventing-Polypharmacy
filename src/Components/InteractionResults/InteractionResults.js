@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./InteractionResults.css";
+import { Bar, Line, Pie } from "react-chartjs-2";
 
 class InteractionResults extends Component {
-  state = { severit: [] };
+  state = {
+    severit: [],
+  };
 
   //insert severity to the relevant interaction element
   makeInteractionElement = (index, severity) => {

@@ -3,7 +3,7 @@ import "./InteractionChecker.css";
 import DrugInsert from "../DrugInsert/DrugInsert";
 import InteractionResults from "../InteractionResults/InteractionResults";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import { Bar, Line, Pie } from "react-chartjs-2";
 import axios from "axios";
 
 class InteractionChecker extends Component {
@@ -15,6 +15,31 @@ class InteractionChecker extends Component {
     loading: false,
     notInList: "alert-drug-list fadeOut",
     twoDrugsMsg: "",
+    chartData: {
+      labels: [
+        "Boston",
+        "Worcester",
+        "Springfield",
+        "Lowell",
+        "Cambridge",
+        "New Bedford",
+      ],
+      datasets: [
+        {
+          label: "Population",
+          data: [617594, 181045, 153060, 106519, 105162, 95072],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.6)",
+            "rgba(54, 162, 235, 0.6)",
+            "rgba(255, 206, 86, 0.6)",
+            "rgba(75, 192, 192, 0.6)",
+            "rgba(153, 102, 255, 0.6)",
+            "rgba(255, 159, 64, 0.6)",
+            "rgba(255, 99, 132, 0.6)",
+          ],
+        },
+      ],
+    },
   };
 
   drugInsertHandler = (e) => {
@@ -130,6 +155,7 @@ class InteractionChecker extends Component {
           <h2 className="interaction-between-headline">
             אינטראקציה בין התרופות שלך
           </h2>
+          <Bar data={this.state.chartData} />
           <InteractionResults results={this.state.interacionRes} />
         </div>
       );
