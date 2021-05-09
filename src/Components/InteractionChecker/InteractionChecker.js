@@ -155,7 +155,12 @@ class InteractionChecker extends Component {
           <h2 className="interaction-between-headline">
             אינטראקציה בין התרופות שלך
           </h2>
-          <Bar data={this.state.chartData} />
+          <Pie
+            data={this.state.chartData}
+            width={400}
+            height={200}
+            options={{ maintainAspectRatio: false, responsive: false }}
+          />
           <InteractionResults results={this.state.interacionRes} />
         </div>
       );
