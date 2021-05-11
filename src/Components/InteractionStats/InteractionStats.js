@@ -25,6 +25,7 @@ class InteractionStats extends Component {
       ],
     },
   };
+
   render() {
     return (
       <div className="interaction-stats-chart">
