@@ -1,11 +1,24 @@
-.pie-chart-container {
-    text-align: left;
-    width: 50%;
+.interaction-and-chart-cont {
+    direction: rtl;
+    display: flex;
 }
 
-.pie-header {
-    /* 
-    float: left;
-    */
+@media screen and (max-width:1000px) {
+    .interaction-and-chart-cont {
+        display: inline-block;
+    }
+}
+
+.no-chart-data {
+    display: inline-block;
+    direction: rtl;
     text-align: right;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.pie-chart-container {
+    direction: rtl;
+    display: inline-block;
+    text-align: left;
 }

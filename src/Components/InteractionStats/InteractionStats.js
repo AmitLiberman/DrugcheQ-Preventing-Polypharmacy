@@ -9,7 +9,7 @@ class InteractionStats extends Component {
 
       datasets: [
         {
-          label: "Population",
+          label: "Symptoms",
 
           data: [100, 20, 30, 5],
           backgroundColor: [
@@ -27,7 +27,13 @@ class InteractionStats extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="interaction-and-chart-cont">
+        <div className="no-chart-data">
+          <h6>80 דיווחים מכילים את התרופות aspirin, coumadin, optalgin</h6>
+          <h6>80% דיווחו על תופעות לוואי בדרגה קלה</h6>
+          <h6>20% דיווחו על תופעות לוואי בדרגה קשה</h6>
+        </div>
+
         <div className="pie-chart-container">
           <Pie
             className="pie-chart"

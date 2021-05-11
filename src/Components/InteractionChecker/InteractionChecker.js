@@ -127,12 +127,21 @@ class InteractionChecker extends Component {
     } else
       checkForm = (
         <div>
-          <h2 className="interaction-between-headline">נתוני דיווחים </h2>
-          <InteractionStats />
-          <h2 className="interaction-between-headline">
-            אינטראקציה בין התרופות שלך
-          </h2>
-          <InteractionResults results={this.state.interacionRes} />
+          <div className="stats">
+            <h2
+              className="interaction-between-headline"
+              style={{ marginBottom: "1em" }}
+            >
+              נתוני דיווחים
+            </h2>
+            <InteractionStats />
+          </div>
+          <div classname="drug-interaction-list">
+            <h2 className="interaction-between-headline">
+              אינטראקציה בין התרופות שלך
+            </h2>
+            <InteractionResults results={this.state.interacionRes} />
+          </div>
         </div>
       );
 
