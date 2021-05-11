@@ -45,4 +45,10 @@
 
 .submit-drug-list-btn-container {
     float: right;
+    width: 100%;
+}
+
+.btn.btn-primary.check-btn {
+    margin-top: 1em;
+    float: right;
 }

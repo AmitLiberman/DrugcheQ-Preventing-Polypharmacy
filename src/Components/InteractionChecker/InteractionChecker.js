@@ -111,7 +111,7 @@ class InteractionChecker extends Component {
           >
             בדיקה
           </button>
-          <button className="btn btn-light save-btn">שמור רשימה</button>
+          {/* <button className="btn btn-light save-btn">    </button> */}
         </div>
       );
     }
