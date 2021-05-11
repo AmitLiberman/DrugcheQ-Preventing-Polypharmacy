@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./InteractionChecker.css";
 import DrugInsert from "../DrugInsert/DrugInsert";
+import InteractionStats from "../InteractionStats/InteractionStats";
+
 import InteractionResults from "../InteractionResults/InteractionResults";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Bar, Line, Pie } from "react-chartjs-2";
 import axios from "axios";
 
 class InteractionChecker extends Component {
@@ -15,31 +16,6 @@ class InteractionChecker extends Component {
     loading: false,
     notInList: "alert-drug-list fadeOut",
     twoDrugsMsg: "",
-    chartData: {
-      labels: [
-        "Boston",
-        "Worcester",
-        "Springfield",
-        "Lowell",
-        "Cambridge",
-        "New Bedford",
-      ],
-      datasets: [
-        {
-          label: "Population",
-          data: [617594, 181045, 153060, 106519, 105162, 95072],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.6)",
-            "rgba(54, 162, 235, 0.6)",
-            "rgba(255, 206, 86, 0.6)",
-            "rgba(75, 192, 192, 0.6)",
-            "rgba(153, 102, 255, 0.6)",
-            "rgba(255, 159, 64, 0.6)",
-            "rgba(255, 99, 132, 0.6)",
-          ],
-        },
-      ],
-    },
   };
 
   drugInsertHandler = (e) => {
@@ -111,7 +87,6 @@ class InteractionChecker extends Component {
           >
             בדיקה
           </button>
-          {/* <button className="btn btn-light save-btn">    </button> */}
         </div>
       );
     }
@@ -152,15 +127,11 @@ class InteractionChecker extends Component {
     } else
       checkForm = (
         <div>
+          <h2 className="interaction-between-headline">נתוני דיווחים </h2>
+          <InteractionStats />
           <h2 className="interaction-between-headline">
             אינטראקציה בין התרופות שלך
           </h2>
-          <Pie
-            data={this.state.chartData}
-            width={400}
-            height={200}
-            options={{ maintainAspectRatio: false, responsive: false }}
-          />
           <InteractionResults results={this.state.interacionRes} />
         </div>
       );

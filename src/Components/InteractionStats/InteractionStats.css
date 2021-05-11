@@ -1,0 +1,11 @@
+.pie-chart-container {
+    text-align: left;
+    width: 50%;
+}
+
+.pie-header {
+    /* 
+    float: left;
+    */
+    text-align: right;
+}
