@@ -47,7 +47,6 @@ class InteractionChecker extends Component {
             console.log(response.data);
             this.setState({ interacionStats: response.data });
             this.sendGetInteractions(drugNames);
-            // this.setState({ loading: false });
           })
           .catch((error) => {
             alert("error!");
@@ -151,7 +150,7 @@ class InteractionChecker extends Component {
             >
               נתוני דיווחים
             </h2>
-            <InteractionStats />
+            <InteractionStats interacionStats={this.state.interacionStats} />
           </div>
           <div className="drug-interaction-list">
             <h2 className="interaction-between-headline">

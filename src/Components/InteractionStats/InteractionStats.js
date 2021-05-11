@@ -4,26 +4,32 @@ import "./InteractionStats.css";
 
 class InteractionStats extends Component {
   state = {
-    chartData: {
-      labels: ["עייפות", "סחרחורת", "אדמומיות", "כאב בטן"],
+    chartData: null,
+  };
 
+  componentDidMount = () => {
+    let symptoms = Object.keys(this.props.interacionStats["symptoms"]);
+    let numOfSymp = Object.values(this.props.interacionStats["symptoms"]);
+
+    let charDataObj = {
+      labels: symptoms,
       datasets: [
         {
           label: "Symptoms",
-
-          data: [100, 20, 30, 5],
+          data: numOfSymp,
           backgroundColor: [
             "rgba(255, 99, 132, 0.6)",
             "rgba(54, 162, 235, 0.6)",
             "rgba(255, 206, 86, 0.6)",
-            "rgba(75, 192, 192, 0.6)",
             "rgba(153, 102, 255, 0.6)",
             "rgba(255, 159, 64, 0.6)",
             "rgba(255, 99, 132, 0.6)",
+            "rgba(75, 192, 192, 0.6)",
           ],
         },
       ],
-    },
+    };
+    this.setState({ chartData: charDataObj });
   };
 
   render() {
