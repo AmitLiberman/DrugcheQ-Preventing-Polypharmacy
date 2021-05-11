@@ -13,6 +13,7 @@ class InteractionChecker extends Component {
     drugList: [],
     response: null,
     interacionRes: null,
+    interacionStats: null,
     loading: false,
     notInList: "alert-drug-list fadeOut",
     twoDrugsMsg: "",
@@ -39,14 +40,14 @@ class InteractionChecker extends Component {
         return drug.name;
       });
 
-      const request = this.buildGetInteractionsReq(drugNames);
       this.setState({ loading: true }, () => {
         axios
-          .get(request)
+          .get("http://127.0.0.1:5000/stats?")
           .then((response) => {
             console.log(response.data);
-            this.setState({ interacionRes: response.data });
-            this.setState({ loading: false });
+            this.setState({ interacionStats: response.data });
+            this.sendGetInteractions(drugNames);
+            // this.setState({ loading: false });
           })
           .catch((error) => {
             alert("error!");
@@ -66,9 +67,25 @@ class InteractionChecker extends Component {
     }
   };
 
+  sendGetInteractions = (drugNames) => {
+    const request = this.buildGetInteractionsReq(drugNames);
+    this.setState({ loading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ interacionRes: response.data });
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
+  };
+
   //build the get request for interaction check
   buildGetInteractionsReq = (drugNames) => {
-    let request = "https://drugcheq.herokuapp.com/check?";
+    let request = "http://127.0.0.1:5000/check?";
     drugNames.forEach((drugName) => {
       request += drugName + "&";
     });
@@ -136,7 +153,7 @@ class InteractionChecker extends Component {
             </h2>
             <InteractionStats />
           </div>
-          <div classname="drug-interaction-list">
+          <div className="drug-interaction-list">
             <h2 className="interaction-between-headline">
               אינטראקציה בין התרופות שלך
             </h2>
