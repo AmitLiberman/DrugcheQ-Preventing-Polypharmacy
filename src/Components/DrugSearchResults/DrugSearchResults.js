@@ -5,6 +5,8 @@ import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import DrugSearchStats from "../DrugSearchStats/DrugSearchStats";
+
 import axios from "axios";
 
 class DrugSearchResults extends Component {
@@ -21,6 +23,8 @@ class DrugSearchResults extends Component {
     details: "",
     interacionRes: [],
     loading: false,
+    statLoading: false,
+    searchStats: null,
   };
 
   interactionHandler = () => {
@@ -45,6 +49,28 @@ class DrugSearchResults extends Component {
     });
   };
 
+  statsHandler = () => {
+    const request =
+      "https://drugcheq.herokuapp.com/search-stats?" +
+      this.props.drugData.drug_english_name +
+      "&" +
+      this.props.drugData.drug_hebrew_name;
+    console.log(request);
+
+    this.setState({ statLoading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ searchStats: response.data });
+          this.setState({ statLoading: false });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
+  };
+
   componentDidMount = () => {
     let drugData = this.props.drugData;
     this.setState({
@@ -58,6 +84,7 @@ class DrugSearchResults extends Component {
       healthBasket: drugData.health_basket,
       details: drugData.details,
     });
+    this.statsHandler();
     this.interactionHandler(drugData);
   };
 
@@ -153,7 +180,19 @@ class DrugSearchResults extends Component {
               </span>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="3">
-              <Card.Body>בקרוב</Card.Body>
+              <Card.Body>
+                {this.state.searchStats === null ? (
+                  <div>
+                    <h6>... טוען נתונים</h6>
+                    <CircularProgress />
+                  </div>
+                ) : (
+                  <DrugSearchStats
+                    searchStats={this.state.searchStats}
+                    drugName={this.state.drugName}
+                  />
+                )}
+              </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>

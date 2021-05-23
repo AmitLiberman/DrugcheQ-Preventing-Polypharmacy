@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./InteractionChecker.css";
 import DrugInsert from "../DrugInsert/DrugInsert";
+import InteractionStats from "../InteractionStats/InteractionStats";
 import InteractionResults from "../InteractionResults/InteractionResults";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import axios from "axios";
 
 class InteractionChecker extends Component {
@@ -12,6 +12,7 @@ class InteractionChecker extends Component {
     drugList: [],
     response: null,
     interacionRes: null,
+    interacionStats: null,
     loading: false,
     notInList: "alert-drug-list fadeOut",
     twoDrugsMsg: "",
@@ -37,15 +38,14 @@ class InteractionChecker extends Component {
       const drugNames = this.state.drugList.map((drug) => {
         return drug.name;
       });
-
-      const request = this.buildGetInteractionsReq(drugNames);
+      const request = this.buildGetStatsReq(drugNames);
       this.setState({ loading: true }, () => {
         axios
           .get(request)
           .then((response) => {
             console.log(response.data);
-            this.setState({ interacionRes: response.data });
-            this.setState({ loading: false });
+            this.setState({ interacionStats: response.data });
+            this.sendGetInteractions(drugNames);
           })
           .catch((error) => {
             alert("error!");
@@ -65,9 +65,36 @@ class InteractionChecker extends Component {
     }
   };
 
+  sendGetInteractions = (drugNames) => {
+    const request = this.buildGetInteractionsReq(drugNames);
+    console.log(request);
+    this.setState({ loading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ interacionRes: response.data });
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
+  };
+
   //build the get request for interaction check
   buildGetInteractionsReq = (drugNames) => {
     let request = "https://drugcheq.herokuapp.com/check?";
+    drugNames.forEach((drugName) => {
+      request += drugName + "&";
+    });
+    request = request.slice(0, -1);
+    return request;
+  };
+
+  //build the get request for interaction check
+  buildGetStatsReq = (drugNames) => {
+    let request = "https://drugcheq.herokuapp.com/stats?";
     drugNames.forEach((drugName) => {
       request += drugName + "&";
     });
@@ -86,7 +113,6 @@ class InteractionChecker extends Component {
           >
             בדיקה
           </button>
-          <button className="btn btn-light save-btn">שמור רשימה</button>
         </div>
       );
     }
@@ -127,10 +153,24 @@ class InteractionChecker extends Component {
     } else
       checkForm = (
         <div>
-          <h2 className="interaction-between-headline">
-            אינטראקציה בין התרופות שלך
-          </h2>
-          <InteractionResults results={this.state.interacionRes} />
+          <div className="stats">
+            <h2
+              className="interaction-between-headline"
+              style={{ marginBottom: "1em" }}
+            >
+              נתוני דיווחים
+            </h2>
+            <InteractionStats
+              interacionStats={this.state.interacionStats}
+              drugList={this.state.drugList}
+            />
+          </div>
+          <div className="drug-interaction-list">
+            <h2 className="interaction-between-headline">
+              אינטראקציה בין התרופות שלך
+            </h2>
+            <InteractionResults results={this.state.interacionRes} />
+          </div>
         </div>
       );
 

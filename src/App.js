@@ -41,7 +41,7 @@ const App = (props) => {
           </Switch>
         </main>
       </Router>
-      <BottomNav />
+      {/* <BottomNav /> */}
     </div>
   );
 };

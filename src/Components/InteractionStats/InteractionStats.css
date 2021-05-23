@@ -1,0 +1,27 @@
+.interaction-stats-chart {
+    direction: rtl;
+    display: flex;
+}
+
+@media screen and (max-width:1000px) {
+    .interaction-stats-chart {
+        display: inline-block;
+    }
+}
+
+.no-chart-data {
+    display: inline-block;
+    direction: rtl;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding-top: 2em;
+    text-align: right;
+    flex: 1;
+}
+
+.pie-chart-container {
+    direction: rtl;
+    display: inline-block;
+    text-align: left;
+    flex: 1;
+}
