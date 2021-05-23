@@ -150,7 +150,10 @@ class InteractionChecker extends Component {
             >
               נתוני דיווחים
             </h2>
-            <InteractionStats interacionStats={this.state.interacionStats} />
+            <InteractionStats
+              interacionStats={this.state.interacionStats}
+              drugList={this.state.drugList}
+            />
           </div>
           <div className="drug-interaction-list">
             <h2 className="interaction-between-headline">

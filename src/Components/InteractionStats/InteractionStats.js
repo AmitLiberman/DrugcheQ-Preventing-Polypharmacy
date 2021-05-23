@@ -5,11 +5,20 @@ import "./InteractionStats.css";
 class InteractionStats extends Component {
   state = {
     chartData: null,
+    severeSympt: 0,
+    notSevereSympt: 0,
+    reportNum: 0,
   };
 
   componentDidMount = () => {
     let symptoms = Object.keys(this.props.interacionStats["symptoms"]);
     let numOfSymp = Object.values(this.props.interacionStats["symptoms"]);
+    let reportNum = this.props.interacionStats["report_num"];
+    let severeSympt = this.props.interacionStats["severity"]["severe"];
+    let notSevereSympt = this.props.interacionStats["severity"]["not_severe"];
+    console.log(reportNum);
+    console.log(severeSympt);
+    console.log(notSevereSympt);
 
     let charDataObj = {
       labels: symptoms,
@@ -29,16 +38,28 @@ class InteractionStats extends Component {
         },
       ],
     };
-    this.setState({ chartData: charDataObj });
+    this.setState({
+      chartData: charDataObj,
+      reportNum: reportNum,
+      severeSympt: severeSympt,
+      notSevereSympt: notSevereSympt,
+    });
   };
 
   render() {
+    let drugs = [];
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      drugs.push(<span> {this.props.drugList[index].name},</span>);
+    }
+
     return (
       <div className="interaction-stats-chart">
         <div className="no-chart-data">
-          <h6>80 דיווחים מכילים את התרופות aspirin, coumadin, optalgin</h6>
-          <h6>80% דיווחו על תופעות לוואי בדרגה קלה</h6>
-          <h6>20% דיווחו על תופעות לוואי בדרגה קשה</h6>
+          <h6>
+            {this.state.reportNum} דיווחים מכילים את התרופות {drugs}
+          </h6>
+          <h6>{this.state.notSevereSympt} דיווחו על תופעות לוואי בדרגה קלה</h6>
+          <h6>{this.state.severeSympt} דיווחו על תופעות לוואי בדרגה קשה</h6>
         </div>
         <div className="pie-chart-container">
           <Pie
