@@ -191,8 +191,6 @@ class DrugSearchResults extends Component {
                     searchStats={this.state.searchStats}
                     drugName={this.state.drugName}
                   />
-
-                  // <h1>hi</h1>
                 )}
               </Card.Body>
             </Accordion.Collapse>

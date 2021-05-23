@@ -97,6 +97,22 @@ class DrugInsert extends Component {
     }
     this.setState({ chooseSuggest: false });
 
+    for (let index = 0; index < this.state.drugList.length; index++) {
+      if (this.state.drugList[index].name === this.state.value) {
+        this.setState({
+          notInList: "alert-drug-list fadeIn",
+          alertMsg: "התרופה קיימת כבר ברשימה",
+        });
+
+        setTimeout(() => {
+          this.setState({
+            notInList: "alert-drug-list fadeOut",
+          });
+        }, 2000);
+        return;
+      }
+    }
+
     const newDrugItem = {
       id: this.state.drugList.length + 1,
       name: this.state.value,
