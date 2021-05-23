@@ -51,7 +51,7 @@ class DrugSearchResults extends Component {
 
   statsHandler = () => {
     const request =
-      "http://127.0.0.1:5000/search-stats?" +
+      "https://drugcheq.herokuapp.com/search-stats?" +
       this.props.drugData.drug_english_name +
       "&" +
       this.props.drugData.drug_hebrew_name;
