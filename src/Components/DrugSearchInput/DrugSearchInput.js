@@ -134,7 +134,7 @@ class DrugSearchInput extends Component {
         </div>
         <div className={this.state.notInList}>{this.state.alertMsg}</div>
         <form className="interaction-form" onSubmit={this.handleSubmit}>
-          <div class="input-group mb-3" style={{ textAlign: "right" }}>
+          <div className="input-group mb-3" style={{ textAlign: "right" }}>
             <Autosuggest
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

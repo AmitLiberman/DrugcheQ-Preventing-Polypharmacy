@@ -15,10 +15,7 @@ class InteractionStats extends Component {
     let numOfSymp = Object.values(this.props.interacionStats["symptoms"]);
     let reportNum = this.props.interacionStats["report_num"];
     let severeSympt = this.props.interacionStats["severity"]["severe"];
-    let notSevereSympt = this.props.interacionStats["severity"]["not_severe"];
-    console.log(reportNum);
-    console.log(severeSympt);
-    console.log(notSevereSympt);
+    let notSevereSympt = this.props.interacionStats["severity"]["notSever"];
 
     let charDataObj = {
       labels: symptoms,

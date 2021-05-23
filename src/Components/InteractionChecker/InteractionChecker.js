@@ -39,10 +39,10 @@ class InteractionChecker extends Component {
       const drugNames = this.state.drugList.map((drug) => {
         return drug.name;
       });
-
+      const request = this.buildGetStatsReq(drugNames);
       this.setState({ loading: true }, () => {
         axios
-          .get("http://127.0.0.1:5000/stats?")
+          .get(request)
           .then((response) => {
             console.log(response.data);
             this.setState({ interacionStats: response.data });
@@ -85,6 +85,16 @@ class InteractionChecker extends Component {
   //build the get request for interaction check
   buildGetInteractionsReq = (drugNames) => {
     let request = "http://127.0.0.1:5000/check?";
+    drugNames.forEach((drugName) => {
+      request += drugName + "&";
+    });
+    request = request.slice(0, -1);
+    return request;
+  };
+
+  //build the get request for interaction check
+  buildGetStatsReq = (drugNames) => {
+    let request = "http://127.0.0.1:5000/stats?";
     drugNames.forEach((drugName) => {
       request += drugName + "&";
     });
