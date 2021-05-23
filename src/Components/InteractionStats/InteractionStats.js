@@ -8,13 +8,14 @@ class InteractionStats extends Component {
     severeSympt: 0,
     notSevereSympt: 0,
     reportNum: 0,
+    noReport: false,
   };
 
   componentDidMount = () => {
     let symptoms = Object.keys(this.props.interacionStats["symptoms"]);
     let numOfSymp = Object.values(this.props.interacionStats["symptoms"]);
     let reportNum = this.props.interacionStats["report_num"];
-    let severeSympt = this.props.interacionStats["severity"]["severe"];
+    let severeSympt = this.props.interacionStats["severity"]["sever"];
     let notSevereSympt = this.props.interacionStats["severity"]["notSever"];
 
     let charDataObj = {
@@ -35,6 +36,10 @@ class InteractionStats extends Component {
         },
       ],
     };
+    if (this.state.reportNum === 0) {
+      this.setState({ noReport: true });
+    }
+
     this.setState({
       chartData: charDataObj,
       reportNum: reportNum,
@@ -49,14 +54,16 @@ class InteractionStats extends Component {
       drugs.push(<span> {this.props.drugList[index].name},</span>);
     }
 
-    return (
+    return this.state.noReport ? (
+      <h6>אין דיווחים עבור התרופות שהזנת</h6>
+    ) : (
       <div className="interaction-stats-chart">
         <div className="no-chart-data">
           <h6>
             {this.state.reportNum} דיווחים מכילים את התרופות {drugs}
           </h6>
-          <h6>{this.state.notSevereSympt} דיווחו על תופעות לוואי בדרגה קלה</h6>
-          <h6>{this.state.severeSympt} דיווחו על תופעות לוואי בדרגה קשה</h6>
+          <h6>{this.state.notSevereSympt} חוו את תופעות הלוואי ברמה קלה</h6>
+          <h6>{this.state.severeSympt} חוו את תופעות הלוואי ברמה קשה</h6>
         </div>
         <div className="pie-chart-container">
           <Pie
