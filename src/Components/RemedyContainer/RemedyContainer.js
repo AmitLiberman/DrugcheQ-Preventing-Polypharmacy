@@ -150,7 +150,7 @@ class RemedyContainer extends Component {
       </div>
     );
     const notValidDrugMsg = (
-      <h6 style={{ color: "red" }}>אנא בחר תרופה המרשימה * </h6>
+      <h6 style={{ color: "red" }}>אנא בחר תרופה מהרשימה * </h6>
     );
 
     return this.state.loading ? (
