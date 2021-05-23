@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./InteractionChecker.css";
 import DrugInsert from "../DrugInsert/DrugInsert";
 import InteractionStats from "../InteractionStats/InteractionStats";
-
 import InteractionResults from "../InteractionResults/InteractionResults";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
@@ -68,6 +67,7 @@ class InteractionChecker extends Component {
 
   sendGetInteractions = (drugNames) => {
     const request = this.buildGetInteractionsReq(drugNames);
+    console.log(request);
     this.setState({ loading: true }, () => {
       axios
         .get(request)
