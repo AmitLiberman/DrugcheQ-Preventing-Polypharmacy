@@ -133,7 +133,10 @@ class Step1 extends Component {
         </div>
         <div className="personal-detail-container">
           <label className="step1-lable" htmlFor="factorName">
-            שם גורם
+            שם גורם{" "}
+            <span style={{ fontWeight: "bold", fontSize: "1rem" }}>
+              (לא חובה)
+            </span>
           </label>
           <input
             className={this.props.userInputStyle}
@@ -145,7 +148,10 @@ class Step1 extends Component {
             onChange={this.props.handleChange} // Prop: Puts data into state
           />
           <label className="step1-lable" htmlFor="email">
-            כתובת דואר אלקטרוני
+            כתובת דואר אלקטרוני{" "}
+            <span style={{ fontWeight: "bold", fontSize: "1rem" }}>
+              (לא חובה)
+            </span>
           </label>
           <input
             className={this.props.emailInputStyle}
@@ -158,6 +164,9 @@ class Step1 extends Component {
           />
           <label className="step1-lable" htmlFor="phoneNumber">
             מספר טלפון{" "}
+            <span style={{ fontWeight: "bold", fontSize: "1rem" }}>
+              (לא חובה)
+            </span>
           </label>
           <input
             className={this.props.emailInputStyle}
