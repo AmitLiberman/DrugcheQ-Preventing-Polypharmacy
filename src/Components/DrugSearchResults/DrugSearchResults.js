@@ -21,6 +21,7 @@ class DrugSearchResults extends Component {
     details: "",
     interacionRes: [],
     loading: false,
+    searchStats: null,
   };
 
   interactionHandler = () => {
@@ -37,6 +38,24 @@ class DrugSearchResults extends Component {
               interacionRes: [...prevState.interacionRes, response.data[i]],
             }));
           }
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    });
+  };
+
+  statsHandler = () => {
+    const request =
+      "https://drugcheq.herokuapp.com/search-stats?" +
+      this.props.drugData.drug_english_name;
+    this.setState({ loading: true }, () => {
+      axios
+        .get(request)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ searchStats: response.data });
           this.setState({ loading: false });
         })
         .catch((error) => {

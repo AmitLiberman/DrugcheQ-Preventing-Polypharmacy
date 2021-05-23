@@ -36,7 +36,7 @@ class InteractionStats extends Component {
         },
       ],
     };
-    if (this.state.reportNum === 0) {
+    if (reportNum === 0) {
       this.setState({ noReport: true });
     }
 
