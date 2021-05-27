@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./NewDrug.css";
 import NewDrugModal from "../NewDrugModal/NewDrugModal";
+import axios from "axios";
 
 class NewDrug extends Component {
   state = {
@@ -36,7 +37,16 @@ class NewDrug extends Component {
           missDrugName: "missDrugName fadeOut",
         });
       }, 2000);
-    } else this.setState({ isSendClicked: true });
+    } else {
+      const json = JSON.stringify({
+        genericName: this.state.genericName,
+        commercialName: this.state.commercialName,
+        useForm: this.state.useForm,
+      });
+      axios.post("http://127.0.0.1:5000/new-drug", json);
+
+      this.setState({ isSendClicked: true });
+    }
   };
   // Use the submitted data to set the state
   handleChange = (event) => {
