@@ -13,11 +13,16 @@ class NewDrug extends Component {
     alert(
       "commercialName: " +
         this.state.commercialName +
-        "genericName: " +
+        "\ngenericName: " +
         this.state.genericName +
-        "useForm: " +
+        "\nuseForm: " +
         this.state.useForm
     );
+    this.setState({
+      useForm: "",
+      genericName: "",
+      commercialName: "",
+    });
   };
   // Use the submitted data to set the state
   handleChange = (event) => {
