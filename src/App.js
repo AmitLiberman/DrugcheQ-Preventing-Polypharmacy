@@ -1,11 +1,11 @@
 import "./App.css";
 import TopNav from "./Constants/TopNav";
 import ActionNav from "./Constants/ActionNav";
-import BottomNav from "./Constants/BottomNav";
 import Home from "./Constants/Home";
 import InteractionChecker from "./Components/InteractionChecker/InteractionChecker";
 import MasterReport from "./Components/MasterReport/MasterReport";
 import DrugSearch from "./Components/DrugSearch/DrugSearch";
+import NewDrug from "./Components/NewDrug/NewDrug";
 import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -33,6 +33,9 @@ const App = (props) => {
             </Route>
             <Route nodeRef={nodeRef} path="/drug-search">
               <DrugSearch ref={nodeRef} />
+            </Route>
+            <Route path="/NewDrug">
+              <NewDrug />
             </Route>
             <Route path="/">
               <ActionNav className="action-navigation-bar" />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./InteractionResults.css";
-import { Bar, Line, Pie } from "react-chartjs-2";
+// import { Bar, Line, Pie } from "react-chartjs-2";
 
 class InteractionResults extends Component {
   state = {

@@ -135,8 +135,13 @@ class RemedyInsert extends Component {
       progress
     ) : (
       <div>
+        <h6>
+          התרופה אינה קיימת במאגר?
+          <a href="/NewDrug"> לחצו כאן להצעת תרופה חדשה </a>
+        </h6>
         <form className="remedy-insert-form" onSubmit={this.handleSubmit}>
           <div className={this.state.notInList}>{this.state.alertMsg}</div>
+
           <RemedyList
             drugitems={this.state.drugItems}
             drugList={this.props.drugList}

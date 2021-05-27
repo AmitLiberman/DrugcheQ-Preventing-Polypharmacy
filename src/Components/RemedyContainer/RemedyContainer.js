@@ -3,6 +3,8 @@ import Autosuggest from "react-autosuggest";
 import axios from "axios";
 import "./RemedyContainer.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NewDrug from "../NewDrug/NewDrug";
 
 class RemedyContainer extends Component {
   state = {
@@ -116,26 +118,8 @@ class RemedyContainer extends Component {
   };
 
   render() {
-    // let found = false;
     let value = "";
-    // let fromDateValue = "";
-    // let untilDateValue = "";
-    // let chooseSuggest = false;
 
-    // for (let index = 0; index < this.props.drugList.length; index++) {
-    //   const drugId = this.props.drugList[index].id;
-    //   if (this.props.remedyItem.id === drugId) {
-    //     value = this.props.drugList[index].name;
-    //     fromDateValue = this.props.drugList[index].fromDate;
-    //     untilDateValue = this.props.drugList[index].untilDate;
-    //     found = true;
-    //     break;
-    //   }
-    // }
-    // if (found === false) {
-    //   value = this.state.value;
-    //   console.log(value);
-    // }
     value = this.state.value;
     const suggestions = this.state.suggestions;
     // Autosuggest will pass through all these props to the input.

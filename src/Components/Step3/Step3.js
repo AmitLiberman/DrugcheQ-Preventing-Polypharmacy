@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Report from "../Report/Report";
 import SymptomInsert from "../SymptomInsert/SymptomInsert";
 
 class Step3 extends Component {
