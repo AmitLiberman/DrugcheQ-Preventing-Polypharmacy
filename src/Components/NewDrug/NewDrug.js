@@ -6,6 +6,7 @@ class NewDrug extends Component {
     commercialName: "",
     genericName: "",
     useForm: "",
+    missDrugName: "",
   };
 
   handleSubmit = (event) => {
@@ -18,6 +19,23 @@ class NewDrug extends Component {
         "\nuseForm: " +
         this.state.useForm
     );
+
+    if (
+      this.state.commercialName.trim().length === 0 &&
+      this.state.genericName.trim().length === 0
+    ) {
+      this.setState({
+        missDrugName: "missDrugName fadeIn",
+        alertMsg: "יש להזין לפחות שם תרופה אחד (מסחרי ו/או גנרי) ",
+      });
+
+      setTimeout(() => {
+        this.setState({
+          missDrugName: "missDrugName fadeOut",
+        });
+      }, 2000);
+    }
+
     this.setState({
       useForm: "",
       genericName: "",
@@ -38,6 +56,8 @@ class NewDrug extends Component {
         <h6>אנא הזינו את כל הפרטים העומדים לרשותכם</h6>
 
         <form className="main-drug-suggest-form" onSubmit={this.handleSubmit}>
+          <div className={this.state.missDrugName}>{this.state.alertMsg}</div>
+
           <div className="form-group">
             <label className="new-drug-lable" for="commercialName">
               שם מסחרי (עברית/אנגלית)
