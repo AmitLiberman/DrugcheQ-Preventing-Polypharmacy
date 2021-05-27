@@ -1,0 +1,36 @@
+.form-group {
+    text-align: right;
+}
+
+.form-control {
+    text-align: right;
+    direction: rtl;
+}
+
+.main-drug-suggest-form {
+    float: right;
+    width: 60%;
+}
+
+.new-drug-lable {
+    margin-top: 0.8em;
+    font-size: 1.2rem;
+}
+
+.send-new-btn {
+    background-color: #a9d0da;
+    border: 1px solid #a9d0da;
+    border-width: 10%;
+    color: #24343f;
+    font-size: 1rem;
+    width: 5rem;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.send-new-btn:hover {
+    background-color: white;
+    color: #2b3841;
+    border: 1px solid #030303;
+    border-width: 10%;
+}
