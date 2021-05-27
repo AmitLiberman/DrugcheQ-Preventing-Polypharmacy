@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./NewDrug.css";
+import NewDrugModal from "../NewDrugModal/NewDrugModal";
 
 class NewDrug extends Component {
   state = {
@@ -7,19 +8,20 @@ class NewDrug extends Component {
     genericName: "",
     useForm: "",
     missDrugName: "",
+    isSendClicked: false,
+  };
+
+  closeModalClicked = () => {
+    this.setState({
+      useForm: "",
+      genericName: "",
+      commercialName: "",
+      isSendClicked: false,
+    });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      "commercialName: " +
-        this.state.commercialName +
-        "\ngenericName: " +
-        this.state.genericName +
-        "\nuseForm: " +
-        this.state.useForm
-    );
-
     if (
       this.state.commercialName.trim().length === 0 &&
       this.state.genericName.trim().length === 0
@@ -34,13 +36,7 @@ class NewDrug extends Component {
           missDrugName: "missDrugName fadeOut",
         });
       }, 2000);
-    }
-
-    this.setState({
-      useForm: "",
-      genericName: "",
-      commercialName: "",
-    });
+    } else this.setState({ isSendClicked: true });
   };
   // Use the submitted data to set the state
   handleChange = (event) => {
@@ -52,12 +48,13 @@ class NewDrug extends Component {
   render() {
     return (
       <div className="main-new-drug-container">
+        {this.state.isSendClicked ? (
+          <NewDrugModal closeModalClicked={this.closeModalClicked} />
+        ) : null}
         <h2>הצעת תרופה חדשה</h2>
-        <h6>אנא הזינו את כל הפרטים העומדים לרשותכם</h6>
-
+        <h6>אנא הזינו את הפרטים העומדים לרשותכם</h6>
         <form className="main-drug-suggest-form" onSubmit={this.handleSubmit}>
           <div className={this.state.missDrugName}>{this.state.alertMsg}</div>
-
           <div className="form-group">
             <label className="new-drug-lable" for="commercialName">
               שם מסחרי (עברית/אנגלית)
