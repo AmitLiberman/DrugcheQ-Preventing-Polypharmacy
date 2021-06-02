@@ -130,7 +130,13 @@ class DrugSearchInput extends Component {
       <div className="drug-search-container">
         <div className="drug-search-describe-container">
           <h2>חיפוש תרופה</h2>
-          <p>התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות.</p>
+          <p>
+            התחל להקליד שם תרופה ובחר את ההתאמה הטובה ביותר מרשימת ההצעות.
+            <h6>
+              התרופה אינה קיימת במאגר?
+              <a href="/NewDrug"> לחצו כאן להצעת תרופה חדשה </a>
+            </h6>
+          </p>
         </div>
         <div className={this.state.notInList}>{this.state.alertMsg}</div>
         <form className="interaction-form" onSubmit={this.handleSubmit}>
