@@ -22,8 +22,8 @@ class SymptomContainer extends Component {
     const inputLength = inputValue.length;
     return inputLength === 0
       ? []
-      : symptomsJson.filter(
-          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      : symptomsJson.filter((lang) =>
+          lang.name.toLowerCase().includes(inputValue)
         );
   };
 
