@@ -43,7 +43,7 @@ class NewDrug extends Component {
         commercialName: this.state.commercialName,
         useForm: this.state.useForm,
       });
-      axios.post("http://127.0.0.1:5000/new-drug", json);
+      axios.post("https://drugcheq.herokuapp.com/new-drug", json);
 
       this.setState({ isSendClicked: true });
     }
