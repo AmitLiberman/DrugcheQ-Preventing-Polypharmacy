@@ -3,8 +3,6 @@ import Autosuggest from "react-autosuggest";
 import axios from "axios";
 import "./RemedyContainer.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import NewDrug from "../NewDrug/NewDrug";
 
 class RemedyContainer extends Component {
   state = {
@@ -60,7 +58,7 @@ class RemedyContainer extends Component {
       }
     }
 
-    const request = "https://drugcheq.herokuapp.com/suggest";
+    const request = " http://127.0.0.1:5000/suggest";
     this.setState({ loading: true }, () => {
       axios
         .get(request)
@@ -115,6 +113,24 @@ class RemedyContainer extends Component {
   onClickX = () => {
     this.props.onClickDelete(this.props.remedyItem.id);
     this.props.chooseSuggestChange(true);
+    this.forceUpdate();
+
+    // for (let index = 0; index < this.props.drugList.length - 1; index++) {
+    //   if (this.props.drugList[index].name === this.state.value && index > 0) {
+    //     console.log(
+    //       "name: " + this.props.drugList[index].name + " index: " + index
+    //     );
+    //     this.setState({
+    //       value: this.props.drugList[index + 1].name,
+    //       fromDateValue: this.props.drugList[index + 1].fromDate,
+    //       untilDateValue: this.props.drugList[index + 1].untilDate,
+    //       found: true,
+    //       chooseSuggest: true,
+    //     });
+    //     // break;
+    //   }
+    // }
+    // this.componentDidMount();
   };
 
   render() {

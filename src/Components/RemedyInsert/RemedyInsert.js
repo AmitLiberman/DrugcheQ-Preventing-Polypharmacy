@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./RemedyInsert.css";
 import RemedyList from "../RemedyList/RemedyList";
@@ -13,6 +12,7 @@ class RemedyInsert extends Component {
     alertMsg: "",
     drugItems: [],
     chooseSuggest: false,
+    deletedId: 0,
   };
 
   handleSubmit = (event) => {
@@ -53,7 +53,6 @@ class RemedyInsert extends Component {
   };
 
   onClickAdd = () => {
-    // if (this.state.chooseSuggest === false) return;
     let newRemedyItem = { id: this.state.drugItems.length + 1 };
 
     this.setState({
@@ -63,12 +62,39 @@ class RemedyInsert extends Component {
 
   onClickDelete = (id) => {
     if (this.state.drugItems.length === 1) return;
+    console.log("current drugList:");
+    console.log(this.props.drugList);
+    console.log("Deleting drug with id " + id);
+
     this.setState(
       {
         drugItems: [...this.state.drugItems.filter((item) => item.id !== id)],
-        drugList: [...this.props.drugList.filter((drug) => drug.id !== id)],
+        drugList: [...this.state.drugList.filter((drug) => drug.id !== id)],
+        deletedId: id,
       },
-      this.props.drugListDeleteItem(id)
+      () => {
+        this.props.drugListDeleteItem(id);
+        console.log(this.state.drugList);
+        let arrDrugItems = [];
+        let arrDrugList = [];
+
+        for (let index = 0; index < this.state.drugList.length; index++) {
+          let newRemedyItem = { id: index + 1 };
+          let newDrug = {
+            id: index + 1,
+            name: this.state.drugList[index].name,
+            fromDate: this.state.drugList[index].fromDate,
+            untilDate: this.state.drugList[index].untilDate,
+          };
+          arrDrugItems.push(newRemedyItem);
+          arrDrugList.push(newDrug);
+        }
+        this.setState({
+          drugItems: arrDrugItems,
+          drugList: arrDrugList,
+        });
+        this.props.updateDrugListIds(arrDrugList);
+      }
     );
   };
 
@@ -105,7 +131,6 @@ class RemedyInsert extends Component {
         break;
       }
     }
-
     if (found === false) {
       this.setState({ drugValue: drugValue });
       const newDrugItem = {
@@ -144,12 +169,13 @@ class RemedyInsert extends Component {
 
           <RemedyList
             drugitems={this.state.drugItems}
-            drugList={this.props.drugList}
+            drugList={this.state.drugList}
             getDrugValue={this.getDrugValue}
             chooseSuggestChange={this.chooseSuggestChange}
             onClickDelete={this.onClickDelete}
             getDrugFromDates={this.getDrugFromDates}
             getDrugUntilDates={this.getDrugUntilDates}
+            deletedId={this.state.deletedId}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +

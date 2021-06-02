@@ -13,7 +13,6 @@ class Step1 extends Component {
   };
 
   onSectorChange = (e) => {
-    console.log("sector change");
     this.setState({ sector: e.target.value });
     if (e.target.value === "medical") {
       this.setState({ isMedicalSector: true });

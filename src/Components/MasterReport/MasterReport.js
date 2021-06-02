@@ -59,17 +59,17 @@ class MasterReport extends Component {
     console.log("sending report");
     this.setState({ isSendClicked: true });
 
-    const json = JSON.stringify({
-      factorName: this.state.factorName,
-      email: this.state.email,
-      phoneNumber: this.state.phoneNumber,
-      sector: this.state.sector,
-      medicalSector: this.state.medicalSector,
-      drugList: this.state.drugList,
-      symptomList: this.state.symptomList,
-    });
+    // const json = JSON.stringify({
+    //   factorName: this.state.factorName,
+    //   email: this.state.email,
+    //   phoneNumber: this.state.phoneNumber,
+    //   sector: this.state.sector,
+    //   medicalSector: this.state.medicalSector,
+    //   drugList: this.state.drugList,
+    //   symptomList: this.state.symptomList,
+    // });
 
-    axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
+    // axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
   };
 
   updateDrugListIds = (newDrugList) => {
@@ -85,6 +85,7 @@ class MasterReport extends Component {
   };
 
   drugListUpdate = (newDrugName) => {
+    console.log(this.state.drugList);
     this.setState({ drugList: [...this.state.drugList, newDrugName] });
   };
   drugListDeleteItem = (id) => {

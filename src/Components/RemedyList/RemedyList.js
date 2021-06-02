@@ -3,6 +3,8 @@ import RemedyContainer from "../RemedyContainer/RemedyContainer";
 
 class RemedyList extends Component {
   render() {
+    console.log("render list");
+
     return this.props.drugitems.map((item, i) => (
       <RemedyContainer
         key={i}
@@ -14,6 +16,7 @@ class RemedyList extends Component {
         onClickDelete={this.props.onClickDelete}
         getDrugFromDates={this.props.getDrugFromDates}
         getDrugUntilDates={this.props.getDrugUntilDates}
+        deletedId={this.props.deletedId}
       />
     ));
   }
