@@ -89,6 +89,7 @@ class DrugInsert extends Component {
       setTimeout(() => {
         this.setState({
           notInList: "alert-drug-list fadeOut",
+          alertMsg: "יש לבחור תרופה מתוך הרשימה",
         });
       }, 2000);
       // this.setState({ alertMsg: "" });

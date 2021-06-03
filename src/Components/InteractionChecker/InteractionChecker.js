@@ -60,6 +60,7 @@ class InteractionChecker extends Component {
       setTimeout(() => {
         this.setState({
           notInList: "alert-drug-list fadeOut",
+          twoDrugsMsg: "",
         });
       }, 2000);
     }
