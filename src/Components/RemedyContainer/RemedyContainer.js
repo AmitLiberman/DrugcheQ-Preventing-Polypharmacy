@@ -17,6 +17,7 @@ class RemedyContainer extends Component {
     notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
     found: false,
+    isNew: null,
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -24,8 +25,8 @@ class RemedyContainer extends Component {
     const inputLength = inputValue.length;
     return inputLength === 0
       ? []
-      : this.state.drugSuggestions.filter(
-          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      : this.state.drugSuggestions.filter((lang) =>
+          lang.name.toLowerCase().includes(inputValue)
         );
   };
 
@@ -95,6 +96,10 @@ class RemedyContainer extends Component {
     });
   };
 
+  onIsNewChange = (event) => {
+    if (event.target.value === "yes") this.setState({ isNew: true });
+    else if (event.target.value === "no") this.setState({ isNew: false });
+  };
   //Change State to the drug name that typed
   handleChange = (event) => {
     this.setState({ value: event.target.value });
@@ -156,6 +161,7 @@ class RemedyContainer extends Component {
           inputProps={inputProps}
         />
         {this.state.chooseSuggest ? null : notValidDrugMsg}
+
         <div className="from-until-dates-container">
           <div className="date-wrapper1">
             <label className="date-lable" htmlfor="fromDrugName">
@@ -182,6 +188,32 @@ class RemedyContainer extends Component {
               value={this.state.untilDateValue}
               onChange={(e) => this.untilChangeHandler(e)}
             />
+          </div>
+          <div
+            className="new-drug-radio-cont"
+            onChange={(event) => this.onIsNewChange(event)}
+          >
+            <h6 style={{ direction: "rtl" }}>האם התרופה חדשה למטופל?</h6>
+            <label className="radio-option">
+              כן
+              <input
+                className="radio-input"
+                type="radio"
+                name="isNew"
+                value="yes"
+                checked={this.props.sector === "yes"}
+              />
+            </label>
+            <label className="radio-option">
+              לא
+              <input
+                className="radio-input"
+                type="radio"
+                name="isNew"
+                value="no"
+                checked={this.props.sector === "medical"}
+              />
+            </label>
           </div>
         </div>
       </div>

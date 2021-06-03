@@ -19,7 +19,7 @@ class DrugSearchInput extends Component {
   };
 
   componentDidMount = () => {
-    const request = "https://drugcheq.herokuapp.com/suggest";
+    const request = "http://127.0.0.1:5000/suggest";
     this.setState({ loading: true }, () => {
       axios
         .get(request)
@@ -59,11 +59,10 @@ class DrugSearchInput extends Component {
   getSuggestions = (value) => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-
     return inputLength === 0
       ? []
-      : this.state.drugSuggestions.filter(
-          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      : this.state.drugSuggestions.filter((lang) =>
+          lang.name.toLowerCase().includes(inputValue)
         );
   };
 
