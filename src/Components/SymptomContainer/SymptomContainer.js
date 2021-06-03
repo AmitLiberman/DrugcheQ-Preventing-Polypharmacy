@@ -31,6 +31,12 @@ class SymptomContainer extends Component {
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
+    for (let index = 0; index < this.props.symptomList.length; index++) {
+      if (this.props.symptomList[index].name === suggestion.name) {
+        alert("התסמין שהזנת כבר קיים ברישמה");
+        return "";
+      }
+    }
     this.setState({ chooseSuggest: true });
     this.props.getSymptomValue(suggestion.name, this.props.symptomItem.id);
     this.props.chooseSuggestChange(true);

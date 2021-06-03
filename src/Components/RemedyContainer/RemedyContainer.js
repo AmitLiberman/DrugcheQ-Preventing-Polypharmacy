@@ -34,6 +34,15 @@ class RemedyContainer extends Component {
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
+    console.log(suggestion.name);
+    console.log(this.props.drugList);
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      if (this.props.drugList[index].name === suggestion.name) {
+        alert("התרופה שהזנת כבר קיימת ברשימה");
+        return "";
+      }
+    }
+
     this.setState({ chooseSuggest: true });
     this.props.getDrugValue(suggestion.name, this.props.remedyItem.id);
     this.props.chooseSuggestChange(true);

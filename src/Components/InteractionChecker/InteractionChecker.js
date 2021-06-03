@@ -84,7 +84,7 @@ class InteractionChecker extends Component {
 
   //build the get request for interaction check
   buildGetInteractionsReq = (drugNames) => {
-    let request = "https://drugcheq.herokuapp.com/check?";
+    let request = "http://127.0.0.1:5000/check?";
     drugNames.forEach((drugName) => {
       request += drugName + "&";
     });
@@ -94,7 +94,7 @@ class InteractionChecker extends Component {
 
   //build the get request for interaction check
   buildGetStatsReq = (drugNames) => {
-    let request = "https://drugcheq.herokuapp.com/stats?";
+    let request = "http://127.0.0.1:5000/stats?";
     drugNames.forEach((drugName) => {
       request += drugName + "&";
     });

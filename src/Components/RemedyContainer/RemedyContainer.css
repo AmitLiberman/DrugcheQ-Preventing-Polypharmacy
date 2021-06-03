@@ -1,12 +1,12 @@
 .remedy-element-container {
     margin-bottom: 1em;
     border: solid 1px rgb(185, 177, 177);
-    padding: 2em;
+    padding: 1em;
     border-radius: 10px;
 }
 
 .from-until-dates-container {
-    display: flex;
+    display: inline-block;
 }
 
 .delete-remedy-btn {
@@ -39,9 +39,10 @@
 }
 
 .new-drug-radio-cont {
-    display: inline-block;
+    /* display: inline-block; */
     flex: 1;
     direction: ltr;
+    margin-top: 1em;
 }
 
 .radio-option2 {

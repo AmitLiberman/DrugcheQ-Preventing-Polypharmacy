@@ -59,17 +59,17 @@ class MasterReport extends Component {
     console.log("sending report");
     this.setState({ isSendClicked: true });
 
-    // const json = JSON.stringify({
-    //   factorName: this.state.factorName,
-    //   email: this.state.email,
-    //   phoneNumber: this.state.phoneNumber,
-    //   sector: this.state.sector,
-    //   medicalSector: this.state.medicalSector,
-    //   drugList: this.state.drugList,
-    //   symptomList: this.state.symptomList,
-    // });
+    const json = JSON.stringify({
+      factorName: this.state.factorName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      sector: this.state.sector,
+      medicalSector: this.state.medicalSector,
+      drugList: this.state.drugList,
+      symptomList: this.state.symptomList,
+    });
 
-    // axios.post("https://drugcheq.herokuapp.com/side-effect-report", json);
+    // axios.post("http://127.0.0.1:5000/side-effect-report", json);
   };
 
   updateDrugListIds = (newDrugList) => {

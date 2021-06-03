@@ -94,12 +94,11 @@ class DrugSearchInput extends Component {
           notInList: "alert-drug-list fadeOut",
         });
       }, 2000);
-      // this.setState({ alertMsg: "" });
 
       return;
     }
     this.setState({ chooseSuggest: false });
-    let request = "https://drugcheq.herokuapp.com/drug-search?";
+    let request = "http://127.0.0.1:5000/drug-search?";
     request += this.state.value;
     this.props.isLoading(true);
 
