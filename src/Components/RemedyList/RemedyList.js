@@ -14,6 +14,7 @@ class RemedyList extends Component {
         onClickDelete={this.props.onClickDelete}
         getDrugFromDates={this.props.getDrugFromDates}
         getDrugUntilDates={this.props.getDrugUntilDates}
+        getIsNew={this.props.getIsNew}
       />
     ));
   }

@@ -107,26 +107,8 @@ class SymptomContainer extends Component {
     this.props.chooseSuggestChange(true);
   };
   render() {
-    // const { value, suggestions } = this.state;
-    // let found = false;
     let value = "";
-    // let severityValue = "";
-    // let appearDateValue = "";
 
-    // for (let index = 0; index < this.props.symptomList.length; index++) {
-    //   const drugId = this.props.symptomList[index].id;
-    //   if (this.props.symptomItem.id === drugId) {
-    //     value = this.props.symptomList[index].name;
-    //     severityValue = this.props.symptomList[index].severity;
-    //     appearDateValue = this.props.symptomList[index].appearDate;
-    //     found = true;
-    //     break;
-    //   }
-    // }
-    // if (found === false) {
-    //   value = this.state.value;
-    //   console.log(value);
-    // }
     value = this.state.value;
     const suggestions = this.state.suggestions;
     let appearDateValue = this.state.appearDateValue;
@@ -186,7 +168,7 @@ class SymptomContainer extends Component {
                   type="radio"
                   name={"notSever" + this.props.symptomItem.id}
                   value="notSever"
-                  checked={severityValue === "notSever"}
+                  checked={this.state.severityValue === "notSever"}
                 />
               </label>
             </div>

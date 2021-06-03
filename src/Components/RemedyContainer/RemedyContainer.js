@@ -17,7 +17,7 @@ class RemedyContainer extends Component {
     notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
     found: false,
-    isNew: null,
+    isNewDrug: null,
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -52,6 +52,7 @@ class RemedyContainer extends Component {
           value: this.props.drugList[index].name,
           fromDateValue: this.props.drugList[index].fromDate,
           untilDateValue: this.props.drugList[index].untilDate,
+          isNewDrug: this.props.drugList[index].isNewDrug,
           found: true,
           chooseSuggest: true,
         });
@@ -97,8 +98,9 @@ class RemedyContainer extends Component {
   };
 
   onIsNewChange = (event) => {
-    if (event.target.value === "yes") this.setState({ isNew: true });
-    else if (event.target.value === "no") this.setState({ isNew: false });
+    console.log(event.target.value);
+    this.props.getIsNew(this.props.remedyItem.id, event.target.value);
+    this.setState({ isNewDrug: event.target.value });
   };
   //Change State to the drug name that typed
   handleChange = (event) => {
@@ -194,24 +196,24 @@ class RemedyContainer extends Component {
             onChange={(event) => this.onIsNewChange(event)}
           >
             <h6 style={{ direction: "rtl" }}>האם התרופה חדשה למטופל?</h6>
-            <label className="radio-option">
+            <label className="radio-option2">
               כן
               <input
-                className="radio-input"
+                className="radio-input2"
                 type="radio"
-                name="isNew"
-                value="yes"
-                checked={this.props.sector === "yes"}
+                name={"NewDrug" + this.props.remedyItem.id}
+                value="NewDrug"
+                checked={this.state.isNewDrug === "NewDrug"}
               />
             </label>
-            <label className="radio-option">
+            <label className="radio-option2">
               לא
               <input
-                className="radio-input"
+                className="radio-input2"
                 type="radio"
-                name="isNew"
-                value="no"
-                checked={this.props.sector === "medical"}
+                name={"notNewDrug" + this.props.remedyItem.id}
+                value="notNewDrug"
+                checked={this.state.isNewDrug === "notNewDrug"}
               />
             </label>
           </div>

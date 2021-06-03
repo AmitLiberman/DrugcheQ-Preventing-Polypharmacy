@@ -35,6 +35,7 @@ class RemedyInsert extends Component {
           name: this.props.drugList[index].name,
           fromDate: this.props.drugList[index].fromDate,
           untilDate: this.props.drugList[index].untilDate,
+          isNewDrug: this.props.drugList[index].isNewDrug,
         };
         arrDrugItems.push(newRemedyItem);
         arrDrugList.push(newDrug);
@@ -82,6 +83,18 @@ class RemedyInsert extends Component {
     );
   };
 
+  getIsNew = (id, value) => {
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      const drugId = this.props.drugList[index].id;
+      if (id === drugId) {
+        const newIds = this.props.drugList.slice();
+        newIds[index].isNewDrug = value;
+        this.setState({ drugList: newIds });
+      }
+    }
+  };
+  getDru;
+
   getDrugFromDates = (id, value) => {
     for (let index = 0; index < this.props.drugList.length; index++) {
       const drugId = this.props.drugList[index].id;
@@ -122,6 +135,7 @@ class RemedyInsert extends Component {
         name: drugValue,
         fromDate: "",
         untilDate: "",
+        isNewDrug: "",
       };
       this.setState(
         {
@@ -160,6 +174,7 @@ class RemedyInsert extends Component {
             onClickDelete={this.onClickDelete}
             getDrugFromDates={this.getDrugFromDates}
             getDrugUntilDates={this.getDrugUntilDates}
+            getIsNew={this.getIsNew}
           />
           <button className="add-btn" onClick={this.onClickAdd}>
             הוסף +
