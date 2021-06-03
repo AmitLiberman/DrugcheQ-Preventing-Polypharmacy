@@ -53,6 +53,33 @@
     float: right;
 }
 
+.int-btn {
+    background-color: #a9d0da;
+    border: 1px solid #a9d0da;
+    border-width: 10%;
+    color: #24343f;
+    font-size: 1rem;
+    width: 5rem;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.int-btn:hover {
+    background-color: white;
+    color: #2b3841;
+    border: 1px solid #030303;
+    border-width: 10%;
+}
+
+.int-btn:focus {
+    outline: 0px;
+}
+
+.int-btn.check {
+    margin-top: 1em;
+    float: right;
+}
+
 .stats {
     margin-bottom: 3em;
 }
