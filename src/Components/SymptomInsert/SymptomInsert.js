@@ -10,6 +10,7 @@ class SymptomInsert extends Component {
     alertMsg: "",
     symptomItems: [],
     chooseSuggest: false,
+    counter: 0,
   };
 
   handleSubmit = (event) => {
@@ -57,6 +58,15 @@ class SymptomInsert extends Component {
       symptomItems: [...this.state.symptomItems, newSymptomItem],
     });
   };
+
+  rerender = () => {
+    this.forceUpdate();
+  };
+  forceUpdate = () => {
+    this.setState((state) => ({
+      counter: state.counter + 1,
+    }));
+  };
   onClickDelete = (id) => {
     if (this.state.symptomItems.length === 1) return;
     this.setState(
@@ -68,7 +78,10 @@ class SymptomInsert extends Component {
           ...this.props.symptomList.filter((symptom) => symptom.id !== id),
         ],
       },
-      this.props.symptomListDeleteItem(id)
+      () => {
+        this.props.symptomListDeleteItem(id);
+        this.rerender();
+      }
     );
   };
 
@@ -130,6 +143,7 @@ class SymptomInsert extends Component {
         <form className="remedy-insert-form" onSubmit={this.handleSubmit}>
           <div className={this.state.notInList}>{this.state.alertMsg}</div>
           <SymptomList
+            key={this.state.counter}
             symptomItems={this.state.symptomItems}
             symptomList={this.props.symptomList}
             chooseSuggestChange={this.chooseSuggestChange}

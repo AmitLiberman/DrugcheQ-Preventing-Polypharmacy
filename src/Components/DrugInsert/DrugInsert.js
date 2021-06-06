@@ -24,8 +24,8 @@ class DrugInsert extends Component {
 
     return inputLength === 0
       ? []
-      : this.state.drugSuggestions.filter(
-          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      : this.state.drugSuggestions.filter((lang) =>
+          lang.name.toLowerCase().includes(inputValue)
         );
   };
 
@@ -89,16 +89,15 @@ class DrugInsert extends Component {
       setTimeout(() => {
         this.setState({
           notInList: "alert-drug-list fadeOut",
+          alertMsg: "יש לבחור תרופה מתוך הרשימה",
         });
       }, 2000);
-      // this.setState({ alertMsg: "" });
-
       return;
     }
     this.setState({ chooseSuggest: false });
 
-    for (let index = 0; index < this.state.drugList.length; index++) {
-      if (this.state.drugList[index].name === this.state.value) {
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      if (this.props.drugList[index].name === this.state.value) {
         this.setState({
           notInList: "alert-drug-list fadeIn",
           alertMsg: "התרופה קיימת כבר ברשימה",

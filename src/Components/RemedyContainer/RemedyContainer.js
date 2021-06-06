@@ -17,6 +17,7 @@ class RemedyContainer extends Component {
     notInList: "alert-remedy-list fadeOut",
     alertMsg: "",
     found: false,
+    isNewDrug: null,
   };
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = (value) => {
@@ -24,8 +25,8 @@ class RemedyContainer extends Component {
     const inputLength = inputValue.length;
     return inputLength === 0
       ? []
-      : this.state.drugSuggestions.filter(
-          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      : this.state.drugSuggestions.filter((lang) =>
+          lang.name.toLowerCase().includes(inputValue)
         );
   };
 
@@ -33,6 +34,15 @@ class RemedyContainer extends Component {
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
+    console.log(suggestion.name);
+    console.log(this.props.drugList);
+    for (let index = 0; index < this.props.drugList.length; index++) {
+      if (this.props.drugList[index].name === suggestion.name) {
+        alert("התרופה שהזנת כבר קיימת ברשימה");
+        return "";
+      }
+    }
+
     this.setState({ chooseSuggest: true });
     this.props.getDrugValue(suggestion.name, this.props.remedyItem.id);
     this.props.chooseSuggestChange(true);
@@ -51,6 +61,7 @@ class RemedyContainer extends Component {
           value: this.props.drugList[index].name,
           fromDateValue: this.props.drugList[index].fromDate,
           untilDateValue: this.props.drugList[index].untilDate,
+          isNewDrug: this.props.drugList[index].isNewDrug,
           found: true,
           chooseSuggest: true,
         });
@@ -95,6 +106,11 @@ class RemedyContainer extends Component {
     });
   };
 
+  onIsNewChange = (event) => {
+    console.log(event.target.value);
+    this.props.getIsNew(this.props.remedyItem.id, event.target.value);
+    this.setState({ isNewDrug: event.target.value });
+  };
   //Change State to the drug name that typed
   handleChange = (event) => {
     this.setState({ value: event.target.value });
@@ -113,24 +129,6 @@ class RemedyContainer extends Component {
   onClickX = () => {
     this.props.onClickDelete(this.props.remedyItem.id);
     this.props.chooseSuggestChange(true);
-    this.forceUpdate();
-
-    // for (let index = 0; index < this.props.drugList.length - 1; index++) {
-    //   if (this.props.drugList[index].name === this.state.value && index > 0) {
-    //     console.log(
-    //       "name: " + this.props.drugList[index].name + " index: " + index
-    //     );
-    //     this.setState({
-    //       value: this.props.drugList[index + 1].name,
-    //       fromDateValue: this.props.drugList[index + 1].fromDate,
-    //       untilDateValue: this.props.drugList[index + 1].untilDate,
-    //       found: true,
-    //       chooseSuggest: true,
-    //     });
-    //     // break;
-    //   }
-    // }
-    // this.componentDidMount();
   };
 
   render() {
@@ -174,6 +172,7 @@ class RemedyContainer extends Component {
           inputProps={inputProps}
         />
         {this.state.chooseSuggest ? null : notValidDrugMsg}
+
         <div className="from-until-dates-container">
           <div className="date-wrapper1">
             <label className="date-lable" htmlfor="fromDrugName">
@@ -200,6 +199,32 @@ class RemedyContainer extends Component {
               value={this.state.untilDateValue}
               onChange={(e) => this.untilChangeHandler(e)}
             />
+          </div>
+          <div
+            className="new-drug-radio-cont"
+            onChange={(event) => this.onIsNewChange(event)}
+          >
+            <h6 style={{ direction: "rtl" }}>האם התרופה חדשה למטופל?</h6>
+            <label className="radio-option2">
+              כן
+              <input
+                className="radio-input2"
+                type="radio"
+                name={"NewDrug" + this.props.remedyItem.id}
+                value="NewDrug"
+                checked={this.state.isNewDrug === "NewDrug"}
+              />
+            </label>
+            <label className="radio-option2">
+              לא
+              <input
+                className="radio-input2"
+                type="radio"
+                name={"notNewDrug" + this.props.remedyItem.id}
+                value="notNewDrug"
+                checked={this.state.isNewDrug === "notNewDrug"}
+              />
+            </label>
           </div>
         </div>
       </div>

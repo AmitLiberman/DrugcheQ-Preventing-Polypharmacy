@@ -59,11 +59,10 @@ class DrugSearchInput extends Component {
   getSuggestions = (value) => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-
     return inputLength === 0
       ? []
-      : this.state.drugSuggestions.filter(
-          (lang) => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      : this.state.drugSuggestions.filter((lang) =>
+          lang.name.toLowerCase().includes(inputValue)
         );
   };
 
@@ -95,7 +94,6 @@ class DrugSearchInput extends Component {
           notInList: "alert-drug-list fadeOut",
         });
       }, 2000);
-      // this.setState({ alertMsg: "" });
 
       return;
     }

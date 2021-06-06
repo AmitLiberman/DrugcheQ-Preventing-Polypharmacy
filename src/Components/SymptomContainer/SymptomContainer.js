@@ -31,6 +31,12 @@ class SymptomContainer extends Component {
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
   getSuggestionValue = (suggestion) => {
+    for (let index = 0; index < this.props.symptomList.length; index++) {
+      if (this.props.symptomList[index].name === suggestion.name) {
+        alert("התסמין שהזנת כבר קיים ברישמה");
+        return "";
+      }
+    }
     this.setState({ chooseSuggest: true });
     this.props.getSymptomValue(suggestion.name, this.props.symptomItem.id);
     this.props.chooseSuggestChange(true);
@@ -107,30 +113,11 @@ class SymptomContainer extends Component {
     this.props.chooseSuggestChange(true);
   };
   render() {
-    // const { value, suggestions } = this.state;
-    // let found = false;
     let value = "";
-    // let severityValue = "";
-    // let appearDateValue = "";
 
-    // for (let index = 0; index < this.props.symptomList.length; index++) {
-    //   const drugId = this.props.symptomList[index].id;
-    //   if (this.props.symptomItem.id === drugId) {
-    //     value = this.props.symptomList[index].name;
-    //     severityValue = this.props.symptomList[index].severity;
-    //     appearDateValue = this.props.symptomList[index].appearDate;
-    //     found = true;
-    //     break;
-    //   }
-    // }
-    // if (found === false) {
-    //   value = this.state.value;
-    //   console.log(value);
-    // }
     value = this.state.value;
     const suggestions = this.state.suggestions;
     let appearDateValue = this.state.appearDateValue;
-    let severityValue = this.state.severityValue;
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
@@ -186,7 +173,7 @@ class SymptomContainer extends Component {
                   type="radio"
                   name={"notSever" + this.props.symptomItem.id}
                   value="notSever"
-                  checked={severityValue === "notSever"}
+                  checked={this.state.severityValue === "notSever"}
                 />
               </label>
             </div>
