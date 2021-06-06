@@ -1,6 +1,12 @@
 .progress-search {
-    margin: 2em;
-    margin-right: -3em;
+    float: center;
+    margin-right: -20em;
+}
+
+@media screen and (max-width: 600px) {
+    .progress-search {
+        margin-right: 2em;
+    }
 }
 
 .progress-search-headline {
