@@ -20,6 +20,24 @@
     display: inline-block;
     direction: rtl;
     text-align: right;
+    background-color: #7bc7da;
+    border: 1px solid #a9d0da;
+    border-width: 10%;
+    color: #24343f;
+    font-size: 1rem;
+    /* width: 5rem;*/
+    /*padding: 0.5em; */
+}
+
+.btn.btn-primary.add-drug-to-list:hover {
+    background-color: white;
+    color: #2b3841;
+    border: 1px solid #030303;
+    border-width: 10%;
+}
+
+.btn.btn-primary.add-drug-to-list:focus {
+    outline: 0px;
 }
 
 .form-control.input-drug-name {

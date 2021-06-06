@@ -118,7 +118,6 @@ class SymptomContainer extends Component {
     value = this.state.value;
     const suggestions = this.state.suggestions;
     let appearDateValue = this.state.appearDateValue;
-    let severityValue = this.state.severityValue;
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
