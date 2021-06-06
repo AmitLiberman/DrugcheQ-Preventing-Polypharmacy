@@ -92,8 +92,6 @@ class DrugInsert extends Component {
           alertMsg: "יש לבחור תרופה מתוך הרשימה",
         });
       }, 2000);
-      // this.setState({ alertMsg: "" });
-
       return;
     }
     this.setState({ chooseSuggest: false });
