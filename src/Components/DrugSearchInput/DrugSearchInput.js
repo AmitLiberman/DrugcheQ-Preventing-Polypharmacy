@@ -19,7 +19,7 @@ class DrugSearchInput extends Component {
   };
 
   componentDidMount = () => {
-    const request = "http://127.0.0.1:5000/suggest";
+    const request = "https://drugcheq.herokuapp.com/suggest";
     this.setState({ loading: true }, () => {
       axios
         .get(request)
@@ -98,7 +98,7 @@ class DrugSearchInput extends Component {
       return;
     }
     this.setState({ chooseSuggest: false });
-    let request = "http://127.0.0.1:5000/drug-search?";
+    let request = "https://drugcheq.herokuapp.com/drug-search?";
     request += this.state.value;
     this.props.isLoading(true);
 
